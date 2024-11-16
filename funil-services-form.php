@@ -2,7 +2,7 @@
 /*
 *Plugin Name: Funnel-services-form
 *Description: Plugin for services form with steps.
-*Version: 1.0
+*Version: 1.0.2
 *Author: Yisus_Dev
  * Author URI: https://enlaweb.co/
  * License: GNU General Public License v3.0
