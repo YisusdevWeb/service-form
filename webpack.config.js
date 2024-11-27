@@ -54,6 +54,9 @@ module.exports = (env, argv) => {
       compress: true,
       port: 9000,
       hot: true,
+      client: {
+    overlay: true, // Muestra errores en el navegador si hay problemas
+  },
     },
   };
 };
