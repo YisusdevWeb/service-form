@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Button } from '@mui/material';
 import useStore from './store/store.js';
 import StepForm from './form/StepForm.jsx';
-import SummaryForm from './form/SummaryForm.jsx';
+import SummaryTabs from './components/SummaryTabs';
 import Preloader from './components/Preloader';
-import ResetPopup from './components/ResetPopup'; // Importar el popup de reinicio
-import NoPhasePopup from './components/NoPhasePopup'; // Importar el popup de advertencia de fases
+import ResetPopup from './components/ResetPopup';
+import NoPhasePopup from './components/NoPhasePopup';
 
 const App = () => {
   const [showSummary, setShowSummary] = useState(false);
-  const [loading, setLoading] = useState(true); // Estado para manejar la carga
-  const [resetPopupOpen, setResetPopupOpen] = useState(false); // Estado para el popup de reinicio
-  const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false); // Estado para el popup de advertencia de fases
-  const [serviceWithoutPhases, setServiceWithoutPhases] = useState(null); // Estado para el servicio sin fases
+  const [loading, setLoading] = useState(true);
+  const [resetPopupOpen, setResetPopupOpen] = useState(false);
+  const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false);
+  const [serviceWithoutPhases, setServiceWithoutPhases] = useState(null);
   const { currentService, setCurrentService, resetService } = useStore();
   const servicios = FSF_data.servicios || [];
 
@@ -21,6 +21,9 @@ const App = () => {
     titulo: servicio.title,
     fases_do_servico: servicio.acf ? servicio.acf.fases_do_servico : [],
   }));
+
+  const [availableServices, setAvailableServices] = useState(servicos);
+  const [completedServices, setCompletedServices] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,31 +43,42 @@ const App = () => {
     setShowSummary(true);
   };
 
+  const handleServiceComplete = (completedService) => {
+    setCompletedServices((prev) => [...prev, completedService.id]);
+    setAvailableServices((prev) => prev.filter((service) => service.id !== completedService.id));
+  };
+
   const handleResetService = () => {
-    setResetPopupOpen(true); // Mostrar el popup de reinicio
+    setResetPopupOpen(true);
   };
 
   const handleConfirmReset = () => {
     resetService();
+    setAvailableServices(servicos); // Resetear los servicios disponibles
     setShowSummary(false);
-    setResetPopupOpen(false); // Cerrar el popup de reinicio
+    setResetPopupOpen(false);
   };
 
   const handleCloseResetPopup = () => {
-    setResetPopupOpen(false); // Cerrar el popup de reinicio
+    setResetPopupOpen(false);
   };
 
   const handleServiceClick = (service) => {
     if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
       setServiceWithoutPhases(service);
-      setNoPhasePopupOpen(true); // Mostrar el popup de advertencia de fases
+      setNoPhasePopupOpen(true);
     } else {
-      setCurrentService(service); // Seleccionar servicio
+      setCurrentService(service);
     }
   };
 
   const handleCloseNoPhasePopup = () => {
-    setNoPhasePopupOpen(false); // Cerrar el popup de advertencia de fases
+    setNoPhasePopupOpen(false);
+  };
+
+  const handleClearLocalStorage = () => {
+    localStorage.clear();
+    window.location.reload(); // Recargar la página para aplicar los cambios
   };
 
   if (loading) {
@@ -82,7 +96,7 @@ const App = () => {
           <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: '#e6e6e6' }}>
             <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80' }}>Servicios</Typography>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
-              {servicos.map((servico) => (
+              {availableServices.map((servico) => (
                 <li
                   key={servico.id}
                   onClick={() => !currentService && handleServiceClick(servico)}
@@ -128,12 +142,22 @@ const App = () => {
                 </Button>
               </Box>
             )}
+            <Box
+              sx={{
+                mt: 2,
+                textAlign: 'center',
+              }}
+            >
+              <Button variant="contained" color="error" onClick={handleClearLocalStorage}>
+                Reiniciar Todo
+              </Button>
+            </Box>
           </Paper>
         </Box>
         <Box sx={{ flex: 2 }}>
           <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: '#f9f9f9' }}>
             {currentService && currentService.fases_do_servico ? (
-              showSummary ? <SummaryForm /> : <StepForm onComplete={handleComplete} />
+              showSummary ? <SummaryTabs /> : <StepForm onComplete={handleComplete} onServiceComplete={handleServiceComplete} />
             ) : (
               <Typography sx={{ color: '#0f4c80' }}>Seleccione un servicio para ver los detalles.</Typography>
             )}
