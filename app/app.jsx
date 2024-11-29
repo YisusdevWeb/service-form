@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
-import { Box, Button, Checkbox, Typography, Stepper, Step, StepLabel, FormControlLabel, Radio, RadioGroup, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-import { useForm } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Paper, Button } from '@mui/material';
 import useStore from './store/store.js';
-
-const CustomButton = styled(Button)({
-  marginBottom: '10px',
-  '&.MuiButton-containedPrimary': {
-    backgroundColor: '#1976d2',
-  },
-});
+import StepForm from './form/StepForm.jsx';
+import SummaryForm from './form/SummaryForm.jsx';
+import Preloader from './components/Preloader';
+import ResetPopup from './components/ResetPopup'; // Importar el popup de reinicio
+import NoPhasePopup from './components/NoPhasePopup'; // Importar el popup de advertencia de fases
 
 const App = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-
+  const [showSummary, setShowSummary] = useState(false);
+  const [loading, setLoading] = useState(true); // Estado para manejar la carga
+  const [resetPopupOpen, setResetPopupOpen] = useState(false); // Estado para el popup de reinicio
+  const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false); // Estado para el popup de advertencia de fases
+  const [serviceWithoutPhases, setServiceWithoutPhases] = useState(null); // Estado para el servicio sin fases
+  const { currentService, setCurrentService, resetService } = useStore();
   const servicios = FSF_data.servicios || [];
 
   const servicos = servicios.map((servicio) => ({
@@ -23,118 +22,135 @@ const App = () => {
     fases_do_servico: servicio.acf ? servicio.acf.fases_do_servico : [],
   }));
 
-  const { currentService, setCurrentService, currentPhase, nextPhase, prevPhase } = useStore();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
-    if (servicos.length > 0 && !currentService) {
-      setCurrentService(servicos[0]);
+    if (!loading && servicos.length === 0) {
+      setCurrentService(null);
     }
-  }, [servicos, currentService, setCurrentService]);
+  }, [loading, servicos, setCurrentService]);
+
+  const handleComplete = () => {
+    setShowSummary(true);
+  };
+
+  const handleResetService = () => {
+    setResetPopupOpen(true); // Mostrar el popup de reinicio
+  };
+
+  const handleConfirmReset = () => {
+    resetService();
+    setShowSummary(false);
+    setResetPopupOpen(false); // Cerrar el popup de reinicio
+  };
+
+  const handleCloseResetPopup = () => {
+    setResetPopupOpen(false); // Cerrar el popup de reinicio
+  };
+
+  const handleServiceClick = (service) => {
+    if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
+      setServiceWithoutPhases(service);
+      setNoPhasePopupOpen(true); // Mostrar el popup de advertencia de fases
+    } else {
+      setCurrentService(service); // Seleccionar servicio
+    }
+  };
+
+  const handleCloseNoPhasePopup = () => {
+    setNoPhasePopupOpen(false); // Cerrar el popup de advertencia de fases
+  };
+
+  if (loading) {
+    return <Preloader />;
+  }
 
   return (
-    <Box p={5}>
-      <Box display="flex" gap={3}>
-        <Box flex={1}>
-          <Paper elevation={3}>
-            <Box p={2}>
-              <Typography variant="h5" gutterBottom>Servicios</Typography>
-              <ul>
-                {servicos.map((servico) => (
-                  <li key={servico.id} onClick={() => setCurrentService(servico)} style={{ cursor: 'pointer', marginBottom: '10px' }}>
-                    <Typography variant="h6" color="primary">{servico.titulo}</Typography>
-                  </li>
-                ))}
-              </ul>
-            </Box>
+    <>
+      <Box p={5} sx={{ backgroundColor: '#f9f9f9', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+        <Box
+          sx={{
+            flex: 1,
+          }}
+        >
+          <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: '#e6e6e6' }}>
+            <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80' }}>Servicios</Typography>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
+              {servicos.map((servico) => (
+                <li
+                  key={servico.id}
+                  onClick={() => !currentService && handleServiceClick(servico)}
+                  style={{
+                    cursor: currentService ? 'not-allowed' : 'pointer',
+                    marginBottom: '10px',
+                    padding: '10px',
+                    backgroundColor: currentService && currentService.id === servico.id ? '#d3d3ff' : currentService ? 'none' : '#ffffff',
+                    borderRadius: '5px',
+                    transition: 'background-color 0.3s, transform 0.3s',
+                    boxShadow: currentService && currentService.id !== servico.id ? 'none' : '0 2px 5px rgba(0,0,0,0.15)',
+                    borderColor: '#bebebe',
+                    borderWidth: '1px',
+                    borderStyle: currentService && currentService.id === servico.id ? 'solid' : 'none',
+                    display: currentService && currentService.id === servico.id ? 'block' : currentService ? 'none' : 'block',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!currentService || currentService.id === servico.id) {
+                      e.currentTarget.style.backgroundColor = '#e6e6e6';
+                      e.currentTarget.style.transform = 'scale(1.03)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!currentService || currentService.id !== servico.id) {
+                      e.currentTarget.style.backgroundColor = '#ffffff';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }
+                  }}
+                >
+                  <Typography variant="h6" color={currentService && currentService.id === servico.id ? "secondary" : "#0f4c80"}>{servico.titulo}</Typography>
+                </li>
+              ))}
+            </ul>
+            {currentService && (
+              <Box
+                sx={{
+                  mt: 2,
+                  textAlign: 'center',
+                }}
+              >
+                <Button variant="contained" color="secondary" onClick={handleResetService}>
+                  Habilitar Otros Servicios
+                </Button>
+              </Box>
+            )}
           </Paper>
         </Box>
-        <Box flex={2}>
-          <Paper elevation={3}>
-            <Box p={2}>
-              {currentService ? (
-                <>
-                  <Typography variant="h4" gutterBottom>{currentService.titulo}</Typography>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    {currentService.fases_do_servico && currentService.fases_do_servico.length > 0 ? (
-                      <>
-                        <Stepper activeStep={currentPhase}>
-                          {currentService.fases_do_servico.map((fase, index) => (
-                            <Step key={fase.id_fase || index}>
-                              <StepLabel>{fase.titulo}</StepLabel>
-                            </Step>
-                          ))}
-                        </Stepper>
-                        <Box mt={3}>
-                          <Typography variant="h6">{currentService.fases_do_servico[currentPhase].titulo}</Typography>
-                          <Typography variant="body1" gutterBottom>{currentService.fases_do_servico[currentPhase].descricao}</Typography>
-                          {currentService.fases_do_servico[currentPhase].escrever_as_opcoes && (
-                            <Box>
-                              {currentService.fases_do_servico[currentPhase].tipo_selecao === 'multipla' ? (
-                                // Selección Múltiple (Checkboxes)
-                                currentService.fases_do_servico[currentPhase].escrever_as_opcoes.map((opcao) => (
-                                  <Box key={opcao.id_opcion} display="flex" alignItems="center" mb={1}>
-                                    <FormControlLabel
-                                      control={<Checkbox {...register(opcao.titulo)} />}
-                                      label={
-                                        <Box
-                                          component="span"
-                                          sx={{ 
-                                            display: 'flex', 
-                                            alignItems: 'center', 
-                                            bgcolor: 'primary.light', 
-                                            p: 1, 
-                                            borderRadius: 1 
-                                          }}
-                                        >
-                                          {opcao.titulo}
-                                        </Box>
-                                      }
-                                    />
-                                  </Box>
-                                ))
-                              ) : (
-                                // Selección Única (Botones)
-                                <RadioGroup>
-                                  {currentService.fases_do_servico[currentPhase].escrever_as_opcoes.map((opcao) => (
-                                    <CustomButton
-                                      key={opcao.id_opcion}
-                                      value={opcao.titulo}
-                                      variant="contained"
-                                      color="primary"
-                                      onClick={nextPhase}
-                                    >
-                                      {opcao.titulo}
-                                    </CustomButton>
-                                  ))}
-                                </RadioGroup>
-                              )}
-                            </Box>
-                          )}
-                        </Box>
-                        <Box mt={4} display="flex" justifyContent="space-between">
-                          {currentPhase > 0 && (
-                            <Button variant="contained" color="primary" onClick={prevPhase}>Anterior</Button>
-                          )}
-                          {currentPhase < currentService.fases_do_servico.length - 1 ? (
-                            <Button variant="contained" color="primary" onClick={nextPhase}>Siguiente</Button>
-                          ) : (
-                            <Button variant="contained" color="primary" type="submit">Enviar</Button>
-                          )}
-                        </Box>
-                      </>
-                    ) : (
-                      <Typography>No hay fases disponibles para este servicio.</Typography>
-                    )}
-                  </form>
-                </>
-              ) : (
-                <Typography>Seleccione un servicio para ver los detalles.</Typography>
-              )}
-            </Box>
+        <Box sx={{ flex: 2 }}>
+          <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: '#f9f9f9' }}>
+            {currentService && currentService.fases_do_servico ? (
+              showSummary ? <SummaryForm /> : <StepForm onComplete={handleComplete} />
+            ) : (
+              <Typography sx={{ color: '#0f4c80' }}>Seleccione un servicio para ver los detalles.</Typography>
+            )}
           </Paper>
         </Box>
       </Box>
-    </Box>
+      <ResetPopup
+        open={resetPopupOpen}
+        onClose={handleCloseResetPopup}
+        onConfirm={handleConfirmReset}
+      />
+      <NoPhasePopup
+        open={noPhasePopupOpen}
+        onClose={handleCloseNoPhasePopup}
+        serviceTitle={serviceWithoutPhases?.titulo}
+      />
+    </>
   );
 };
 
