@@ -25,13 +25,18 @@ const useStore = create((set) => ({
   addSelection: (uniqueServiceId, phase, selection) => {
     set((state) => {
       const currentService = state.currentService;
-      const phaseId = `f_${phase}`;
-      const phaseTitle = currentService?.fases_do_servico?.find(f => f.id_fase === phaseId)?.titulo || `Fase ${parseInt(phase) + 1}`;
+      const phaseIndex = parseInt(phase);
+      const currentPhase = currentService?.fases_do_servico[phaseIndex];
+      const phaseTitle = currentPhase?.titulo || `Fase ${phaseIndex + 1}`;
       const newSelections = {
         ...state.selections,
         [uniqueServiceId]: {
           ...state.selections[uniqueServiceId],
-          [phase]: { ...selection, phaseTitle },
+          [phase]: { 
+            ...state.selections[uniqueServiceId]?.[phase],
+            ...selection, 
+            phaseTitle 
+          },
           serviceTitle: currentService.titulo,
         },
       };
