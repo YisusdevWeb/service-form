@@ -20,7 +20,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
   );
 };
 
-const SummaryForm = ({ onEditSelections, onAddMoreServices }) => {
+const SummaryForm = ({ onEditSelections, onAddMoreServices, onContinueQuote }) => {
   const { selections } = useStore();
   const [value, setValue] = React.useState(0);
 
@@ -73,6 +73,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices }) => {
           </Paper>
           <Box display="flex" justifyContent="space-between">
             <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)}>Editar Selecciones</Button>
+            <Button variant="contained" color="primary" onClick={onContinueQuote}>Continuar Cotización</Button>
             <Button variant="contained" color="primary" onClick={onAddMoreServices}>Agregar Más Servicios</Button>
           </Box>
         </TabPanel>

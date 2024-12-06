@@ -137,6 +137,14 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
     setShowSummary(true);
   };
 
+  const handleContinueQuote = () => {
+    // Lógica para continuar con la cotización
+    console.log("Continuando con la cotización...");
+    setShowSummary(true);
+    setShowServiceSummary(false);
+  };
+  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -146,6 +154,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
         <SummaryTabs
           onEditSelections={handleEditSelections}
           onAddMoreServices={handleAddMoreServices}
+          onContinueQuote={handleContinueQuote}
         />
       ) : (
         <FormProvider {...methods}>
