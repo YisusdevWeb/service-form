@@ -6,7 +6,8 @@ import useStore from "../store/store.js";
 import AlertSnackbar from "../components/AlertSnackbar";
 import { handleSelectionFactory } from "../utils/handleSelection";
 import AddMoreServicesPopup from "../components/AddMoreServicesPopup";
-import SummaryForm from "../components/SummaryForm";  // Asegurándonos de incluir SummaryForm
+import SummaryTabs from "../components/SummaryTabs";
+import SummaryForm from "./SummaryForm";
 import PhaseStepper from "../components/stepform/PhaseStepper";
 import PhaseContent from "../components/stepform/PhaseContent";
 import FormNavigation from "../components/stepform/FormNavigation";
@@ -127,15 +128,24 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
     setShowServiceSummary(false);
     setAddMoreServicesPopupOpen(true);
   };
-
-  const handleEditSelections = () => {
-    setShowServiceSummary(false);
-    setShowSummary(false);
+  const handleEditSelections = (serviceId) => {
+    // Encontramos el servicio seleccionado y actualizamos `currentService`
+    const selectedService = selections[serviceId];
+    if (selectedService) {
+      setCurrentService({
+        ...currentService,
+        uniqueId: serviceId,
+        fases_do_servico: selectedService.fases_do_servico
+      });
+      setCurrentPhase(0); // Inicializamos la fase en 0 o la fase deseada
+      setShowServiceSummary(false);
+      setShowSummary(false);
+    }
   };
 
   const handleDeclineAddMoreServices = () => {
     setAddMoreServicesPopupOpen(false);
-    setShowSummary(true);  // Asegurándonos de que esto muestre `SummaryForm`
+    setShowSummary(true);
   };
 
   return (
@@ -144,7 +154,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
       {showSummary ? (
         <SummaryForm />
       ) : showServiceSummary ? (
-        <SummaryForm
+        <SummaryTabs
           onEditSelections={handleEditSelections}
           onAddMoreServices={handleAddMoreServices}
         />
