@@ -20,7 +20,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
   );
 };
 
-const SummaryTabs = ({ onEditSelections, onAddMoreServices }) => {
+const SummaryForm = ({ onEditSelections, onAddMoreServices }) => {
   const { selections } = useStore();
   const [value, setValue] = React.useState(0);
 
@@ -71,14 +71,14 @@ const SummaryTabs = ({ onEditSelections, onAddMoreServices }) => {
               </Box>
             ))}
           </Paper>
+          <Box display="flex" justifyContent="space-between">
+            <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)}>Editar Selecciones</Button>
+            <Button variant="contained" color="primary" onClick={onAddMoreServices}>Agregar Más Servicios</Button>
+          </Box>
         </TabPanel>
       ))}
-      <Box display="flex" justifyContent="space-between">
-        <Button variant="contained" color="primary" onClick={onEditSelections}>Editar Selecciones</Button>
-        <Button variant="contained" color="primary" onClick={onAddMoreServices}>Continuar</Button>
-      </Box>
     </Box>
   );
 };
 
-export default SummaryTabs;
+export default SummaryForm;

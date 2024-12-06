@@ -34,6 +34,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
     addSelection,
     selections,
     resetService,
+    setCurrentService, // Asegúrate de que este método esté disponible
   } = useStore();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -128,20 +129,8 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
     setShowServiceSummary(false);
     setAddMoreServicesPopupOpen(true);
   };
-  const handleEditSelections = (serviceId) => {
-    // Encontramos el servicio seleccionado y actualizamos `currentService`
-    const selectedService = selections[serviceId];
-    if (selectedService) {
-      setCurrentService({
-        ...currentService,
-        uniqueId: serviceId,
-        fases_do_servico: selectedService.fases_do_servico
-      });
-      setCurrentPhase(0); // Inicializamos la fase en 0 o la fase deseada
-      setShowServiceSummary(false);
-      setShowSummary(false);
-    }
-  };
+
+  const handleEditSelections = () => { setShowServiceSummary(false); setShowSummary(false); };
 
   const handleDeclineAddMoreServices = () => {
     setAddMoreServicesPopupOpen(false);
@@ -170,7 +159,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
             </Typography>
             <PhaseStepper
               currentPhase={currentPhase}
-              fases={currentService.fases_do_servico}
+              fases={Array.isArray(currentService.fases_do_servico) ? currentService.fases_do_servico : []}
               onStepClick={handleStepClick}
             />
             <Typography sx={{ textAlign: "center", mb: 2 }}>
