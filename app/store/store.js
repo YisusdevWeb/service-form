@@ -54,6 +54,7 @@ const useStore = create((set) => ({
     }));
   },
 
+  
   setSelections: (selections) => {
     set({ selections });
   },

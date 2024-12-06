@@ -155,6 +155,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
           onEditSelections={handleEditSelections}
           onAddMoreServices={handleAddMoreServices}
           onContinueQuote={handleContinueQuote}
+          
         />
       ) : (
         <FormProvider {...methods}>
