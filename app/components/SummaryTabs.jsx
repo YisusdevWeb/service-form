@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tab, Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Tabs, Tab, Button } from '@mui/material';
 import useStore from '../store/store.js';
 
 const TabPanel = ({ children, value, index, ...other }) => {
@@ -20,43 +20,52 @@ const TabPanel = ({ children, value, index, ...other }) => {
   );
 };
 
-const SummaryTabs = () => {
+const SummaryTabs = ({ onEditSelections, onAddMoreServices }) => {
   const { selections } = useStore();
   const [value, setValue] = React.useState(0);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  // Assuming we have a way to get the titles of the completed services from the selections or another store
-  const completedServices = Object.entries(selections).map(([serviceId, serviceSelections]) => {
-    // Obtain the service title from the selections or another source
-    const serviceTitle = serviceSelections.serviceTitle || `Servicio ${serviceId}`;
-    const phases = Object.entries(serviceSelections).map(([phaseId, phaseSelections]) => {
-      const phaseTitle = phaseSelections.phaseTitle || `Fase ${parseInt(phaseId) + 1}`;
-      return { phaseId, phaseTitle, phaseSelections };
-    });
-    return { serviceId, serviceTitle, phases };
+  // Obtenemos los servicios completados y organizamos las fases correctamente
+  const completedServices = Object.entries(selections).map(([uniqueServiceId, serviceSelections]) => {
+    const serviceTitle = serviceSelections.serviceTitle || `Servicio ${uniqueServiceId}`;
+    const phases = Object.keys(serviceSelections)
+      .filter(phaseId => phaseId !== 'serviceTitle')
+      .map(phaseId => {
+        const phaseSelections = serviceSelections[phaseId];
+        const phaseTitle = phaseSelections.phaseTitle;
+        return {
+          phaseId,
+          phaseTitle,
+          phaseSelections
+        };
+      });
+
+    return { uniqueServiceId, serviceTitle, phases };
   });
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
-        {completedServices.map((service, index) => (
-          <Tab key={service.serviceId} label={service.serviceTitle} />
-        ))}
-      </Tabs>
+    <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
+      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>Resumen de Selecciones</Typography>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
+          {completedServices.map((service, index) => (
+            <Tab key={service.uniqueServiceId} label={service.serviceTitle} />
+          ))}
+        </Tabs>
+      </Box>
       {completedServices.map((service, index) => (
-        <TabPanel key={service.serviceId} value={value} index={index}>
-          <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
-            <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>
-              {service.serviceTitle}
-            </Typography>
+        <TabPanel key={service.uniqueServiceId} value={value} index={index}>
+          <Paper sx={{ p: 3, mb: 3, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
+            <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{service.serviceTitle}</Typography>
             {service.phases.map(({ phaseId, phaseTitle, phaseSelections }) => (
               <Box key={phaseId} mb={2}>
                 <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{phaseTitle}</Typography>
-                <ul style={{ listStyleType: 'none', padding: 0 }}>
+                <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
                   {Object.entries(phaseSelections).map(([option, selected]) => (
-                    selected ? <li key={option}>{option}</li> : null
+                    selected && option !== 'phaseTitle' ? <li key={option} style={{ color: '#333', marginBottom: '4px' }}>{option}</li> : null
                   ))}
                 </ul>
               </Box>
@@ -64,6 +73,10 @@ const SummaryTabs = () => {
           </Paper>
         </TabPanel>
       ))}
+      <Box display="flex" justifyContent="space-between">
+        <Button variant="contained" color="primary" onClick={onEditSelections}>Editar Selecciones</Button>
+        <Button variant="contained" color="primary" onClick={onAddMoreServices}>Continuar</Button>
+      </Box>
     </Box>
   );
 };
