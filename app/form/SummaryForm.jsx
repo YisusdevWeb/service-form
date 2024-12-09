@@ -22,6 +22,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
 };
 
 const SummaryForm = () => {
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { selections } = useStore();
   const [value, setValue] = React.useState(0);
@@ -127,9 +128,11 @@ const SummaryForm = () => {
             helperText={errors.whatsapp ? errors.whatsapp.message : ''}
           />
         </Paper>
-        <Box mt={4} display="flex" justifyContent="flex-end">
-          <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar</Button>
-        </Box>
+        <Box display="flex" justifyContent="space-between"> 
+  
+  <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar</Button>
+</Box>
+
       </form>
     </Box>
   );
