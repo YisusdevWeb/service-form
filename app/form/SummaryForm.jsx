@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Tabs, Tab, Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useStore from '../store/store.js';
@@ -10,22 +10,19 @@ const TabPanel = ({ children, value, index, ...other }) => {
       hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
-      {...other}
+      {...other }
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 };
 
-const SummaryForm = () => {
-
+const SummaryForm = ({ onEditSelections, onAddMoreServices, onContinueQuote, userData }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { selections } = useStore();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editableUserData, setEditableUserData] = useState(userData);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -36,12 +33,20 @@ const SummaryForm = () => {
       ...data,
       selections,
     };
-    console.log(finalData); // Aquí puedes enviar los datos a un servidor o mostrar un mensaje de confirmación
+    console.log(finalData);
     alert("Formulario enviado con éxito");
-    reset(); // Resetear el formulario después de enviarlo
+    reset();
   };
 
-  // Obtenemos los servicios completados y organizamos las fases correctamente
+  const handleEditUserData = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveUserData = () => {
+    // Aquí puedes agregar la lógica para guardar los datos editados
+    setIsEditing(false);
+  };
+
   const completedServices = Object.entries(selections).map(([uniqueServiceId, serviceSelections]) => {
     const serviceTitle = serviceSelections.serviceTitle || `Servicio ${uniqueServiceId}`;
     const phases = Object.keys(serviceSelections)
@@ -61,7 +66,9 @@ const SummaryForm = () => {
 
   return (
     <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
-      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>Resumen de Selecciones</Typography>
+      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
+        Resumen de Selecciones
+      </Typography>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
           {completedServices.map((service, index) => (
@@ -88,51 +95,52 @@ const SummaryForm = () => {
       ))}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
-          <TextField
-            label="Nombre"
-            fullWidth
-            {...register('nombre', { required: 'Nombre es obligatorio', minLength: { value: 3, message: 'Nombre debe tener al menos 3 caracteres' } })}
-            margin="normal"
-            variant="outlined"
-            error={!!errors.nombre}
-            helperText={errors.nombre ? errors.nombre.message : ''}
-          />
-          <TextField
-            label="Email"
-            fullWidth
-            {...register('email', {
-              required: 'Email es obligatorio',
-              pattern: {
-                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: 'Ingresa un email válido'
-              }
-            })}
-            margin="normal"
-            variant="outlined"
-            error={!!errors.email}
-            helperText={errors.email ? errors.email.message : ''}
-          />
-          <TextField
-            label="WhatsApp"
-            fullWidth
-            {...register('whatsapp', {
-              required: 'WhatsApp es obligatorio',
-              pattern: {
-                value: /^\d+$/,
-                message: 'Ingresa un número de WhatsApp válido'
-              }
-            })}
-            margin="normal"
-            variant="outlined"
-            error={!!errors.whatsapp}
-            helperText={errors.whatsapp ? errors.whatsapp.message : ''}
-          />
+          <Typography variant="h6">Información del Usuario</Typography>
+          {isEditing ? (
+            <>
+              <TextField
+                label="Nombre"
+                fullWidth
+                value={editableUserData.nombre}
+                onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
+                margin="normal"
+                variant="outlined"
+              />
+              <TextField
+                label="Email"
+                fullWidth
+                value={editableUserData.email}
+                onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
+                margin="normal"
+                variant="outlined"
+              />
+              <TextField
+                label="WhatsApp"
+                fullWidth
+                value={editableUserData.whatsapp}
+                onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
+                margin="normal"
+                variant="outlined"
+              />
+              <Button variant="contained" color="primary" onClick={handleSaveUserData}>
+                Guardar
+              </Button>
+            </>
+          ) : (
+            <>
+              <Typography>Nombre: {editableUserData.nombre}</Typography>
+              <Typography>Email: {editableUserData.email}</Typography>
+              <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
+              <Button variant="contained" color="primary" onClick={handleEditUserData}>
+                Editar Información
+              </Button>
+            </>
+          )}
         </Paper>
-        <Box display="flex" justifyContent="space-between"> 
-  
-  <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar</Button>
-</Box>
-
+        <Box display="flex" justifyContent="space-between">
+          <Button variant="contained" color="primary" onClick={onAddMoreServices}>Agregar Otro Servicio</Button>
+          <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar</Button>
+        </Box>
       </form>
     </Box>
   );

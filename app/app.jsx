@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, Paper, Button } from "@mui/material";
 import useStore from "./store/store.js";
 import StepForm from "./form/StepForm.jsx";
-import SummaryTabs from "./components/SummaryTabs";
+import UserForm from "./form/UserForm.jsx";
 import Preloader from "./components/Preloader";
 import ResetPopup from "./components/ResetPopup";
 import NoPhasePopup from "./components/NoPhasePopup";
+import FloatingResetButton from "./components/FloatingResetButton";
 
 const App = () => {
-  const [showSummary, setShowSummary] = useState(false);
+  const [showUserForm, setShowUserForm] = useState(true);
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [resetPopupOpen, setResetPopupOpen] = useState(false);
   const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false);
@@ -39,6 +41,11 @@ const App = () => {
     }
   }, [loading, servicos, setCurrentService]);
 
+  const handleUserSubmit = (data) => {
+    setUserData(data);
+    setShowUserForm(false);
+  };
+
   const handleComplete = () => {
     setShowSummary(true);
   };
@@ -57,7 +64,7 @@ const App = () => {
   const handleConfirmReset = () => {
     resetService();
     setAvailableServices(servicos); // Resetear los servicios disponibles
-    setShowSummary(false);
+    setShowUserForm(true);          // Volver a mostrar el formulario de usuario
     setResetPopupOpen(false);
   };
 
@@ -93,9 +100,13 @@ const App = () => {
         p={5}
         sx={{
           backgroundColor: "#f9f9f9",
+          maxWidth: "800px",
+          mx: "auto"
         }}
       >
-        {!currentService ? (
+        {showUserForm ? (
+          <UserForm onUserSubmit={handleUserSubmit} />
+        ) : !currentService ? (
           <Box>
             <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80" }}>
               Servicios
@@ -129,9 +140,11 @@ const App = () => {
           <StepForm
             onComplete={handleComplete}
             onServiceComplete={handleServiceComplete}
+            userData={userData} // Pasar la información del usuario
           />
         )}
       </Box>
+      <FloatingResetButton onClick={handleClearLocalStorage} />
       <ResetPopup
         open={resetPopupOpen}
         onClose={handleCloseResetPopup}

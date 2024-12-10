@@ -24,7 +24,7 @@ const theme = createTheme({
   },
 });
 
-const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
+const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
   const methods = useForm();
   const { handleSubmit, setValue, watch, getValues } = methods;
   const {
@@ -169,6 +169,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete }) => {
     onEditSelections={handleEditSelections}
     onAddMoreServices={handleAddMoreServices} // Pasar handleAddMoreServices
     onContinueQuote={handleContinueQuote}
+    userData={userData} // Pasar userData aquí
   />
 ) : showServiceSummary ? (
   <SummaryTabs
