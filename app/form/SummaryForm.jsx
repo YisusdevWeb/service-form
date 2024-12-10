@@ -64,55 +64,63 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
       return { uniqueServiceId, serviceTitle, phases };
     }
   );
-
+  if (!userData) {
+    return <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80", textAlign: "center", mt: 4 }}>
+      Información de usuario no disponible. Por favor, vuelva a ingresar los datos.
+    </Typography>;
+  }
   return (
     <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
       <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
         Resumen de Selecciones
       </Typography>
-      <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
-        <Typography variant="h6">Información del Usuario</Typography>
-        {isEditing ? (
-          <>
-            <TextField
-              label="Nombre"
-              fullWidth
-              value={editableUserData.nombre}
-              onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              label="Email"
-              fullWidth
-              value={editableUserData.email}
-              onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
-              margin="normal"
-              variant="outlined"
-            />
-            <TextField
-              label="WhatsApp"
-              fullWidth
-              value={editableUserData.whatsapp}
-              onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
-              margin="normal"
-              variant="outlined"
-            />
-            <Button variant="contained" color="primary" onClick={handleSaveUserData}>
-              Guardar
-            </Button>
-          </>
-        ) : (
-          <>
-            <Typography>Nombre: {editableUserData.nombre}</Typography>
-            <Typography>Email: {editableUserData.email}</Typography>
-            <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
-            <Button variant="contained" color="primary" onClick={handleEditUserData}>
-              Editar Información
-            </Button>
-          </>
-        )}
-      </Paper>
+      // Verificación para asegurar que userData no es undefined
+
+
+<Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+  <Typography variant="h6">Información del Usuario</Typography>
+  {isEditing ? (
+    <>
+      <TextField
+        label="Nombre"
+        fullWidth
+        value={editableUserData.nombre}
+        onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
+        margin="normal"
+        variant="outlined"
+      />
+      <TextField
+        label="Email"
+        fullWidth
+        value={editableUserData.email}
+        onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
+        margin="normal"
+        variant="outlined"
+      />
+      <TextField
+        label="WhatsApp"
+        fullWidth
+        value={editableUserData.whatsapp}
+        onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
+        margin="normal"
+        variant="outlined"
+      />
+      <Button variant="contained" color="primary" onClick={handleSaveUserData}>
+        Guardar
+      </Button>
+    </>
+  ) : (
+    <>
+      <Typography>Nombre: {editableUserData.nombre}</Typography>
+      <Typography>Email: {editableUserData.email}</Typography>
+      <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
+      <Button variant="contained" color="primary" onClick={handleEditUserData}>
+        Editar Información
+      </Button>
+    </>
+  )}
+</Paper>
+
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
           {completedServices.map((service, index) => (
