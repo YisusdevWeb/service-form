@@ -26,6 +26,12 @@ if( !defined('FSF_NS') ) {
 
 // Include settings page and fields
 include 'includes/wp_postype.php';
+// Include REST API routes 
+include 'includes/wp_rest_api.php'; 
+// Include admin menu 
+include 'includes/wp_admin_menu.php';
+
+
 include 'includes/acf/acf_fields.php';
 include 'includes/acf/alert_acf_active.php';
 

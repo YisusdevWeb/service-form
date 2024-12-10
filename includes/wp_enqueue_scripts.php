@@ -1,7 +1,7 @@
 <?php
 
-add_action('wp_enqueue_scripts', 'FSF_enequeue_scripts_and_styles', 100);
-function FSF_enequeue_scripts_and_styles() {
+add_action('wp_enqueue_scripts', 'FSF_enqueue_scripts_and_styles', 100);
+function FSF_enqueue_scripts_and_styles() {
     // Obtener los posts del tipo 'form-servico'
     $posts = get_posts(array(
         'post_type' => 'form-servico',
@@ -19,14 +19,17 @@ function FSF_enequeue_scripts_and_styles() {
             'ID' => $post->ID,
             'title' => $post->post_title,
             'acf' => $acf_fields, // Incluir todos los campos ACF
-           
         );
     }
     
     // Datos a pasar a JavaScript
     $js_data_passed = array(
         'ajax_url' => admin_url('admin-ajax.php'),
-        'servicios' => $post_data
+        'servicios' => $post_data,
+        'api_base_url' => array(
+            'form_servico' => rest_url('funnel-services-form/v1/servico'),
+            'user_info' => rest_url('funnel-services-form/v1/user')
+        )
     );
     
     wp_enqueue_script('FSF-frontend', 'http://localhost:9000/app.js', array('jquery'), '1.0.0', true);
@@ -34,7 +37,6 @@ function FSF_enequeue_scripts_and_styles() {
 }
 
 add_action('admin_enqueue_scripts', 'FSF_enqueue_admin_scripts_and_styles');
-function FSF_enqueue_admin_scripts_and_styles(){
+function FSF_enqueue_admin_scripts_and_styles() {
     wp_enqueue_style('FSF-settings-style', FSF_PLUGIN_URL . '/assets/css/style.css', array(), '1.0.1');
 }
-?>

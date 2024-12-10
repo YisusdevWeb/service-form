@@ -5,8 +5,33 @@ import { useForm } from 'react-hook-form';
 const UserForm = ({ onUserSubmit }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+  const apiBaseUrl = FSF_data.api_base_url;
+
   const onSubmit = (data) => {
-    onUserSubmit(data);
+    fetch(`${apiBaseUrl.user_info}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      alert('Entrada creada con éxito.');
+      if (onUserSubmit) {
+        onUserSubmit(data);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Hubo un error al crear la entrada.');
+    });
   };
 
   return (
@@ -56,7 +81,7 @@ const UserForm = ({ onUserSubmit }) => {
             helperText={errors.whatsapp ? errors.whatsapp.message : ''}
           />
         </Paper>
-        <Box display="flex" justifyContent="center">
+        <Box display="flex" justifyContent="center" mb={2}>
           <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Continuar con la cotización</Button>
         </Box>
       </form>
