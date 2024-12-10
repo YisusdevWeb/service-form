@@ -6,13 +6,20 @@ const useStore = create((set) => ({
   selections: JSON.parse(localStorage.getItem('selections')) || {},
 
   setCurrentService: (service) => {
-    const uniqueServiceId = `${service.id}_${Date.now()}`;
-    localStorage.setItem('currentService', JSON.stringify({ ...service, uniqueId: uniqueServiceId }));
-    localStorage.setItem('currentPhase', JSON.stringify(0));
-    set(() => ({
-      currentService: { ...service, uniqueId: uniqueServiceId },
-      currentPhase: 0,
-    }));
+    if (service) {
+      const uniqueServiceId = `${service.id}_${Date.now()}`;
+      localStorage.setItem('currentService', JSON.stringify({ ...service, uniqueId: uniqueServiceId }));
+      localStorage.setItem('currentPhase', JSON.stringify(0));
+      set(() => ({
+        currentService: { ...service, uniqueId: uniqueServiceId },
+        currentPhase: 0,
+      }));
+    } else {
+      set(() => ({
+        currentService: null,
+        currentPhase: 0,
+      }));
+    }
   },
 
   setCurrentPhase: (phase) => {
@@ -54,7 +61,6 @@ const useStore = create((set) => ({
     }));
   },
 
-  
   setSelections: (selections) => {
     set({ selections });
   },

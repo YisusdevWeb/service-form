@@ -15,7 +15,7 @@ const App = () => {
   const [resetPopupOpen, setResetPopupOpen] = useState(false);
   const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false);
   const [serviceWithoutPhases, setServiceWithoutPhases] = useState(null);
-  const { currentService, setCurrentService, resetService } = useStore();
+  const { currentService, setCurrentService, resetService, setCurrentPhase, setSelections } = useStore();
   const servicios = FSF_data.servicios || [];
 
   const servicos = servicios.map((servicio) => ({
@@ -28,14 +28,18 @@ const App = () => {
   const [completedServices, setCompletedServices] = useState([]);
 
   useEffect(() => {
-    // Limpiar localStorage al cargar la página
+    // Limpiar localStorage y resetear el estado al cargar la página
     localStorage.clear();
+    setCurrentService(null);
+    setCurrentPhase(0);
+    setSelections({});
+    setAvailableServices(servicos);
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [setCurrentService, setCurrentPhase, setSelections]);
 
   const handleUserSubmit = (data) => {
     setUserData(data);
@@ -69,6 +73,7 @@ const App = () => {
   };
 
   const handleServiceClick = (service) => {
+    resetService(); // Limpiar estado anterior
     if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
       setServiceWithoutPhases(service);
       setNoPhasePopupOpen(true);
