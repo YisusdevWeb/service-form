@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Paper, Button } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import useStore from "./store/store.js";
 import StepForm from "./form/StepForm.jsx";
 import UserForm from "./form/UserForm.jsx";
+import FloatingResetButton from "./components/FloatingResetButton";
 import Preloader from "./components/Preloader";
 import ResetPopup from "./components/ResetPopup";
 import NoPhasePopup from "./components/NoPhasePopup";
-import FloatingResetButton from "./components/FloatingResetButton";
 
 const App = () => {
   const [showUserForm, setShowUserForm] = useState(true);
@@ -28,18 +28,14 @@ const App = () => {
   const [completedServices, setCompletedServices] = useState([]);
 
   useEffect(() => {
+    // Limpiar localStorage al cargar la página
+    localStorage.clear();
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (!loading && servicos.length === 0) {
-      setCurrentService(null);
-    }
-  }, [loading, servicos, setCurrentService]);
 
   const handleUserSubmit = (data) => {
     setUserData(data);
@@ -140,7 +136,7 @@ const App = () => {
           <StepForm
             onComplete={handleComplete}
             onServiceComplete={handleServiceComplete}
-            userData={userData} // Pasar la información del usuario
+            userData={userData}  // Pasar la información del usuario
           />
         )}
       </Box>

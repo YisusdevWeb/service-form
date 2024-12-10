@@ -6,8 +6,7 @@ import useStore from "../store/store.js";
 import AlertSnackbar from "../components/AlertSnackbar";
 import { handleSelectionFactory } from "../utils/handleSelection";
 import AddMoreServicesPopup from "../components/AddMoreServicesPopup";
-import SummaryTabs from "../components/SummaryTabs";
-import SummaryForm from "./SummaryForm";
+import SummaryForm from "./SummaryForm";  // Asegúrate de mantener esta importación
 import PhaseStepper from "../components/stepform/PhaseStepper";
 import PhaseContent from "../components/stepform/PhaseContent";
 import FormNavigation from "../components/stepform/FormNavigation";
@@ -24,7 +23,7 @@ const theme = createTheme({
   },
 });
 
-const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
+const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
   const methods = useForm();
   const { handleSubmit, setValue, watch, getValues } = methods;
   const {
@@ -34,7 +33,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
     addSelection,
     selections,
     resetService,
-    setCurrentService, // Asegúrate de que este método esté disponible
+    setCurrentService,
   } = useStore();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -42,7 +41,6 @@ const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
   const [addMoreServicesPopupOpen, setAddMoreServicesPopupOpen] =
     useState(false);
   const [showSummary, setShowSummary] = useState(false);
-  const [showServiceSummary, setShowServiceSummary] = useState(false);
 
   const handleSelection = useCallback(
     handleSelectionFactory(
@@ -97,7 +95,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
     if (currentPhase < currentService.fases_do_servico.length - 1) {
       setCurrentPhase(currentPhase + 1);
     } else {
-      setShowServiceSummary(true);
+      setShowSummary(true);
     }
   };
 
@@ -122,131 +120,71 @@ const StepForm = React.memo(({ onComplete, onServiceComplete,userData }) => {
     setSnackbarOpen(false);
   };
 
-  const handleShowServiceSummary = () => {
-    setShowServiceSummary(true);
-  };
-
   const handleAddMoreServices = () => {
-    setShowServiceSummary(false);
+    setShowSummary(false);
     setAddMoreServicesPopupOpen(true);
   };
 
   const handleEditSelections = () => {
-    setShowServiceSummary(false);
     setShowSummary(false);
   };
 
-  const handleDeclineAddMoreServices = () => {
-    setAddMoreServicesPopupOpen(false);
-    setShowSummary(true);
-  };
-
-  const handleContinueQuote = () => {
-    // Lógica para continuar con la cotización
-    console.log("Continuando con la cotización...");
-    setShowSummary(true);
-    setShowServiceSummary(false);
-  };
-
-  const handleServiceClick = (service) => {
-    if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
-      setServiceWithoutPhases(service);
-      setNoPhasePopupOpen(true);
-    } else {
-      setCurrentService(service);
-      setShowSummary(false);
-      setShowServiceSummary(false);
-    }
-  };
-  
-  
-  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {showSummary ? (
-  <SummaryForm 
-    onEditSelections={handleEditSelections}
-    onAddMoreServices={handleAddMoreServices} // Pasar handleAddMoreServices
-    onContinueQuote={handleContinueQuote}
-    userData={userData} // Pasar userData aquí
-  />
-) : showServiceSummary ? (
-  <SummaryTabs
-    onEditSelections={handleEditSelections}
-    onAddMoreServices={handleAddMoreServices} // Pasar handleAddMoreServices
-    onContinueQuote={handleContinueQuote}
-  />
-) : (
-  <FormProvider {...methods}>
-  <Box>
-    <Typography
-      variant="h4"
-      gutterBottom
-      sx={{ color: "#0f4c80", textAlign: "center", fontWeight: "bold" }}
-    >
-      {currentService.titulo}
-    </Typography>
-    {showSummary && (
-      <SummaryForm 
-        onEditSelections={handleEditSelections}
-        onAddMoreServices={handleAddMoreServices}
-        onContinueQuote={handleContinueQuote}
-      />
-    )}
-    {showServiceSummary && !showSummary && (
-      <SummaryTabs
-        onEditSelections={handleEditSelections}
-        onAddMoreServices={handleAddMoreServices}
-        onContinueQuote={handleContinueQuote}
-      />
-    )}
-    {!showSummary && !showServiceSummary && (
-      <>
-        <PhaseStepper
-          currentPhase={currentPhase}
-          fases={Array.isArray(currentService.fases_do_servico) ? currentService.fases_do_servico : []}
-          onStepClick={handleStepClick}
+        <SummaryForm 
+          onEditSelections={handleEditSelections}
+          onAddMoreServices={handleAddMoreServices}
+          userData={userData}
         />
-        <Typography sx={{ textAlign: "center", mb: 2 }}>
-          Paso {currentPhase + 1} de{" "}
-          {currentService.fases_do_servico.length}
-        </Typography>
-        <PhaseContent
-          fase={currentService.fases_do_servico[currentPhase]}
-          handleSelection={handleSelection}
-          watch={watch}
-          getValues={getValues}
-        />
-        <FormNavigation
-          currentPhase={currentPhase}
-          totalPhases={currentService.fases_do_servico.length}
-          onPrevious={() => setCurrentPhase(currentPhase - 1)}
-          onNext={handleSubmit(onSubmit)}
-        />
-        <AlertSnackbar
-          open={snackbarOpen}
-          message={snackbarMessage}
-          severity={snackbarSeverity}
-          onClose={handleCloseSnackbar}
-        />
-        <AddMoreServicesPopup
-          open={addMoreServicesPopupOpen}
-          onClose={handleDeclineAddMoreServices}
-          onConfirm={handleConfirmAddMoreServices}
-        />
-      </>
-    )}
-  </Box>
-</FormProvider>
-
-)}
-
-
+      ) : (
+        <FormProvider {...methods}>
+          <Box>
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{ color: "#0f4c80", textAlign: "center", fontWeight: "bold" }}
+            >
+              {currentService.titulo}
+            </Typography>
+            <PhaseStepper
+              currentPhase={currentPhase}
+              fases={Array.isArray(currentService.fases_do_servico) ? currentService.fases_do_servico : []}
+              onStepClick={handleStepClick}
+            />
+            <Typography sx={{ textAlign: "center", mb: 2 }}>
+              Paso {currentPhase + 1} de{" "}
+              {currentService.fases_do_servico.length}
+            </Typography>
+            <PhaseContent
+              fase={currentService.fases_do_servico[currentPhase]}
+              handleSelection={handleSelection}
+              watch={watch}
+              getValues={getValues}
+            />
+            <FormNavigation
+              currentPhase={currentPhase}
+              totalPhases={currentService.fases_do_servico.length}
+              onPrevious={() => setCurrentPhase(currentPhase - 1)}
+              onNext={handleSubmit(onSubmit)}
+            />
+            <AlertSnackbar
+              open={snackbarOpen}
+              message={snackbarMessage}
+              severity={snackbarSeverity}
+              onClose={handleCloseSnackbar}
+            />
+            <AddMoreServicesPopup
+              open={addMoreServicesPopupOpen}
+              onClose={handleCloseAddMoreServicesPopup}
+              onConfirm={handleConfirmAddMoreServices}
+            />
+          </Box>
+        </FormProvider>
+      )}
     </ThemeProvider>
   );
-  
-
 });
 
 export default StepForm;
