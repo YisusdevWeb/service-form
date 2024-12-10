@@ -93,21 +93,10 @@ const App = () => {
         p={5}
         sx={{
           backgroundColor: "#f9f9f9",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 3,
         }}
       >
-        <Box
-          sx={{
-            flex: 1,
-            display: showSummary ? 'none' : 'block',
-          }}
-        >
-          <Paper
-            elevation={3}
-            sx={{ padding: 2, borderRadius: 2, backgroundColor: "#e6e6e6" }}
-          >
+        {!currentService ? (
+          <Box>
             <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80" }}>
               Servicios
             </Typography>
@@ -115,115 +104,33 @@ const App = () => {
               {availableServices.map((servico) => (
                 <li
                   key={servico.id}
-                  onClick={() => !currentService && handleServiceClick(servico)}
+                  onClick={() => handleServiceClick(servico)}
                   style={{
-                    cursor: currentService ? "not-allowed" : "pointer",
+                    cursor: "pointer",
                     marginBottom: "10px",
                     padding: "10px",
-                    backgroundColor:
-                      currentService && currentService.id === servico.id
-                        ? "#d3d3ff"
-                        : currentService
-                        ? "none"
-                        : "#ffffff",
+                    backgroundColor: "#ffffff",
                     borderRadius: "5px",
                     transition: "background-color 0.3s, transform 0.3s",
-                    boxShadow:
-                      currentService && currentService.id !== servico.id
-                        ? "none"
-                        : "0 2px 5px rgba(0,0,0,0.15)",
+                    boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
                     borderColor: "#bebebe",
                     borderWidth: "1px",
-                    borderStyle:
-                      currentService && currentService.id === servico.id
-                        ? "solid"
-                        : "none",
-                    display:
-                      currentService && currentService.id === servico.id
-                        ? "block"
-                        : currentService
-                        ? "none"
-                        : "block",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!currentService || currentService.id === servico.id) {
-                      e.currentTarget.style.backgroundColor = "#e6e6e6";
-                      e.currentTarget.style.transform = "scale(1.03)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!currentService || currentService.id !== servico.id) {
-                      e.currentTarget.style.backgroundColor = "#ffffff";
-                      e.currentTarget.style.transform = "scale(1)";
-                    }
+                    borderStyle: "solid",
                   }}
                 >
-                  <Typography
-                    variant="h6"
-                    color={
-                      currentService && currentService.id === servico.id
-                        ? "secondary"
-                        : "#0f4c80"
-                    }
-                  >
+                  <Typography variant="h6" color="#0f4c80">
                     {servico.titulo}
                   </Typography>
                 </li>
               ))}
             </ul>
-            {currentService && (
-              <Box
-                sx={{
-                  mt: 2,
-                  textAlign: "center",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={handleResetService}
-                >
-                  Habilitar Otros Servicios
-                </Button>
-              </Box>
-            )}
-            <Box
-              sx={{
-                mt: 2,
-                textAlign: "center",
-              }}
-            >
-              <Button
-                variant="contained"
-                color="error"
-                onClick={handleClearLocalStorage}
-              >
-                Reiniciar Todo
-              </Button>
-            </Box>
-          </Paper>
-        </Box>
-        <Box sx={{ flex: 2 }}>
-          <Paper
-            elevation={3}
-            sx={{ padding: 2, borderRadius: 2, backgroundColor: "#f9f9f9" }}
-          >
-            {currentService && currentService.fases_do_servico ? (
-              showSummary ? (
-                <SummaryTabs />
-              ) : (
-                <StepForm
-                  onComplete={handleComplete}
-                  onServiceComplete={handleServiceComplete}
-                />
-              )
-            ) : (
-              <Typography sx={{ color: "#0f4c80" }}>
-                Seleccione un servicio para ver los detalles.
-              </Typography>
-            )}
-          </Paper>
-        </Box>
+          </Box>
+        ) : (
+          <StepForm
+            onComplete={handleComplete}
+            onServiceComplete={handleServiceComplete}
+          />
+        )}
       </Box>
       <ResetPopup
         open={resetPopupOpen}
