@@ -21,11 +21,11 @@ const UserForm = ({ onUserSubmit }) => {
       }
       return response.json();
     })
-    .then(data => {
-      console.log('Success:', data);
+    .then(responseData => {
+      console.log('Success:', responseData);
       alert('Entrada creada con éxito.');
       if (onUserSubmit) {
-        onUserSubmit({ ...data, post_id: data.post_id }); // Pasar los datos de usuario al siguiente formulario
+        onUserSubmit({ ...data, post_id: responseData.post_id }); // Pasar los datos del usuario al siguiente formulario
       }
     })
     .catch((error) => {

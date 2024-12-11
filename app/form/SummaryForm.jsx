@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Tabs, Tab, Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useStore from '../store/store.js';
@@ -25,6 +25,12 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   const [editableUserData, setEditableUserData] = useState(userData);
 
   const apiBaseUrl = FSF_data.api_base_url.user_info;
+
+  useEffect(() => {
+    if (userData) {
+      setEditableUserData(userData);
+    }
+  }, [userData]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
