@@ -1,5 +1,7 @@
 <?php
 
+require_once 'wp_mail_functions.php';
+
 add_action('rest_api_init', function() {
     register_rest_route('funnel-services-form/v1', '/user', array(
         'methods' => 'POST',
@@ -30,6 +32,9 @@ function fsf_create_user_post(WP_REST_Request $request) {
         return new WP_Error('error', 'Failed to create post', array('status' => 500));
     }
 
+    // Enviar correo electrónico
+    fsf_send_email($data, 'Nueva Entrada Creada');
+
     return array('post_id' => $post_id);
 }
 
@@ -52,6 +57,9 @@ function fsf_update_user_post(WP_REST_Request $request) {
     if (is_wp_error($updated_post_id)) {
         return new WP_Error('error', 'Failed to update post', array('status' => 500));
     }
+
+    // Enviar correo electrónico
+    fsf_send_email($data, 'Entrada Actualizada');
 
     return array('post_id' => $updated_post_id);
 }

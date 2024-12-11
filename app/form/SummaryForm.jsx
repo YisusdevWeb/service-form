@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Tabs, Tab, Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useStore from '../store/store.js';
+import SuccessMessage from '../components/SuccessMessage'; // Importar el nuevo componente
 
 const TabPanel = ({ children, value, index, ...other }) => {
   return (
@@ -23,6 +24,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   const [value, setValue] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
   const [editableUserData, setEditableUserData] = useState(userData);
+  const [showSuccess, setShowSuccess] = useState(false); // Estado para mostrar mensaje de éxito
 
   const apiBaseUrl = FSF_data.api_base_url.user_info;
 
@@ -57,7 +59,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
     })
     .then(data => {
       console.log('Success:', data);
-      alert("Formulario enviado con éxito");
+      setShowSuccess(true); // Mostrar mensaje de éxito
       reset();
     })
     .catch((error) => {
@@ -101,92 +103,98 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
 
   return (
     <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
-      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
-        Resumen de Selecciones
-      </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
-          <Typography variant="h6">Información del Usuario</Typography>
-          {isEditing ? (
-            <>
-              <TextField
-                label="Nombre"
-                fullWidth
-                value={editableUserData.nombre}
-                onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                label="Email"
-                fullWidth
-                value={editableUserData.email}
-                onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                label="WhatsApp"
-                fullWidth
-                value={editableUserData.whatsapp}
-                onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
-                margin="normal"
-                variant="outlined"
-              />
-              <Button variant="contained" color="primary" onClick={handleSaveUserData}>
-                Guardar
-              </Button>
-            </>
-          ) : (
-            <>
-              <Typography>Nombre: {editableUserData.nombre}</Typography>
-              <Typography>Email: {editableUserData.email}</Typography>
-              <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
-              <Button variant="contained" color="primary" onClick={handleEditUserData}>
-                Editar Información
-              </Button>
-            </>
-          )}
-        </Paper>
-
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
-            {completedServices.map((service, index) => (
-              <Tab key={service.uniqueServiceId} label={service.serviceTitle} />
-            ))}
-          </Tabs>
-        </Box>
-        {completedServices.map((service, index) => (
-          <TabPanel key={service.uniqueServiceId} value={value} index={index}>
-            <Paper sx={{ p: 3, mb: 3, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
-              <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{service.serviceTitle}</Typography>
-              {service.phases.map(({ phaseId, phaseTitle, phaseSelections }) => (
-                <Box key={phaseId} mb={2}>
-                  <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{phaseTitle}</Typography>
-                  <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-                    {Object.entries(phaseSelections).map(([option, selected]) => (
-                      selected && option !== 'phaseTitle' ? <li key={option} style={{ color: '#333', marginBottom: '4px' }}>{option}</li> : null
-                    ))}
-                  </ul>
-                </Box>
-              ))}
+      {showSuccess ? (
+        <SuccessMessage onClose={() => setShowSuccess(false)} /> // Mostrar mensaje de éxito
+      ) : (
+        <>
+          <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
+            Resumen de Selecciones
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+              <Typography variant="h6">Información del Usuario</Typography>
+              {isEditing ? (
+                <>
+                  <TextField
+                    label="Nombre"
+                    fullWidth
+                    value={editableUserData.nombre}
+                    onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    label="Email"
+                    fullWidth
+                    value={editableUserData.email}
+                    onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    label="WhatsApp"
+                    fullWidth
+                    value={editableUserData.whatsapp}
+                    onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <Button variant="contained" color="primary" onClick={handleSaveUserData}>
+                    Guardar
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Typography>Nombre: {editableUserData.nombre}</Typography>
+                  <Typography>Email: {editableUserData.email}</Typography>
+                  <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
+                  <Button variant="contained" color="primary" onClick={handleEditUserData}>
+                    Editar Información
+                  </Button>
+                </>
+              )}
             </Paper>
-            <Box display="flex" justifyContent="space-between">
-              <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)}>
-                Editar último servicio
-              </Button>
-              <Button variant="contained" color="primary" onClick={onAddMoreServices}>
-                Agregar Otro Servicio
-              </Button>
+
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
+                {completedServices.map((service, index) => (
+                  <Tab key={service.uniqueServiceId} label={service.serviceTitle} />
+                ))}
+              </Tabs>
             </Box>
-          </TabPanel>
-        ))}
-        <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
-          <Box display="flex" justifyContent="center" mb={2}>
-            <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar Cotización</Button>
-          </Box>
-        </Paper>
-      </form>
+            {completedServices.map((service, index) => (
+              <TabPanel key={service.uniqueServiceId} value={value} index={index}>
+                <Paper sx={{ p: 3, mb: 3, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
+                  <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{service.serviceTitle}</Typography>
+                  {service.phases.map(({ phaseId, phaseTitle, phaseSelections }) => (
+                    <Box key={phaseId} mb={2}>
+                      <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{phaseTitle}</Typography>
+                      <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                        {Object.entries(phaseSelections).map(([option, selected]) => (
+                          selected && option !== 'phaseTitle' ? <li key={option} style={{ color: '#333', marginBottom: '4px' }}>{option}</li> : null
+                        ))}
+                      </ul>
+                    </Box>
+                  ))}
+                </Paper>
+                <Box display="flex" justifyContent="space-between">
+                  <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)}>
+                    Editar último servicio
+                  </Button>
+                  <Button variant="contained" color="primary" onClick={onAddMoreServices}>
+                    Agregar Otro Servicio
+                  </Button>
+                </Box>
+              </TabPanel>
+            ))}
+            <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+              <Box display="flex" justifyContent="center" mb={2}>
+                <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar Cotización</Button>
+              </Box>
+            </Paper>
+          </form>
+        </>
+      )}
     </Box>
   );
 };
