@@ -10,9 +10,6 @@ add_action('rest_api_init', function() {
         'methods' => 'POST',
         'callback' => 'fsf_update_user_post',
     ));
-
-    // Desregistrar ruta predeterminada de 'user-info'
-    remove_action('rest_api_init', 'create_initial_rest_routes', 99);
 });
 
 function fsf_create_user_post(WP_REST_Request $request) {
@@ -46,6 +43,7 @@ function fsf_update_user_post(WP_REST_Request $request) {
             'nombre' => sanitize_text_field($data['nombre']),
             'email' => sanitize_email($data['email']),
             'whatsapp' => sanitize_text_field($data['whatsapp']),
+            'services' => maybe_serialize($data['selections']), // Actualizar los servicios seleccionados
         ),
     );
 

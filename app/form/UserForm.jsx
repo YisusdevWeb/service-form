@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 
 const UserForm = ({ onUserSubmit }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
-  const apiBaseUrl = FSF_data.api_base_url;
+  
+  const apiBaseUrl = FSF_data.api_base_url.user_info;
 
   const onSubmit = (data) => {
-    fetch(`${apiBaseUrl.user_info}`, {
+    fetch(`${apiBaseUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const UserForm = ({ onUserSubmit }) => {
       console.log('Success:', data);
       alert('Entrada creada con éxito.');
       if (onUserSubmit) {
-        onUserSubmit(data);
+        onUserSubmit({ ...data, post_id: data.post_id }); // Pasar los datos de usuario al siguiente formulario
       }
     })
     .catch((error) => {

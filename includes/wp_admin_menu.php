@@ -73,9 +73,8 @@ function fsf_display_user_details_page() {
     $nombre = get_post_meta($post->ID, 'nombre', true);
     $email = get_post_meta($post->ID, 'email', true);
     $whatsapp = get_post_meta($post->ID, 'whatsapp', true);
+    $services = maybe_unserialize(get_post_meta($post->ID, 'services', true));
     
-    // Aquí se pueden añadir más campos según sea necesario
-
     ?>
     <div class="wrap">
         <h1><?php _e('Detalles del Usuario', 'funnel-services-form'); ?></h1>
@@ -92,7 +91,32 @@ function fsf_display_user_details_page() {
                 <th scope="row"><?php _e('WhatsApp', 'funnel-services-form'); ?></th>
                 <td><?php echo esc_html($whatsapp); ?></td>
             </tr>
-            <!-- Añadir más filas para otros campos -->
+            <tr>
+                <th scope="row"><?php _e('Servicios Seleccionados', 'funnel-services-form'); ?></th>
+                <td>
+                    <?php
+                    if (is_array($services)) {
+                        foreach ($services as $serviceId => $serviceData) {
+                            echo '<h4>' . esc_html($serviceData['serviceTitle']) . '</h4>';
+                            foreach ($serviceData as $phaseId => $phaseData) {
+                                if ($phaseId !== 'serviceTitle') {
+                                    echo '<strong>' . esc_html($phaseData['phaseTitle']) . ':</strong><br>';
+                                    echo '<ul>';
+                                    foreach ($phaseData as $option => $selected) {
+                                        if ($selected && $option !== 'phaseTitle') {
+                                            echo '<li>' . esc_html($option) . '</li>';
+                                        }
+                                    }
+                                    echo '</ul>';
+                                }
+                            }
+                        }
+                    } else {
+                        _e('No se seleccionaron servicios.', 'funnel-services-form');
+                    }
+                    ?>
+                </td>
+            </tr>
         </table>
         <a href="<?php echo admin_url('admin.php?page=fsf-informacion-de-usuario'); ?>" class="button"><?php _e('Volver', 'funnel-services-form'); ?></a>
     </div>
