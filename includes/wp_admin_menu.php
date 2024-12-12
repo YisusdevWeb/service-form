@@ -48,7 +48,11 @@ function fsf_display_user_info_page() {
                         <td><?php echo esc_html(get_post_meta($post->ID, 'nombre', true)); ?></td>
                         <td><?php echo esc_html(get_post_meta($post->ID, 'email', true)); ?></td>
                         <td><?php echo esc_html(get_post_meta($post->ID, 'whatsapp', true)); ?></td>
-                        <td><a href="<?php echo admin_url('admin.php?page=fsf-detalles-usuario&post_id=' . $post->ID); ?>"><?php _e('Ver', 'funnel-services-form'); ?></a></td>
+                        <td>
+                            <a href="<?php echo admin_url('admin.php?page=fsf-detalles-usuario&post_id=' . $post->ID); ?>"><?php _e('Ver', 'funnel-services-form'); ?></a>
+                            | 
+                            <a href="<?php echo wp_nonce_url(admin_url('admin-post.php?action=fsf_delete_user&post_id=' . $post->ID), 'fsf_delete_user_' . $post->ID); ?>" onclick="return confirm('<?php _e('¿Estás seguro de que deseas eliminar este usuario?', 'funnel-services-form'); ?>');"><?php _e('Eliminar', 'funnel-services-form'); ?></a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -56,6 +60,7 @@ function fsf_display_user_info_page() {
     </div>
     <?php
 }
+
 
 function fsf_display_user_details_page() {
     $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
@@ -121,4 +126,19 @@ function fsf_display_user_details_page() {
         <a href="<?php echo admin_url('admin.php?page=fsf-informacion-de-usuario'); ?>" class="button"><?php _e('Volver', 'funnel-services-form'); ?></a>
     </div>
     <?php
+}
+add_action('admin_post_fsf_delete_user', 'fsf_delete_user');
+function fsf_delete_user() {
+    if (!isset($_GET['post_id']) || !isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'fsf_delete_user_' . $_GET['post_id'])) {
+        wp_die(__('Permisos insuficientes para realizar esta acción.', 'funnel-services-form'));
+    }
+
+    $post_id = intval($_GET['post_id']);
+    if ($post_id && get_post($post_id) && 'user-info' === get_post_type($post_id)) {
+        wp_delete_post($post_id, true);
+        wp_redirect(admin_url('admin.php?page=fsf-informacion-de-usuario&deleted=true'));
+        exit;
+    } else {
+        wp_die(__('Post inválido.', 'funnel-services-form'));
+    }
 }
