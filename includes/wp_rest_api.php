@@ -32,8 +32,8 @@ function fsf_create_user_post(WP_REST_Request $request) {
         return new WP_Error('error', 'Failed to create post', array('status' => 500));
     }
 
-    // Enviar correo electrónico
-    fsf_send_email($data, 'Nueva Entrada Creada');
+    // No enviar correo en la creación del usuario
+    // fsf_send_email($data, 'Nueva Entrada Creada');
 
     return array('post_id' => $post_id);
 }
@@ -58,8 +58,14 @@ function fsf_update_user_post(WP_REST_Request $request) {
         return new WP_Error('error', 'Failed to update post', array('status' => 500));
     }
 
-    // Enviar correo electrónico
-    fsf_send_email($data, 'Entrada Actualizada');
+    // Personaliza el asunto del correo aquí
+    $subject = 'Cotización';
+
+    // Enviar correo electrónico al administrador
+    fsf_send_email_to_admin($data, $subject);
+
+    // Enviar correo electrónico al usuario
+    fsf_send_email_to_user($data, $subject);
 
     return array('post_id' => $updated_post_id);
 }
