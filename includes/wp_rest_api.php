@@ -17,6 +17,11 @@ add_action('rest_api_init', function() {
 function fsf_create_user_post(WP_REST_Request $request) {
     $data = $request->get_json_params();
 
+    // Verificar honeypot
+    if (!empty($data['website'])) {
+        return new WP_Error('honeypot_failed', 'La verificación del honeypot falló.', array('status' => 400));
+    }
+
     $post_id = wp_insert_post(array(
         'post_type' => 'user-info',
         'post_title' => 'Información de ' . sanitize_text_field($data['nombre']),
@@ -32,9 +37,9 @@ function fsf_create_user_post(WP_REST_Request $request) {
         return new WP_Error('error', 'Failed to create post', array('status' => 500));
     }
 
-    // No enviar correo en la creación del usuario
+     // No enviar correo en la creación del usuario
     // fsf_send_email($data, 'Nueva Entrada Creada');
-
+    
     return array('post_id' => $post_id);
 }
 
@@ -59,7 +64,7 @@ function fsf_update_user_post(WP_REST_Request $request) {
     }
 
     // Personaliza el asunto del correo aquí
-    $subject = 'Cotización';
+    $subject = 'Cotización Actualizada';
 
     // Enviar correo electrónico al administrador
     fsf_send_email_to_admin($data, $subject);
@@ -69,3 +74,6 @@ function fsf_update_user_post(WP_REST_Request $request) {
 
     return array('post_id' => $updated_post_id);
 }
+
+
+   

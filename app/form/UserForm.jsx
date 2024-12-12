@@ -4,10 +4,17 @@ import { useForm } from 'react-hook-form';
 
 const UserForm = ({ onUserSubmit }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  
+
   const apiBaseUrl = FSF_data.api_base_url.user_info;
 
   const onSubmit = (data) => {
+    // Verificar que el campo honeypot esté vacío
+    if (data.website) {
+      console.error("Bot detected!");
+      alert("Bot detected!");
+      return;
+    }
+
     fetch(`${apiBaseUrl}`, {
       method: 'POST',
       headers: {
@@ -22,8 +29,8 @@ const UserForm = ({ onUserSubmit }) => {
       return response.json();
     })
     .then(responseData => {
-      console.log('Success:', responseData);
-      alert('Entrada creada con éxito.');
+    //  console.log('Success:', responseData);
+     // alert('Entrada creada con éxito.');
       if (onUserSubmit) {
         onUserSubmit({ ...data, post_id: responseData.post_id }); // Pasar los datos del usuario al siguiente formulario
       }
@@ -79,6 +86,15 @@ const UserForm = ({ onUserSubmit }) => {
             variant="outlined"
             error={!!errors.whatsapp}
             helperText={errors.whatsapp ? errors.whatsapp.message : ''}
+          />
+          {/* Campo Honeypot */}
+          <TextField
+            label="Website"
+            fullWidth
+            {...register('website')}
+            margin="normal"
+            variant="outlined"
+            style={{ display: 'none' }}  // Campo oculto
           />
         </Paper>
         <Box display="flex" justifyContent="center" mb={2}>
