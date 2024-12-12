@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-color: #f9f9f9;
+  --assistant-color: #e6e6e6;
+  --heading-color: #0f4c80;
+  --font-color: #0009;
+  --theme-color: #0f4c80;
+  --border-color: #bebebe;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+.summary-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.heading {
+  color: var(--heading-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-paper {
+  padding: 3rem;
+  background-color: var(--assistant-color);
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tab-panel {
+  padding: 3rem;
+  margin-bottom: 3rem;
+  background-color: var(--assistant-color);
+  border-radius: 2rem;
+}
+
+.tab-panel .phase-title {
+  color: var(--heading-color);
+  font-weight: bold;
+}
+
+.tab-panel ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tab-panel ul li {
+  color: var(--font-color);
+  margin-bottom: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons .edit-button, .buttons .add-button, .buttons .save-button {
+  background-color: var(--theme-color);
+}
+

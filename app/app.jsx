@@ -5,14 +5,12 @@ import StepForm from "./form/StepForm.jsx";
 import UserForm from "./form/UserForm.jsx";
 import FloatingResetButton from "./components/FloatingResetButton";
 import Preloader from "./components/Preloader";
-import ResetPopup from "./components/ResetPopup";
 import NoPhasePopup from "./components/NoPhasePopup";
 
 const App = () => {
   const [showUserForm, setShowUserForm] = useState(true);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [resetPopupOpen, setResetPopupOpen] = useState(false);
   const [noPhasePopupOpen, setNoPhasePopupOpen] = useState(false);
   const [serviceWithoutPhases, setServiceWithoutPhases] = useState(null);
   const { currentService, setCurrentService, resetService, setCurrentPhase, setSelections } = useStore();
@@ -57,20 +55,10 @@ const App = () => {
     );
   };
 
-  const handleResetService = () => {
-    setResetPopupOpen(true);
-  };
+ 
+  
 
-  const handleConfirmReset = () => {
-    resetService();
-    setAvailableServices(servicos); // Resetear los servicios disponibles
-    setShowUserForm(true);          // Volver a mostrar el formulario de usuario
-    setResetPopupOpen(false);
-  };
-
-  const handleCloseResetPopup = () => {
-    setResetPopupOpen(false);
-  };
+  
 
   const handleServiceClick = (service) => {
     resetService(); // Limpiar estado anterior
@@ -109,9 +97,9 @@ const App = () => {
           <UserForm onUserSubmit={handleUserSubmit} />
         ) : !currentService ? (
           <Box>
-            <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80" }}>
-              Servicios
-            </Typography>
+            <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80",textAlign:'center' }}>
+              Selecciona un servicio
+               </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
               {availableServices.map((servico) => (
                 <li
@@ -146,11 +134,7 @@ const App = () => {
         )}
       </Box>
       <FloatingResetButton onClick={handleClearLocalStorage} />
-      <ResetPopup
-        open={resetPopupOpen}
-        onClose={handleCloseResetPopup}
-        onConfirm={handleConfirmReset}
-      />
+      
       <NoPhasePopup
         open={noPhasePopupOpen}
         onClose={handleCloseNoPhasePopup}

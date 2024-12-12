@@ -12,12 +12,12 @@ const TabPanel = ({ children, value, index, ...other }) => {
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
       {...other}
+      className="tab-panel" // Aplicar clase CSS
     >
       {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 };
-
 const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { selections } = useStore();
@@ -96,22 +96,21 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   );
 
   if (!userData) {
-    return <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80", textAlign: "center", mt: 4 }}>
+    return <Typography variant="h5" gutterBottom className="heading">
       Información de usuario no disponible. Por favor, vuelva a ingresar los datos.
     </Typography>;
   }
-
   return (
-    <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
+    <Box className="summary-form">
       {showSuccess ? (
         <SuccessMessage onClose={() => setShowSuccess(false)} /> // Mostrar mensaje de éxito
       ) : (
         <>
-          <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
+          <Typography variant="h5" gutterBottom className="heading">
             Resumen de Selecciones
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+            <Paper className="form-paper">
               <Typography variant="h6">Información del Usuario</Typography>
               {isEditing ? (
                 <>
@@ -122,6 +121,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                     onChange={(e) => setEditableUserData({ ...editableUserData, nombre: e.target.value })}
                     margin="normal"
                     variant="outlined"
+                    sx={{ mb: 2 }}
                   />
                   <TextField
                     label="Email"
@@ -130,6 +130,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                     onChange={(e) => setEditableUserData({ ...editableUserData, email: e.target.value })}
                     margin="normal"
                     variant="outlined"
+                    sx={{ mb: 2 }}
                   />
                   <TextField
                     label="WhatsApp"
@@ -138,8 +139,9 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                     onChange={(e) => setEditableUserData({ ...editableUserData, whatsapp: e.target.value })}
                     margin="normal"
                     variant="outlined"
+                    sx={{ mb: 2 }}
                   />
-                  <Button variant="contained" color="primary" onClick={handleSaveUserData}>
+                  <Button variant="contained" color="primary" onClick={handleSaveUserData} className="save-button">
                     Guardar
                   </Button>
                 </>
@@ -148,48 +150,49 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                   <Typography>Nombre: {editableUserData.nombre}</Typography>
                   <Typography>Email: {editableUserData.email}</Typography>
                   <Typography>WhatsApp: {editableUserData.whatsapp}</Typography>
-                  <Button variant="contained" color="primary" onClick={handleEditUserData}>
+                  <Button variant="contained" color="primary" onClick={handleEditUserData} className="edit-button">
                     Editar Información
                   </Button>
                 </>
               )}
             </Paper>
-
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'var(--border-color)' }}>
               <Tabs value={value} onChange={handleChange} aria-label="Summary Tabs">
                 {completedServices.map((service, index) => (
-                  <Tab key={service.uniqueServiceId} label={service.serviceTitle} />
+                  <Tab key={service.uniqueServiceId} label={service.serviceTitle} sx={{ fontFamily: 'Poppins, sans-serif' }} />
                 ))}
               </Tabs>
             </Box>
             {completedServices.map((service, index) => (
               <TabPanel key={service.uniqueServiceId} value={value} index={index}>
-                <Paper sx={{ p: 3, mb: 3, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
-                  <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{service.serviceTitle}</Typography>
+                <Paper className="tab-panel">
+                  <Typography variant="h6" className="phase-title">{service.serviceTitle}</Typography>
                   {service.phases.map(({ phaseId, phaseTitle, phaseSelections }) => (
                     <Box key={phaseId} mb={2}>
-                      <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{phaseTitle}</Typography>
-                      <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                      <Typography variant="h6" className="phase-title">{phaseTitle}</Typography>
+                      <ul>
                         {Object.entries(phaseSelections).map(([option, selected]) => (
-                          selected && option !== 'phaseTitle' ? <li key={option} style={{ color: '#333', marginBottom: '4px' }}>{option}</li> : null
+                          selected && option !== 'phaseTitle' ? <li key={option}>{option}</li> : null
                         ))}
                       </ul>
                     </Box>
                   ))}
                 </Paper>
-                <Box display="flex" justifyContent="space-between">
-                  <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)}>
+                <Box className="buttons">
+                  <Button variant="contained" color="primary" onClick={() => onEditSelections(service.uniqueServiceId)} className="edit-button">
                     Editar último servicio
                   </Button>
-                  <Button variant="contained" color="primary" onClick={onAddMoreServices}>
+                  <Button variant="contained" color="primary" onClick={onAddMoreServices} className="add-button">
                     Agregar Otro Servicio
                   </Button>
                 </Box>
               </TabPanel>
             ))}
-            <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+            <Paper className="form-paper">
               <Box display="flex" justifyContent="center" mb={2}>
-                <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Enviar Cotización</Button>
+                <Button variant="contained" color="primary" type="submit" className="submit-button">
+                  Enviar Cotización
+                </Button>
               </Box>
             </Paper>
           </form>

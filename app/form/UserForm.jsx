@@ -10,8 +10,8 @@ const UserForm = ({ onUserSubmit }) => {
   const onSubmit = (data) => {
     // Verificar que el campo honeypot esté vacío
     if (data.website) {
-      console.error("Bot detected!");
-      alert("Bot detected!");
+     // console.error("Bot detected!");
+     // alert("Bot detected!");
       return;
     }
 
