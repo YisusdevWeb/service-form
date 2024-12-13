@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </React.StrictMode>
     );
   } else {
-    console.log("El contenedor objetivo no existe en esta página.");
+    console.log("O contentor de destino não existe nesta página.");
   }
 });

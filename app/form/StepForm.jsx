@@ -86,7 +86,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
 
     if (!isSelected) {
       setSnackbarMessage(
-        "Debes seleccionar al menos una opción para continuar."
+        "É necessário selecionar pelo menos uma opção para continuar."
       );
       setSnackbarSeverity("error");
       setSnackbarOpen(true);
@@ -155,7 +155,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
               onStepClick={handleStepClick}
             />
             <Typography sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', textAlign: "center", mb: 2 }}>
-              Paso {currentPhase + 1} de{" "}
+               {currentPhase + 1} de{" "}
               {currentService.fases_do_servico.length}
             </Typography>
             <PhaseContent

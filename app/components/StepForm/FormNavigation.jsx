@@ -33,7 +33,7 @@ const FormNavigation = ({ currentPhase, totalPhases, onPrevious, onNext }) => {
         }}
         onClick={onNext}
       >
-        {currentPhase < totalPhases - 1 ? 'Siguiente' : 'Completar'}
+        {currentPhase < totalPhases - 1 ? 'A seguir' : 'Concluir'}
       </Button>
     </Box>
   );

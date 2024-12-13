@@ -98,7 +98,7 @@ const App = () => {
         ) : !currentService ? (
           <Box>
             <Typography variant="h5" gutterBottom sx={{ color: "#0f4c80",textAlign:'center' }}>
-              Selecciona un servicio
+            Selecionar um serviço
                </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
               {availableServices.map((servico) => (

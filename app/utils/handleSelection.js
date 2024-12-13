@@ -11,7 +11,7 @@ export const handleSelectionFactory = (currentPhase, selections, addSelection, c
         setCurrentPhase(currentPhase + 1);
       }
     } else {
-      setSnackbarMessage(`Deseleccionado: ${option}`);
+      setSnackbarMessage(`Desmarcado: ${option}`);
       setSnackbarSeverity('warning');
     }
     setSnackbarOpen(true);

@@ -11,7 +11,7 @@ const SuccessMessage = ({ onClose }) => {
         alignItems: 'center',
         justifyContent: 'center',
         p: 3,
-        backgroundColor: '#fff',
+        backgroundColor: 'var(--bg-color)',
         borderRadius: 2,
         boxShadow: 3,
         position: 'fixed',
@@ -21,15 +21,14 @@ const SuccessMessage = ({ onClose }) => {
         zIndex: 9999,
       }}
     >
-      <CheckCircleIcon sx={{ fontSize: 60, color: 'green' }} />
-      <Typography variant="h6" sx={{ mt: 2 }}>
+      <CheckCircleIcon sx={{ fontSize: 60, color: 'var(--theme-color)' }} />
+      <Typography variant="h6" sx={{ mt: 2, color: 'var(--heading-color)' }}>
         Email enviado com sucesso!
       </Typography>
       <Button
         variant="contained"
-        color="primary"
         onClick={onClose}
-        sx={{ mt: 2 }}
+        sx={{ mt: 2, backgroundColor: 'var(--theme-color-darken)', color: 'var(--bg-color)' }}
       >
         Fechar
       </Button>
