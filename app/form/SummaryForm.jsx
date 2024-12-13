@@ -126,7 +126,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
               <Typography variant="h6" className="heading">
                 Información del Usuario
               </Typography>
-              <Box
+              <Box 
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
@@ -187,37 +187,106 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                   </>
                 ) : (
                   <>
-                    <Typography
-                      sx={{
-                        marginBottom: 1,
-                        color: "var(--heading-color)",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {" "}
-                      Nombre: {editableUserData.nombre}{" "}
-                    </Typography>{" "}
-                    <Typography
-                      sx={{ marginBottom: 1, color: "var(--font-color)" }}
-                    >
-                      {" "}
-                      Email: {editableUserData.email}{" "}
-                    </Typography>{" "}
-                    <Typography
-                      sx={{ marginBottom: 2, color: "var(--theme-color)" }}
-                    >
-                      {" "}
-                      WhatsApp: {editableUserData.whatsapp}{" "}
-                    </Typography>{" "}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={handleEditUserData}
-                      className="custom-button"
-                    >
-                      {" "}
-                      Editar Información{" "}
-                    </Button>
+                  <Box
+  sx={{
+    p: 2,
+    borderRadius: 2,
+    mb: 2,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  }}
+>
+  <Typography
+    sx={{
+      marginBottom: 1,
+      color: "var(--heading-color)",
+      fontWeight: "bold",
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    Nombre
+  </Typography>
+  <Typography
+    sx={{
+      marginBottom: 2,
+      color: "var(--font-color)",
+      width: '100%',
+      padding: '0.5rem 1rem',
+      borderRadius: 1,
+      border: '1px solid var(--border-color)',
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    {editableUserData.nombre}
+  </Typography>
+  <Typography
+    sx={{
+      marginBottom: 1,
+      color: "var(--heading-color)",
+      fontWeight: "bold",
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    Email
+  </Typography>
+  <Typography
+    sx={{
+      marginBottom: 2,
+      color: "var(--font-color)",
+      width: '100%',
+      padding: '0.5rem 1rem',
+      borderRadius: 1,
+      border: '1px solid var(--border-color)',
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    {editableUserData.email}
+  </Typography>
+  <Typography
+    sx={{
+      marginBottom: 1,
+      color: "var(--heading-color)",
+      fontWeight: "bold",
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    WhatsApp
+  </Typography>
+  <Typography
+    sx={{
+      marginBottom: 2,
+      color: "var(--font-color)",
+      width: '100%',
+      padding: '0.5rem 1rem',
+      borderRadius: 1,
+      border: '1px solid var(--border-color)',
+      fontFamily: 'Poppins, sans-serif',
+    }}
+  >
+    {editableUserData.whatsapp}
+  </Typography>
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+    }}
+  >
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleEditUserData}
+      className="custom-button"
+    >
+      Editar Información
+    </Button>
+  </Box>
+</Box>
+
+
+
                   </>
                 )}
               </Box>
@@ -286,12 +355,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
               </TabPanel>
             ))}
             <Paper>
-              <Box display="flex" justifyContent="center" mb={2}>
-              <Button variant="contained" color="primary" onClick={handleEditUserData} className="custom-button">
-  Editar Información
-</Button>
-
-              </Box>
+            <Box display="flex" justifyContent="center" mb={2}> <Button variant="contained" color="primary" type="submit" className="custom-button"> Enviar Cotización </Button> </Box>
             </Paper>
           </form>
         </>
