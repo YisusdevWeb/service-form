@@ -10,6 +10,7 @@ import SummaryForm from "./SummaryForm";  // Asegúrate de mantener esta importa
 import PhaseStepper from "../components/stepform/PhaseStepper";
 import PhaseContent from "../components/stepform/PhaseContent";
 import FormNavigation from "../components/stepform/FormNavigation";
+import '../../assets/scss/styles.scss'; 
 
 const theme = createTheme({
   components: {
@@ -144,7 +145,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
             <Typography
               variant="h4"
               gutterBottom
-              sx={{ color: "#0f4c80", textAlign: "center", fontWeight: "bold" }}
+              sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', textAlign: 'center', fontWeight: 'bold,' }}
             >
               {currentService.titulo}
             </Typography>
@@ -153,7 +154,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
               fases={Array.isArray(currentService.fases_do_servico) ? currentService.fases_do_servico : []}
               onStepClick={handleStepClick}
             />
-            <Typography sx={{ textAlign: "center", mb: 2 }}>
+            <Typography sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', textAlign: "center", mb: 2 }}>
               Paso {currentPhase + 1} de{" "}
               {currentService.fases_do_servico.length}
             </Typography>

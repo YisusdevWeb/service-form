@@ -6,6 +6,7 @@
   --heading-color: #0f4c80;
   --font-color: #0009;
   --theme-color: #0f4c80;
+  --theme-color-darken: #0c3c66; // Usar una versión oscura manual
   --border-color: #bebebe;
 }
 
@@ -25,6 +26,7 @@ body {
   color: var(--heading-color);
   font-weight: bold;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-paper {
@@ -32,36 +34,65 @@ body {
   background-color: var(--assistant-color);
   border-radius: 2rem;
   margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .tab-panel {
-  padding: 3rem;
-  margin-bottom: 3rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
   background-color: var(--assistant-color);
-  border-radius: 2rem;
-}
+ 
+  font-family: 'Poppins', sans-serif;
 
-.tab-panel .phase-title {
-  color: var(--heading-color);
-  font-weight: bold;
-}
+  .phase-title {
+    color: var(--heading-color);
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+  }
 
-.tab-panel ul {
-  list-style-type: none;
-  padding-left: 0;
-}
+  ul {
+    list-style-type: none;
+    padding-left: 0;
 
-.tab-panel ul li {
-  color: var(--font-color);
-  margin-bottom: 4px;
+    li {
+      color: var(--font-color);
+      margin-bottom: 4px;
+    }
+  }
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+
+  .edit-button, .add-button, .save-button {
+    background-color: var(--theme-color);
+
+    &:hover {
+      background-color: var(--theme-color-darken); // Usar la versión oscura manual
+    }
+  }
 }
 
-.buttons .edit-button, .buttons .add-button, .buttons .save-button {
+
+
+
+button.custom-button {
   background-color: var(--theme-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: none; /* Quitar la sombra */
+
+  &:hover {
+    background-color: var(--theme-color-darken);
+    box-shadow: none; /* Quitar la sombra */
+  }
 }
+
 

@@ -8,7 +8,7 @@ const UserForm = ({ onUserSubmit }) => {
   const apiBaseUrl = FSF_data.api_base_url.user_info;
 
   const onSubmit = (data) => {
-    // Verificar que el campo honeypot esté vacío
+    // Verificar que o campo honeypot esteja vazio
     if (data.website) {
      // console.error("Bot detected!");
      // alert("Bot detected!");
@@ -30,28 +30,28 @@ const UserForm = ({ onUserSubmit }) => {
     })
     .then(responseData => {
     //  console.log('Success:', responseData);
-     // alert('Entrada creada con éxito.');
+     // alert('Entrada criada com sucesso.');
       if (onUserSubmit) {
-        onUserSubmit({ ...data, post_id: responseData.post_id }); // Pasar los datos del usuario al siguiente formulario
+        onUserSubmit({ ...data, post_id: responseData.post_id }); // Passar os dados do utilizador para o próximo formulário
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
-      alert('Hubo un error al crear la entrada.');
+      console.error('Erro:', error);
+      alert('Houve um erro ao criar a entrada.');
     });
   };
 
   return (
     <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
       <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
-        Información del Usuario
+        Informações do Utilizador
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
           <TextField
-            label="Nombre"
+            label="Nome"
             fullWidth
-            {...register('nombre', { required: 'Nombre es obligatorio', minLength: { value: 3, message: 'Nombre debe tener al menos 3 caracteres' } })}
+            {...register('nombre', { required: 'Nome é obrigatório', minLength: { value: 3, message: 'Nome deve ter pelo menos 3 caracteres' } })}
             margin="normal"
             variant="outlined"
             error={!!errors.nombre}
@@ -61,10 +61,10 @@ const UserForm = ({ onUserSubmit }) => {
             label="Email"
             fullWidth
             {...register('email', {
-              required: 'Email es obligatorio',
+              required: 'Email é obrigatório',
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: 'Ingresa un email válido'
+                message: 'Insere um email válido'
               }
             })}
             margin="normal"
@@ -76,10 +76,10 @@ const UserForm = ({ onUserSubmit }) => {
             label="WhatsApp"
             fullWidth
             {...register('whatsapp', {
-              required: 'WhatsApp es obligatorio',
+              required: 'WhatsApp é obrigatório',
               pattern: {
                 value: /^\d+$/,
-                message: 'Ingresa un número de WhatsApp válido'
+                message: 'Insere um número de WhatsApp válido'
               }
             })}
             margin="normal"
@@ -98,7 +98,7 @@ const UserForm = ({ onUserSubmit }) => {
           />
         </Paper>
         <Box display="flex" justifyContent="center" mb={2}>
-          <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Continuar con la cotización</Button>
+          <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Continuar com a cotação</Button>
         </Box>
       </form>
     </Box>
