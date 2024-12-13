@@ -1,17 +1,37 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const SuccessMessage = ({ onClose }) => {
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, textAlign: 'center', backgroundColor: '#e6f7e6', borderRadius: 2 }}>
-      <Typography variant="h5" gutterBottom sx={{ color: '#4caf50', fontWeight: 'bold' }}>
-        ¡Cotización Enviada con Éxito!
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 3,
+        backgroundColor: '#fff',
+        borderRadius: 2,
+        boxShadow: 3,
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 9999,
+      }}
+    >
+      <CheckCircleIcon sx={{ fontSize: 60, color: 'green' }} />
+      <Typography variant="h6" sx={{ mt: 2 }}>
+        Email enviado com sucesso!
       </Typography>
-      <Typography variant="body1" sx={{ mb: 2 }}>
-        Hemos recibido tu cotización. Te contactaremos pronto con más detalles.
-      </Typography>
-      <Button variant="contained" color="primary" onClick={onClose}>
-        Cerrar
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={onClose}
+        sx={{ mt: 2 }}
+      >
+        Fechar
       </Button>
     </Box>
   );

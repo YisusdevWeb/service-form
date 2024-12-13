@@ -9,14 +9,14 @@ const NoPhasePopup = ({ open, onClose, serviceTitle }) => {
       aria-labelledby="no-phase-popup-title"
       aria-describedby="no-phase-popup-description"
     >
-      <DialogTitle id="no-phase-popup-title">Advertencia</DialogTitle>
+      <DialogTitle id="no-phase-popup-title">Aviso</DialogTitle>
       <DialogContent>
         <DialogContentText id="no-phase-popup-description">
-          El servicio "{serviceTitle}" no tiene opciones de fases disponibles.
+        O serviço “{serviceTitle}” não tem opções de fase disponíveis.
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">Cerrar</Button>
+        <Button onClick={onClose} color="primary">Fechar</Button>
       </DialogActions>
     </Dialog>
   );

@@ -13,7 +13,7 @@ const Preloader = () => {
     >
       <CircularProgress />
       <Typography variant="h6" sx={{ marginTop: 2, color: '#0f4c80' }}>
-        Cargando...
+      Carregando...
       </Typography>
     </Box>
   );

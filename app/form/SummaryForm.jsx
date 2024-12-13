@@ -52,30 +52,35 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
       ...editableUserData,
       selections,
     };
-
+  
     fetch(`${apiBaseUrl}/${editableUserData.post_id}`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(finalData),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
-        setShowSuccess(true);
-        reset();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Hubo un error al enviar la cotización.");
-      });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      setShowSuccess(true);
+      
+      // Temporizador para recargar la página después de 1 segundo
+      setTimeout(() => {
+        window.location.reload(); // Recargar la página para reiniciar la app
+      }, 1000); // 1000 milisegundos = 1 segundo
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Houve um erro ao enviar a cotação.');
+    });
   };
+  
   const handleEditUserData = () => {
     setIsEditing(true);
   };
@@ -83,6 +88,17 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   const handleSaveUserData = () => {
     setIsEditing(false);
   };
+
+  const handleCloseSuccessMessage = () => {
+    setShowSuccess(false);
+    reset(); // Reset the form
+    setValue(0); // Reset the tab value
+    setIsEditing(false); // Ensure we are not in editing mode
+    setEditableUserData(userData); // Reset the user data
+  };
+  
+  
+   // Reset the form setValue(0); // Reset the tab value setEditableUserData(userData); // Reset the user data };
 
   const completedServices = Object.entries(selections).map(
     ([uniqueServiceId, serviceSelections]) => {
@@ -106,8 +122,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   if (!userData) {
     return (
       <Typography variant="h5" gutterBottom className="heading">
-        Información de usuario no disponible. Por favor, vuelva a ingresar los
-        datos.
+       Informação do usuário não disponível. Por favor, volte a inserir os dados.
       </Typography>
     );
   }
@@ -115,18 +130,18 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   return (
     <Box className="summary-form">
       {showSuccess ? (
-        <SuccessMessage onClose={() => setShowSuccess(false)} />
+        <SuccessMessage onClose={handleCloseSuccessMessage} />
       ) : (
         <>
           <Typography variant="h5" gutterBottom className="heading">
-            Resumen de Selecciones
+          Resumo das Seleções
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Paper className="form-paper">
               <Typography variant="h6" className="heading">
-                Información del Usuario
+              Informação do Utilizador
               </Typography>
-              <Box 
+              <Box
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
@@ -135,7 +150,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                 {isEditing ? (
                   <>
                     <TextField
-                      label="Nombre"
+                      label="Nome"
                       fullWidth
                       value={editableUserData.nombre}
                       onChange={(e) =>
@@ -187,106 +202,103 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                   </>
                 ) : (
                   <>
-                  <Box
-  sx={{
-    p: 2,
-    borderRadius: 2,
-    mb: 2,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  }}
->
-  <Typography
-    sx={{
-      marginBottom: 1,
-      color: "var(--heading-color)",
-      fontWeight: "bold",
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    Nombre
-  </Typography>
-  <Typography
-    sx={{
-      marginBottom: 2,
-      color: "var(--font-color)",
-      width: '100%',
-      padding: '0.5rem 1rem',
-      borderRadius: 1,
-      border: '1px solid var(--border-color)',
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    {editableUserData.nombre}
-  </Typography>
-  <Typography
-    sx={{
-      marginBottom: 1,
-      color: "var(--heading-color)",
-      fontWeight: "bold",
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    Email
-  </Typography>
-  <Typography
-    sx={{
-      marginBottom: 2,
-      color: "var(--font-color)",
-      width: '100%',
-      padding: '0.5rem 1rem',
-      borderRadius: 1,
-      border: '1px solid var(--border-color)',
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    {editableUserData.email}
-  </Typography>
-  <Typography
-    sx={{
-      marginBottom: 1,
-      color: "var(--heading-color)",
-      fontWeight: "bold",
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    WhatsApp
-  </Typography>
-  <Typography
-    sx={{
-      marginBottom: 2,
-      color: "var(--font-color)",
-      width: '100%',
-      padding: '0.5rem 1rem',
-      borderRadius: 1,
-      border: '1px solid var(--border-color)',
-      fontFamily: 'Poppins, sans-serif',
-    }}
-  >
-    {editableUserData.whatsapp}
-  </Typography>
-  <Box
-    sx={{
-      display: 'flex',
-      justifyContent: 'center',
-      width: '100%',
-    }}
-  >
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={handleEditUserData}
-      className="custom-button"
-    >
-      Editar Información
-    </Button>
-  </Box>
-</Box>
-
-
-
+                    <Box
+                      sx={{
+                        p: 2,
+                        borderRadius: 2,
+                        mb: 2,
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          marginBottom: 1,
+                          color: "var(--heading-color)",
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        Nome
+                      </Typography>
+                      <Typography
+                        sx={{
+                          marginBottom: 2,
+                          color: "var(--font-color)",
+                          width: "100%",
+                          padding: "0.5rem 1rem",
+                          borderRadius: 1,
+                          border: "1px solid var(--border-color)",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        {editableUserData.nombre}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          marginBottom: 1,
+                          color: "var(--heading-color)",
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        Email
+                      </Typography>
+                      <Typography
+                        sx={{
+                          marginBottom: 2,
+                          color: "var(--font-color)",
+                          width: "100%",
+                          padding: "0.5rem 1rem",
+                          borderRadius: 1,
+                          border: "1px solid var(--border-color)",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        {editableUserData.email}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          marginBottom: 1,
+                          color: "var(--heading-color)",
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        WhatsApp
+                      </Typography>
+                      <Typography
+                        sx={{
+                          marginBottom: 2,
+                          color: "var(--font-color)",
+                          width: "100%",
+                          padding: "0.5rem 1rem",
+                          borderRadius: 1,
+                          border: "1px solid var(--border-color)",
+                          fontFamily: "Poppins, sans-serif",
+                        }}
+                      >
+                        {editableUserData.whatsapp}
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={handleEditUserData}
+                          className="custom-button"
+                        >
+                          Editar Informação
+                        </Button>
+                      </Box>
+                    </Box>
                   </>
                 )}
               </Box>
@@ -341,7 +353,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                     onClick={() => onEditSelections(service.uniqueServiceId)}
                     className="custom-button"
                   >
-                    Editar último servicio
+Editar Último Serviço
                   </Button>
                   <Button
                     variant="contained"
@@ -349,14 +361,25 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                     onClick={onAddMoreServices}
                     className="custom-button"
                   >
-                    Agregar Otro Servicio
+                    Adicionar Outro Serviço
                   </Button>
                 </Box>
               </TabPanel>
             ))}
-            <Paper>
-            <Box display="flex" justifyContent="center" mb={2}> <Button variant="contained" color="primary" type="submit" className="custom-button"> Enviar Cotización </Button> </Box>
-            </Paper>
+            
+              <Box display="flex" justifyContent="center" mb={2}>
+                {" "}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  className="custom-button"
+                >
+                  {" "}
+                  Enviar Cotação {" "}
+                </Button>{" "}
+              </Box>
+            
           </form>
         </>
       )}

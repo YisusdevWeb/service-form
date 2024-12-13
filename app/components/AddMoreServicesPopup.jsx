@@ -11,11 +11,11 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
       aria-describedby="add-more-services-popup-description"
     >
       <DialogTitle id="add-more-services-popup-title" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)' }}>
-        Agregar Más Servicios
+      Adicionar mais serviços
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="add-more-services-popup-description" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--font-color)' }}>
-          ¿Deseas agregar más servicios?
+        Gostaria de acrescentar mais serviços?
         </DialogContentText>
       </DialogContent>
       <DialogActions
@@ -38,7 +38,8 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
             },
           }}
         >
-          No
+         Não
+         
         </Button>
         <Button
           onClick={onConfirm}
@@ -53,7 +54,7 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
             },
           }}
         >
-          Sí
+          Sim
         </Button>
       </DialogActions>
     </Dialog>
