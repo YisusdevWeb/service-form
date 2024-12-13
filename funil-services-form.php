@@ -30,6 +30,9 @@ include 'includes/wp_postype.php';
 include 'includes/wp_rest_api.php'; 
 // Include admin menu 
 include 'includes/wp_admin_menu.php';
+include 'includes/wp_admin_config_mail.php';
+
+
 
 
 include 'includes/acf/acf_fields.php';

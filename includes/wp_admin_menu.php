@@ -21,6 +21,11 @@ function fsf_add_admin_menu() {
         'fsf_display_user_details_page'
     );
 }
+
+add_action('admin_menu', 'fsf_add_settings_menu');
+
+
+
 function fsf_display_user_info_page() {
     ?>
     <div class="wrap">

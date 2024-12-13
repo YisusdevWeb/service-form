@@ -34,6 +34,8 @@
             echo '<p>No se seleccionaron servicios.</p>';
         }
         ?>
+
+<h3>Estaremos en contacto contigo en breve para informarte sobre tu cotización.</h3>
     </div>
 </body>
 </html>
