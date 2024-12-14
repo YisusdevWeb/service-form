@@ -4,8 +4,8 @@ add_action('admin_menu', 'fsf_add_admin_menu');
 
 function fsf_add_admin_menu() {
     add_menu_page(
-        __('Información de Usuario', 'funnel-services-form'),
-        __('Información de Usuario', 'funnel-services-form'),
+        __('Informações do utilizador', 'funnel-services-form'),
+        __('Informações do utilizador', 'funnel-services-form'),
         'manage_options',
         'fsf-informacion-de-usuario',
         'fsf_display_user_info_page',
@@ -22,14 +22,10 @@ function fsf_add_admin_menu() {
     );
 }
 
-add_action('admin_menu', 'fsf_add_settings_menu');
-
-
-
 function fsf_display_user_info_page() {
     ?>
     <div class="wrap">
-        <h1><?php _e('Información de Usuario', 'funnel-services-form'); ?></h1>
+        <h1><?php _e('Informações do utilizador', 'funnel-services-form'); ?></h1>
         <?php
         $args = array(
             'post_type' => 'user-info',
@@ -43,10 +39,10 @@ function fsf_display_user_info_page() {
                 <thead>
                     <tr>
                         <th style="width: 40px;"><input type="checkbox" id="select-all"></th>
-                        <th><?php _e('Nombre', 'funnel-services-form'); ?></th>
+                        <th><?php _e('Nome', 'funnel-services-form'); ?></th>
                         <th><?php _e('Email', 'funnel-services-form'); ?></th>
                         <th><?php _e('WhatsApp', 'funnel-services-form'); ?></th>
-                        <th><?php _e('Acciones', 'funnel-services-form'); ?></th>
+                        <th><?php _e('Acções', 'funnel-services-form'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,15 +55,15 @@ function fsf_display_user_info_page() {
                             <td>
                                 <a href="<?php echo admin_url('admin.php?page=fsf-detalles-usuario&post_id=' . $post->ID); ?>"><?php _e('Ver', 'funnel-services-form'); ?></a>
                                 | 
-                                <a href="<?php echo wp_nonce_url(admin_url('admin-post.php?action=fsf_delete_user&post_id=' . $post->ID), 'fsf_delete_user_' . $post->ID); ?>" onclick="return confirm('<?php _e('¿Estás seguro de que deseas eliminar este usuario?', 'funnel-services-form'); ?>');"><?php _e('Eliminar', 'funnel-services-form'); ?></a>
+                                <a href="<?php echo wp_nonce_url(admin_url('admin-post.php?action=fsf_delete_user&post_id=' . $post->ID), 'fsf_delete_user_' . $post->ID); ?>" onclick="return confirm('<?php _e('Tem a certeza de que pretende apagar este utilizador?', 'funnel-services-form'); ?>');"><?php _e('Apagar', 'funnel-services-form'); ?></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <div style="margin-top: 10px;">
-                <button type="submit" class="button button-primary" onclick="return confirm('<?php _e('¿Estás seguro de que deseas eliminar los usuarios seleccionados?', 'funnel-services-form'); ?>');" style="margin-right: 10px;"><?php _e('Eliminar Seleccionados', 'funnel-services-form'); ?></button>
-                <button type="button" class="button button-secondary" id="export-selected" style="margin-left: 10px;"><?php _e('Exportar Seleccionados', 'funnel-services-form'); ?></button>
+                <button type="submit" class="button button-primary" onclick="return confirm('<?php _e('Tem a certeza de que pretende eliminar os utilizadores selecionados?', 'funnel-services-form'); ?>');" style="margin-right: 10px;"><?php _e('Remover selecionados', 'funnel-services-form'); ?></button>
+                <button type="button" class="button button-secondary" id="export-selected" style="margin-left: 10px;"><?php _e('Exportação selecionada', 'funnel-services-form'); ?></button>
             </div>
         </form>
 
@@ -101,13 +97,13 @@ function fsf_display_user_info_page() {
 function fsf_display_user_details_page() {
     $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
     if (!$post_id) {
-        echo '<div class="notice notice-error"><p>' . __('ID de post inválido', 'funnel-services-form') . '</p></div>';
+        echo '<div class="notice notice-error"><p>' . __('ID de publicação inválido', 'funnel-services-form') . '</p></div>';
         return;
     }
 
     $post = get_post($post_id);
     if (!$post || $post->post_type !== 'user-info') {
-        echo '<div class="notice notice-error"><p>' . __('Post no encontrado', 'funnel-services-form') . '</p></div>';
+        echo '<div class="notice notice-error"><p>' . __('Publicação não encontrada', 'funnel-services-form') . '</p></div>';
         return;
     }
 
@@ -118,10 +114,10 @@ function fsf_display_user_details_page() {
     
     ?>
     <div class="wrap">
-        <h1><?php _e('Detalles del Usuario', 'funnel-services-form'); ?></h1>
+        <h1><?php _e('Dados do utilizador', 'funnel-services-form'); ?></h1>
         <table class="form-table">
             <tr>
-                <th scope="row"><?php _e('Nombre', 'funnel-services-form'); ?></th>
+                <th scope="row"><?php _e('Nome', 'funnel-services-form'); ?></th>
                 <td><?php echo esc_html($nombre); ?></td>
             </tr>
             <tr>
@@ -133,7 +129,7 @@ function fsf_display_user_details_page() {
                 <td><?php echo esc_html($whatsapp); ?></td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Servicios Seleccionados', 'funnel-services-form'); ?></th>
+                <th scope="row"><?php _e('Serviços selecionados', 'funnel-services-form'); ?></th>
                 <td>
                     <?php
                     if (is_array($services)) {
@@ -153,7 +149,7 @@ function fsf_display_user_details_page() {
                             }
                         }
                     } else {
-                        _e('No se seleccionaron servicios.', 'funnel-services-form');
+                        _e('Não foi selecionado nenhum serviço.', 'funnel-services-form');
                     }
                     ?>
                 </td>
@@ -166,7 +162,7 @@ function fsf_display_user_details_page() {
 add_action('admin_post_fsf_delete_user', 'fsf_delete_user');
 function fsf_delete_user() {
     if (!isset($_GET['post_id']) || !isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'fsf_delete_user_' . $_GET['post_id'])) {
-        wp_die(__('Permisos insuficientes para realizar esta acción.', 'funnel-services-form'));
+        wp_die(__('Autorizações insuficientes para realizar esta ação.', 'funnel-services-form'));
     }
 
     $post_id = intval($_GET['post_id']);
@@ -182,7 +178,7 @@ function fsf_delete_user() {
 add_action('admin_post_fsf_bulk_delete_user', 'fsf_bulk_delete_user');
 function fsf_bulk_delete_user() {
     if (!isset($_POST['fsf_bulk_delete_user_nonce']) || !wp_verify_nonce($_POST['fsf_bulk_delete_user_nonce'], 'fsf_bulk_delete_user')) {
-        wp_die(__('Permisos insuficientes para realizar esta acción.', 'funnel-services-form'));
+        wp_die(__('Autorizações insuficientes para realizar esta ação.', 'funnel-services-form'));
     }
 
     if (isset($_POST['post_ids']) && is_array($_POST['post_ids'])) {
@@ -198,7 +194,7 @@ function fsf_bulk_delete_user() {
 add_action('admin_post_fsf_export_user_info', 'fsf_export_user_info');
 function fsf_export_user_info() {
     if (!isset($_POST['fsf_export_user_info_nonce']) || !wp_verify_nonce($_POST['fsf_export_user_info_nonce'], 'fsf_export_user_info')) {
-        wp_die(__('Permisos insuficientes para realizar esta acción.', 'funnel-services-form'));
+        wp_die(__('Autorizações insuficientes para realizar esta ação.', 'funnel-services-form'));
     }
 
     if (isset($_POST['post_ids'])) {
@@ -207,7 +203,7 @@ function fsf_export_user_info() {
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=usuarios.csv');
             $output = fopen('php://output', 'w');
-            fputcsv($output, array('Nombre', 'Email', 'WhatsApp'));
+            fputcsv($output, array('nome', 'Email', 'WhatsApp'));
 
             foreach ($post_ids as $post_id) {
                 if ($post = get_post($post_id)) {

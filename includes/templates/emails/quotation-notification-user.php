@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tu Cotización</title>
+    <title>A Sua Cotação</title>
 </head>
 <body>
     <div>
-        <h1>¡Gracias por tu Cotización!</h1>
-        <p>Nombre: <?php echo esc_html($data['nombre']); ?></p>
+        <h1>Obrigado pela sua Cotação!</h1>
+        <p>Nome: <?php echo esc_html($data['nombre']); ?></p>
         <p>Email: <?php echo esc_html($data['email']); ?></p>
         <p>WhatsApp: <?php echo esc_html($data['whatsapp']); ?></p>
-        <p>Fecha de creación: <?php echo esc_html($created_quotation_date); ?></p>
-        <h3>Servicios Seleccionados</h3>
+        <p>Data de criação: <?php echo esc_html($created_quotation_date); ?></p>
+        <h3>Serviços Selecionados</h3>
         <?php
         if (!empty($data['selections'])) {
             foreach ($data['selections'] as $serviceId => $serviceData) {
@@ -31,11 +31,11 @@
                 }
             }
         } else {
-            echo '<p>No se seleccionaron servicios.</p>';
+            echo '<p>Não foram selecionados serviços.</p>';
         }
         ?>
 
-<h3>Estaremos en contacto contigo en breve para informarte sobre tu cotización.</h3>
+<h3>Entraremos em contacto consigo em breve para informar sobre a sua cotação.</h3>
     </div>
 </body>
 </html>
