@@ -138,7 +138,7 @@ const App = () => {
           />
         )}
       </Box>
-      <FloatingResetButton onClick={handleClearLocalStorage} />
+      {/* <FloatingResetButton onClick={handleClearLocalStorage} /> */}
       
       <NoPhasePopup
         open={noPhasePopupOpen}
