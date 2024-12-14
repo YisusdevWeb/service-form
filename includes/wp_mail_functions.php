@@ -13,7 +13,7 @@ function fsf_send_email_to_admin($data, $subject) {
     ob_end_clean();
 
     if (empty($message)) {
-        error_log('El cuerpo del mensaje está vacío.');
+        error_log('O corpo da mensagem está vazio.');
         return;
     }
 
@@ -27,7 +27,7 @@ function fsf_send_email_to_admin($data, $subject) {
 function fsf_send_email_to_user($data, $subject) {
     $to = $data['email'];
     $email_from = get_option('fsf_email_from', 'web@dappin.pt');
-    $subject = 'Tu Cotización - ' . get_option('fsf_email_subject', $subject);
+    $subject = 'Sua Cotação - ' . get_option('fsf_email_subject', $subject);
 
     $created_quotation_date = date_i18n(get_option('date_format') . ' ' . get_option('time_format') . ' T');
 
@@ -37,7 +37,7 @@ function fsf_send_email_to_user($data, $subject) {
     ob_end_clean();
 
     if (empty($message)) {
-        error_log('El cuerpo del mensaje para el usuario está vacío.');
+        error_log('O corpo da mensagem para o usuário está vazio.');
         return;
     }
 
@@ -48,5 +48,4 @@ function fsf_send_email_to_user($data, $subject) {
     wp_mail($to, $subject, $message, $headers);
 }
 
-
-   // $headers[] = 'From: dappin <	web@dappin.pt>';
+// $headers[] = 'From: dappin <	web@dappin.pt>';

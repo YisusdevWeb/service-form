@@ -55,11 +55,6 @@ const App = () => {
     );
   };
 
- 
-  
-
-  
-
   const handleServiceClick = (service) => {
     resetService(); // Limpiar estado anterior
     if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
@@ -101,28 +96,38 @@ const App = () => {
             Selecionar um serviço
                </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
-              {availableServices.map((servico) => (
-                <li
-                  key={servico.id}
-                  onClick={() => handleServiceClick(servico)}
-                  style={{
-                    cursor: "pointer",
-                    marginBottom: "10px",
-                    padding: "10px",
-                    backgroundColor: "#ffffff",
-                    borderRadius: "5px",
-                    transition: "background-color 0.3s, transform 0.3s",
-                    boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
-                    borderColor: "#bebebe",
-                    borderWidth: "1px",
-                    borderStyle: "solid",
-                  }}
-                >
-                  <Typography variant="h6" color="#0f4c80">
-                    {servico.titulo}
-                  </Typography>
-                </li>
-              ))}
+              {[...availableServices]
+                .sort((a, b) => {
+                  if (a.titulo < b.titulo) {
+                    return -1;
+                  }
+                  if (a.titulo > b.titulo) {
+                    return 1;
+                  }
+                  return 0;
+                })
+                .map((servico) => (
+                  <li
+                    key={servico.id}
+                    onClick={() => handleServiceClick(servico)}
+                    style={{
+                      cursor: "pointer",
+                      marginBottom: "10px",
+                      padding: "10px",
+                      backgroundColor: "#ffffff",
+                      borderRadius: "5px",
+                      transition: "background-color 0.3s, transform 0.3s",
+                      boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
+                      borderColor: "#bebebe",
+                      borderWidth: "1px",
+                      borderStyle: "solid",
+                    }}
+                  >
+                    <Typography variant="h6" color="#0f4c80">
+                      {servico.titulo}
+                    </Typography>
+                  </li>
+                ))}
             </ul>
           </Box>
         ) : (

@@ -78,7 +78,7 @@ const UserForm = ({ onUserSubmit }) => {
             {...register('whatsapp', {
               required: 'WhatsApp é obrigatório',
               pattern: {
-                value: /^\d+$/,
+                value: /^\+?[0-9\s-]+$/,
                 message: 'Insere um número de WhatsApp válido'
               }
             })}
