@@ -63,7 +63,7 @@ function fsf_update_user_post(WP_REST_Request $request) {
     }
 
     // Personalize o assunto do e-mail aqui
-    $subject = get_option('fsf_email_subject', 'Cotação Atualizada');
+    $subject = get_option('fsf_email_subject', 'Cotação Nova');
 
     // Enviar e-mail para o administrador
     fsf_send_email_to_admin($data, $subject);

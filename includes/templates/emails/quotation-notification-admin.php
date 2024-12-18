@@ -10,7 +10,7 @@
         <h1>Nova Cotação Recebida!</h1>
         <p>Nome: <?php echo esc_html($data['nombre']); ?></p>
         <p>Email: <?php echo esc_html($data['email']); ?></p>
-        <p>WhatsApp: <?php echo esc_html($data['whatsapp']); ?></p>
+        <p>Telefone: <?php echo esc_html($data['whatsapp']); ?></p>
         <p>Data de criação: <?php echo esc_html($created_quotation_date); ?></p>
         <h3>Serviços Selecionados</h3>
         <?php
