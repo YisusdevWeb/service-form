@@ -1,6 +1,8 @@
 <?php
+
 add_action('wp_enqueue_scripts', 'FSF_enqueue_scripts_and_styles', 100);
-function FSF_enqueue_scripts_and_styles() {
+function FSF_enqueue_scripts_and_styles()
+{
     global $post;
 
     // Verificar si el contenido del post tiene el shortcode 'Funnel-services-form'
@@ -36,18 +38,16 @@ function FSF_enqueue_scripts_and_styles() {
                 'user_info' => rest_url('funnel-services-form/v1/user')
             )
         );
-
-        // Determinar URL del script según el entorno
-        $script_url = (defined('FSF_ENV') && FSF_ENV === 'production') ? 
-            plugins_url('dist/app.js', __FILE__) :
-            'http://localhost:9000/app.js';
-
-        wp_enqueue_script('FSF-frontend', $script_url, array('jquery'), '1.0.0', true);
+      // 
+     //  wp_enqueue_script( 'FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.3.1', true );
+        wp_enqueue_script('FSF-frontend', 'http://localhost:9000/app.js', array('jquery'), '1.0.0', true);
+      wp_enqueue_style('FSF-frontend-style', FSF_PLUGIN_URL .'dist/styles.css', array(), '1.0.1');
         wp_localize_script('FSF-frontend', 'FSF_data', $js_data_passed);
     }
 }
 
 add_action('admin_enqueue_scripts', 'FSF_enqueue_admin_scripts_and_styles');
-function FSF_enqueue_admin_scripts_and_styles() {
-    wp_enqueue_style('FSF-settings-style', plugins_url('assets/css/style.css', __FILE__), array(), '1.0.1');
+function FSF_enqueue_admin_scripts_and_styles()
+{
+    wp_enqueue_style('FSF-settings-style', FSF_PLUGIN_URL . '/assets/css/style.css', array(), '1.0.1');
 }

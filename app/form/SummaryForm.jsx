@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -39,6 +39,8 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
     setValue(newValue);
   };
 
+  const formRef = useRef(null); // Añadir referencia al contenedor del formulario
+
   const onSubmit = () => {
     const finalData = {
       ...userData,
@@ -76,6 +78,28 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
     setValue(0);
   };
 
+  // Enfocar el formulario después de mostrar el mensaje de éxito
+  useEffect(() => {
+    if (showSuccess && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showSuccess]);
+
+  // Enfocar el formulario después de agregar un nuevo servicio
+  const handleAddMoreServices = () => {
+    onAddMoreServices();
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Enfocar el formulario cuando se carga por primera vez
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   const completedServices = Object.entries(selections).map(
     ([uniqueServiceId, serviceSelections]) => {
       const serviceTitle =
@@ -105,7 +129,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   }
 
   return (
-    <Box className="summary-form">
+    <Box className="summary-form" ref={formRef}>
       {showSuccess ? (
         <SuccessMessage onClose={handleCloseSuccessMessage} />
       ) : (
@@ -119,74 +143,72 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
               <Box display="flex" flexDirection="column" alignItems="center" sx={{ p: 2 }}>
                 {/* Tabs Section */}
                 <Box sx={{ width: '100%', mb: 2 }}>
-  <Box sx={{ borderBottom: 1, borderColor: "var(--border-color)" }}>
-    <Tabs
-      value={value}
-      onChange={handleChange}
-      aria-label="Summary Tabs"
-      variant="scrollable"
-      scrollButtons="auto"
-    >
-      {completedServices.map((service, index) => (
-        <Tab
-          key={service.uniqueServiceId}
-          label={service.serviceTitle}
-          sx={{ fontFamily: "Poppins, sans-serif", textTransform: "none" }}
-        />
-      ))}
-    </Tabs>
-  </Box>
-  {completedServices.map((service, index) => (
-    <TabPanel
-      key={service.uniqueServiceId}
-      value={value}
-      index={index}
-    >
-      <Paper className="tab-panel">
-        <Typography variant="h6" className="phase-title">
-          {service.serviceTitle}
-        </Typography>
-        {service.phases.map(
-          ({ phaseId, phaseTitle, phaseSelections }) => (
-            <Box key={phaseId} mb={2}>
-              <Typography variant="h6" className="phase-title">
-                {phaseTitle}
-              </Typography>
-              <ul>
-                {Object.entries(phaseSelections).map(
-                  ([option, selected]) =>
-                    selected && option !== "phaseTitle" ? (
-                      <li key={option}>{option}</li>
-                    ) : null
-                )}
-              </ul>
-            </Box>
-          )
-        )}
-      </Paper>
-      <Box className="buttons">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => onEditSelections(service.uniqueServiceId)}
-          className="custom-button"
-        >
-          Editar Último Serviço
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={onAddMoreServices}
-          className="custom-button"
-        >
-          Adicionar Outro Serviço
-        </Button>
-      </Box>
-    </TabPanel>
-  ))}
-</Box>
-
-
+                  <Box sx={{ borderBottom: 1, borderColor: "var(--border-color)" }}>
+                    <Tabs
+                      value={value}
+                      onChange={handleChange}
+                      aria-label="Summary Tabs"
+                      variant="scrollable"
+                      scrollButtons="auto"
+                    >
+                      {completedServices.map((service, index) => (
+                        <Tab
+                          key={service.uniqueServiceId}
+                          label={service.serviceTitle}
+                          sx={{ fontFamily: "Poppins, sans-serif", textTransform: "none" }}
+                        />
+                      ))}
+                    </Tabs>
+                  </Box>
+                  {completedServices.map((service, index) => (
+                    <TabPanel
+                      key={service.uniqueServiceId}
+                      value={value}
+                      index={index}
+                    >
+                      <Paper className="tab-panel">
+                        <Typography variant="h6" className="phase-title">
+                          {service.serviceTitle}
+                        </Typography>
+                        {service.phases.map(
+                          ({ phaseId, phaseTitle, phaseSelections }) => (
+                            <Box key={phaseId} mb={2}>
+                              <Typography variant="h6" className="phase-title">
+                                {phaseTitle}
+                              </Typography>
+                              <ul>
+                                {Object.entries(phaseSelections).map(
+                                  ([option, selected]) =>
+                                    selected && option !== "phaseTitle" ? (
+                                      <li key={option}>{option}</li>
+                                    ) : null
+                                )}
+                              </ul>
+                            </Box>
+                          )
+                        )}
+                      </Paper>
+                      <Box className="buttons">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => onEditSelections(service.uniqueServiceId)}
+                          className="custom-button"
+                        >
+                          Editar Último Serviço
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={handleAddMoreServices} // Usar la función modificada
+                          className="custom-button"
+                        >
+                          Adicionar Outro Serviço
+                        </Button>
+                      </Box>
+                    </TabPanel>
+                  ))}
+                </Box>
               </Box>
 
               <Box display="flex" justifyContent="center" mb={2}>
