@@ -55,8 +55,8 @@ module.exports = (env, argv) => {
       port: 9000,
       hot: true,
       client: {
-    overlay: true, // Muestra errores en el navegador si hay problemas
-  },
+        overlay: true, // Muestra errores en el navegador si hay problemas
+      },
     },
   };
 };

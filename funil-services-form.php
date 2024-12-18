@@ -51,3 +51,10 @@ function ffs_load_textdomain() {
   load_plugin_textdomain('Funnel-services-form', false, dirname(plugin_basename(__FILE__)) . '/languages');
 }
 add_action('plugins_loaded', 'ffs_load_textdomain');
+
+
+// Desarrollo:
+ define('FSF_ENV', 'development');
+
+//Producción: 
+//define('FSF_ENV', 'production');
