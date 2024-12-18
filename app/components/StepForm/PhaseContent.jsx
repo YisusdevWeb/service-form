@@ -12,35 +12,41 @@ const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
         {fase?.descricao || 'Sin descripción'}
       </Typography>
       {fase?.escrever_as_opcoes && (
-        <Box display="flex" flexWrap="wrap" gap={2}>
-          {fase.escrever_as_opcoes.map((opcao) => (
-            <Button
-              key={opcao.id_opcion || opcao.titulo}
-              variant={watch(opcao.titulo) ? 'contained' : 'outlined'}
-              onClick={() => handleSelection(opcao.titulo, !getValues(opcao.titulo))}
-              sx={{
-                backgroundColor: watch(opcao.titulo) ? 'var(--theme-color)' : 'transparent',
-                color: watch(opcao.titulo) ? 'white' : 'var(--theme-color)',
-                fontFamily: 'Poppins, sans-serif',
-                borderColor: 'var(--theme-color)',
-                borderWidth: '1px',
-                borderRadius: '4px',
-                textTransform: 'none',
-                flex: '1 1 calc(50% - 16px)',
-                minWidth: '120px',
-                '&:hover': {
-                  backgroundColor: watch(opcao.titulo) ? 'var(--theme-color-darken)' : 'rgba(15, 76, 128, 0.1)',
-                },
-                '@media (max-width: 600px)': {
-                  flex: '1 1 100%',
-                },
-              }}
-            >
-              {opcao.titulo}
-            </Button>
-          ))}
-        </Box>
-      )}
+  <Box display="flex" flexDirection="column" gap={2}>
+    {fase.escrever_as_opcoes.map((opcao) => (
+      <Button
+        key={opcao.id_opcion || opcao.titulo}
+        variant={watch(opcao.titulo) ? 'contained' : 'outlined'}
+        onClick={() => handleSelection(opcao.titulo, !getValues(opcao.titulo))}
+        sx={{
+          backgroundColor: watch(opcao.titulo) ? 'var(--theme-color)' : 'transparent',
+          color: watch(opcao.titulo) ? 'white' : 'var(--theme-color)',
+          fontFamily: 'Poppins, sans-serif',
+          borderColor: 'var(--theme-color)',
+          borderWidth: '1px',
+          borderRadius: '4px',
+          textTransform: 'none',
+          width: '100%',
+          whiteSpace: 'normal', // Permite que el texto se quiebre
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          '&:hover': {
+            backgroundColor: watch(opcao.titulo) ? 'var(--theme-color-darken)' : 'rgba(15, 76, 128, 0.1)',
+          },
+          '@media (max-width: 600px)': {
+            width: '100%',
+          },
+        }}
+      >
+        {opcao.titulo}
+      </Button>
+    ))}
+  </Box>
+)}
+
+
+
+    
     </Paper>
   );
 };

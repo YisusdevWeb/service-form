@@ -28,7 +28,7 @@ function fsf_create_user_post(WP_REST_Request $request) {
         'meta_input' => array(
             'nombre' => sanitize_text_field($data['nombre']),
             'email' => sanitize_email($data['email']),
-            'whatsapp' => sanitize_text_field($data['whatsapp']),
+            'Telefone' => sanitize_text_field($data['whatsapp']),
         ),
     ));
 
@@ -51,7 +51,7 @@ function fsf_update_user_post(WP_REST_Request $request) {
         'meta_input' => array(
             'nombre' => sanitize_text_field($data['nombre']),
             'email' => sanitize_email($data['email']),
-            'whatsapp' => sanitize_text_field($data['whatsapp']),
+            'Telefone' => sanitize_text_field($data['whatsapp']),
             'services' => maybe_serialize($data['selections']), // Atualizar os serviços selecionados
         ),
     );

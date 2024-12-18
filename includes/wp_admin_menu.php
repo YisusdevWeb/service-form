@@ -41,7 +41,7 @@ function fsf_display_user_info_page() {
                         <th style="width: 40px;"><input type="checkbox" id="select-all"></th>
                         <th><?php _e('Nome', 'funnel-services-form'); ?></th>
                         <th><?php _e('Email', 'funnel-services-form'); ?></th>
-                        <th><?php _e('WhatsApp', 'funnel-services-form'); ?></th>
+                        <th><?php _e('Telefone', 'funnel-services-form'); ?></th>
                         <th><?php _e('Acções', 'funnel-services-form'); ?></th>
                     </tr>
                 </thead>
@@ -51,7 +51,7 @@ function fsf_display_user_info_page() {
                             <td><input type="checkbox" name="post_ids[]" value="<?php echo $post->ID; ?>"></td>
                             <td><?php echo esc_html(get_post_meta($post->ID, 'nombre', true)); ?></td>
                             <td><?php echo esc_html(get_post_meta($post->ID, 'email', true)); ?></td>
-                            <td><?php echo esc_html(get_post_meta($post->ID, 'whatsapp', true)); ?></td>
+                            <td><?php echo esc_html(get_post_meta($post->ID, 'Telefone', true)); ?></td>
                             <td>
                                 <a href="<?php echo admin_url('admin.php?page=fsf-detalles-usuario&post_id=' . $post->ID); ?>"><?php _e('Ver', 'funnel-services-form'); ?></a>
                                 | 
@@ -109,7 +109,7 @@ function fsf_display_user_details_page() {
 
     $nombre = get_post_meta($post->ID, 'nombre', true);
     $email = get_post_meta($post->ID, 'email', true);
-    $whatsapp = get_post_meta($post->ID, 'whatsapp', true);
+    $whatsapp = get_post_meta($post->ID, 'Telefone', true);
     $services = maybe_unserialize(get_post_meta($post->ID, 'services', true));
     
     ?>
@@ -125,7 +125,7 @@ function fsf_display_user_details_page() {
                 <td><?php echo esc_html($email); ?></td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('WhatsApp', 'funnel-services-form'); ?></th>
+                <th scope="row"><?php _e('Telefone', 'funnel-services-form'); ?></th>
                 <td><?php echo esc_html($whatsapp); ?></td>
             </tr>
             <tr>
@@ -191,7 +191,6 @@ function fsf_bulk_delete_user() {
     wp_redirect(admin_url('admin.php?page=fsf-informacion-de-usuario&bulk_deleted=true'));
     exit;
 }
-add_action('admin_post_fsf_export_user_info', 'fsf_export_user_info');
 function fsf_export_user_info() {
     if (!isset($_POST['fsf_export_user_info_nonce']) || !wp_verify_nonce($_POST['fsf_export_user_info_nonce'], 'fsf_export_user_info')) {
         wp_die(__('Autorizações insuficientes para realizar esta ação.', 'funnel-services-form'));
@@ -203,14 +202,42 @@ function fsf_export_user_info() {
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=usuarios.csv');
             $output = fopen('php://output', 'w');
-            fputcsv($output, array('nome', 'Email', 'WhatsApp'));
+            fputcsv($output, array('nome', 'Email', 'Telefone', 'Serviços Selecionados'));
 
             foreach ($post_ids as $post_id) {
                 if ($post = get_post($post_id)) {
                     $nombre = get_post_meta($post->ID, 'nombre', true);
                     $email = get_post_meta($post->ID, 'email', true);
-                    $whatsapp = get_post_meta($post->ID, 'whatsapp', true);
-                    fputcsv($output, array($nombre, $email, $whatsapp));
+                    $whatsapp = get_post_meta($post->ID, 'Telefone', true);
+                    $services = maybe_unserialize(get_post_meta($post->ID, 'services', true));
+
+                    // Convertir la selección de servicios a un formato legible (por ejemplo, separado por comas)
+                    $services_list = '';
+                    if (is_array($services)) {
+                        $services_array = array();
+                        foreach ($services as $serviceId => $serviceData) {
+                            $service_details = $serviceData['serviceTitle'] . ': ';
+                            $phases = array();
+                            foreach ($serviceData as $phaseId => $phaseData) {
+                                if ($phaseId !== 'serviceTitle') {
+                                    $phase_details = $phaseData['phaseTitle'] . ' (';
+                                    $options = array();
+                                    foreach ($phaseData as $option => $selected) {
+                                        if ($selected && $option !== 'phaseTitle') {
+                                            $options[] = $option;
+                                        }
+                                    }
+                                    $phase_details .= implode(', ', $options) . ')';
+                                    $phases[] = $phase_details;
+                                }
+                            }
+                            $service_details .= implode(' | ', $phases);
+                            $services_array[] = $service_details;
+                        }
+                        $services_list = implode('; ', $services_array);
+                    }
+
+                    fputcsv($output, array($nombre, $email, $whatsapp, $services_list));
                 }
             }
             fclose($output);
@@ -220,3 +247,5 @@ function fsf_export_user_info() {
     wp_redirect(admin_url('admin.php?page=fsf-informacion-de-usuario&export_failed=true'));
     exit;
 }
+
+add_action('admin_post_fsf_export_user_info', 'fsf_export_user_info');

@@ -73,13 +73,13 @@ const UserForm = ({ onUserSubmit }) => {
             helperText={errors.email ? errors.email.message : ''}
           />
           <TextField
-            label="WhatsApp"
+            label="Telefone"
             fullWidth
             {...register('whatsapp', {
-              required: 'WhatsApp é obrigatório',
+              required: 'Telefone é obrigatório',
               pattern: {
                 value: /^\+?[0-9\s-]+$/,
-                message: 'Insere um número de WhatsApp válido'
+                message: 'Insere um número de Telefone válido'
               }
             })}
             margin="normal"
