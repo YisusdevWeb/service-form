@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 
-const SuccessMessage = ({ onClose }) => {
+const SuccessMessage = () => {
   return (
     <Box
       sx={{
@@ -25,13 +26,18 @@ const SuccessMessage = ({ onClose }) => {
       <Typography variant="h6" sx={{ mt: 2, color: 'var(--heading-color)' }}>
         Email enviado com sucesso!
       </Typography>
-      <Button
-        variant="contained"
-        onClick={onClose}
-        sx={{ mt: 2, backgroundColor: 'var(--theme-color-darken)', color: 'var(--bg-color)' }}
-      >
-        Fechar
-      </Button>
+      {/* <Link to="/"> /* Envolvemos el botón con Link */}
+    {/*     <Button
+          variant="contained"
+          sx={{
+            mt: 2,
+            backgroundColor: 'var(--theme-color-darken)',
+            color: 'var(--bg-color)',
+          }}
+        >
+          Fechar
+        </Button> 
+      </Link> */}
     </Box>
   );
 };
