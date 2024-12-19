@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 
 const SuccessMessage = () => {
   return (

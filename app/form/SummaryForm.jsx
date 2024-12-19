@@ -134,8 +134,24 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
                         <Tab
                           key={service.uniqueServiceId}
                           label={service.serviceTitle}
-                          sx={{ fontFamily: "Poppins, sans-serif", textTransform: "none" }}
-                        />
+                          sx={{
+    fontFamily: "Poppins, sans-serif",
+    fontWeight: "bold",
+    fontSize: "1rem",
+    color: "var(--theme-color)",
+    textTransform: "uppercase",
+    padding: "8px 16px",
+        '&.Mui-selected': {
+      color: "white",
+      backgroundColor: "var(--theme-color)",
+      fontSize: "1.1rem",
+    },
+    '&:hover': {
+      color: "white",
+      backgroundColor: "var(--theme-color-darken)",
+    },
+  }}
+                          />
                       ))}
                     </Tabs>
                   </Box>

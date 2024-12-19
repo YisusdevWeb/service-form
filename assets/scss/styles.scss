@@ -6,7 +6,7 @@
   --heading-color: #0f4c80;
   --font-color: #0009;
   --theme-color: #0f4c80;
-  --theme-color-darken: #0c3c66; // Usar una versión oscura manual
+  --theme-color-darken: #0c3c66;
   --border-color: #bebebe;
 }
 
@@ -14,11 +14,14 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
   color: var(--font-color);
+  margin: 0;
+  padding: 0;
 }
 
 .summary-form {
   max-width: 800px;
   margin: 0 auto;
+  padding: 1rem; /* Reduce el padding para pantallas pequeñas */
 }
 
 .heading {
@@ -29,19 +32,19 @@ body {
 }
 
 .form-paper {
-  padding: 3rem;
+  padding: 1rem; /* Reducido para pantallas más pequeñas */
   background-color: var(--assistant-color);
-  border-radius: 2rem;
+  border-radius: 1rem; /* Bordes más suaves */
   margin-bottom: 2rem;
   font-family: "Poppins", sans-serif;
 }
 
 .tab-panel {
-  padding: 1rem;
+  padding: 0.5rem; /* Reducido para móviles */
   margin-bottom: 1rem;
-  background-color: var(--assistant-color);
-
   font-family: "Poppins", sans-serif;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
 
   .phase-title {
     color: var(--heading-color);
@@ -64,33 +67,35 @@ body {
   display: flex;
   justify-content: space-between;
   font-family: "Poppins", sans-serif;
+
   .edit-button,
   .add-button,
   .save-button {
     background-color: var(--blank-color);
-    color: var(--theme-color); /* Color inicial del texto */
+    color: var(--theme-color);
     border: solid 1px var(--theme-color);
-    border-radius: 31px; /* Bordes redondeados */
+    border-radius: 31px;
     padding: 5px 24px;
-    font-size: 16px;
+    font-size: 14px; /* Tamaño de fuente más pequeño en móviles */
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 
     &:hover {
-      background-color: var(
-        --theme-color
-      ); /* Cambiar el fondo al color del tema */
-      color: white; /* Cambiar color del texto a blanco */
-      transform: translateY(-2px); /* Animación ligera hacia arriba */
+      background-color: var(--theme-color);
+      color: white;
+      transform: translateY(-2px);
     }
 
     &:active {
-      transform: translateY(
-        0
-      ); /* Evita que el botón quede "flotando" tras clic */
+      transform: translateY(0);
     }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;  /* Cambiar la dirección a columna */
+    align-items: center;  /* Centrar los botones */
+    gap: 1.5rem; /* Aumentar el espacio entre los botones */
   }
 }
 
@@ -99,15 +104,14 @@ button.custom-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 24px;
-
+  padding: 5px 20px; /* Reducido para pantallas pequeñas */
   background-color: var(--blank-color);
   color: var(--theme-color);
   border: solid 1px var(--theme-color);
   border-radius: 31px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px; /* Ajustado para pantallas pequeñas */
   cursor: pointer;
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
@@ -156,5 +160,75 @@ button.custom-button {
         opacity: 1;
       }
     }
+  }
+}
+
+
+.custom-tabs {
+  .MuiTab-root {
+    font-family: "Poppins", sans-serif;
+    text-transform: none;
+    font-weight: bold;
+    color: #0f4c80;
+    font-size: 1rem;
+
+    &:hover {
+      color: #0c3c66;
+      transition: color 0.3s ease;
+    }
+  }
+
+  .Mui-selected {
+    color: #0c3c66;
+    font-weight: bold;
+    border-bottom: 2px solid #0c3c66;
+  }
+
+  .MuiTabs-indicator {
+    background-color: #0c3c66;
+  }
+}
+
+.custom-tab {
+  padding: 12px 16px;
+  margin: 0 8px;
+}
+
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .summary-form {
+    padding: 0.5rem; /* Reducido el padding para móviles */
+  }
+
+  .form-paper {
+    padding: 1rem; /* Ajuste de padding */
+  }
+
+  button.custom-button {
+    font-size: 13px; /* Tamaño más pequeño */
+    padding: 5px 18px; /* Menos padding en pantallas pequeñas */
+  }
+
+  .heading {
+    font-size: 18px; /* Reduce el tamaño de la fuente */
+  }
+
+  .buttons {
+    flex-direction: column; /* Coloca los botones en columna */
+    align-items: center; /* Centra los botones */
+    gap: 1rem; /* Añade espacio entre los botones */
+  }
+}
+
+.css-jhczcq-MuiTabs-root .MuiTabs-scrollButtons {
+  display: none;
+}
+
+.css-19kzrtu {
+  padding: 10px !important;
+
+  @media (max-width: 600px) {
+    padding: 10px !important; // Reduce el padding para pantallas más pequeñas
   }
 }
