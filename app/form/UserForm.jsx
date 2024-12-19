@@ -109,7 +109,8 @@ const UserForm = ({ onUserSubmit }) => {
         </Paper>
         <Box display="flex" justifyContent="center">
            {/* Botón personalizado */}
-           <button className="dsn-btn" type="submit">
+           <button         className="custom-button"
+ type="submit">
            
             <span className="title-btn" data-animate-text="SOLICITAR PROPOSTA">
               SOLICITAR PROPOSTA
