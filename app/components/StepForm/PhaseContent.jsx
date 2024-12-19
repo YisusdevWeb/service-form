@@ -1,16 +1,24 @@
 import React from 'react';
 import { Box, Button, Paper, Typography } from '@mui/material';
 import '../../../assets/scss/styles.scss'; 
+import DOMPurify from 'dompurify';
+
+
 
 const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
+  const sanitizedDescription = DOMPurify.sanitize(fase?.descricao || 'Sin descripción');
+
   return (
     <Paper sx={{ padding: 3,fontFamily: 'Poppins, sans-serif', backgroundColor: '#f4f4f4', borderRadius: 2, mb: 2, boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
       <Typography variant="h6" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', fontWeight: 'bold' }}>
         {fase?.titulo || 'Sin título'}
       </Typography>
-      <Typography variant="body1" gutterBottom sx={{ fontFamily: 'Poppins, sans-serif',color: 'var(--font-color);', mb: 2 }}>
-        {fase?.descricao || 'Sin descripción'}
-      </Typography>
+      <Typography
+  variant="body1"
+  gutterBottom
+  sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--font-color)', mb: 2 }}
+  dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+/>
       {fase?.escrever_as_opcoes && (
   <Box display="flex" flexDirection="column" gap={2}>
     {fase.escrever_as_opcoes.map((opcao) => (
