@@ -81,11 +81,11 @@ const App = () => {
   return (
     <>
       <Box
-        p={5}
-        sx={{
-          backgroundColor: "#f9f9f9",
-          maxWidth: "800px",
-          mx: "auto"
+    sx={{
+                    maxWidth: "800px",
+          mx: "auto",
+          p: { xs: 0, sm: 3, md: 5 } // Diferente padding según el tamaño de la pantalla
+
         }}
       >
         {showUserForm ? (

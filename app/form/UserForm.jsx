@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Paper, TextField, Button } from '@mui/material';
+import { Box, Typography, Paper, TextField, Button, MenuItem } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 const UserForm = ({ onUserSubmit }) => {
@@ -8,12 +8,7 @@ const UserForm = ({ onUserSubmit }) => {
   const apiBaseUrl = FSF_data.api_base_url.user_info;
 
   const onSubmit = (data) => {
-    // Verificar que o campo honeypot esteja vazio
-    if (data.website) {
-     // console.error("Bot detected!");
-     // alert("Bot detected!");
-      return;
-    }
+    if (data.website) return;
 
     fetch(`${apiBaseUrl}`, {
       method: 'POST',
@@ -23,16 +18,12 @@ const UserForm = ({ onUserSubmit }) => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
     })
     .then(responseData => {
-    //  console.log('Success:', responseData);
-     // alert('Entrada criada com sucesso.');
       if (onUserSubmit) {
-        onUserSubmit({ ...data, post_id: responseData.post_id }); // Passar os dados do utilizador para o próximo formulário
+        onUserSubmit({ ...data, post_id: responseData.post_id });
       }
     })
     .catch((error) => {
@@ -42,14 +33,30 @@ const UserForm = ({ onUserSubmit }) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 800, mx: 'auto', p: 2 }}>
-      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
-        Informações do Utilizador
+    <Box sx={{ maxWidth: 500, mx: 'auto', p: 2, backgroundColor: '#f9f9f9', borderRadius: 2 }}>
+      <Typography variant="h6" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center' }}>
+        <Box
+          component="img"
+          sx={{
+            width: "50%",
+            height: "auto",
+            mx: 'auto',
+            display: 'block',
+            marginBottom: '16px',
+          }}
+          alt="Dappin Logo"
+          src="https://dappin.pt/wp-content/uploads/2024/01/dappin_logo-768x177.png"
+        />
+        PEDIDO DE PROPOSTA
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ marginBottom: 3 }}>
+        Preenche os campos abaixo para pedires a tua proposta!
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Paper sx={{ p: 3, backgroundColor: '#e6e6e6', borderRadius: 2, mb: 2 }}>
+        <Paper sx={{ p: 3, backgroundColor: '#ffffff', borderRadius: 2, mb: 2, boxShadow: 1 }}>
           <TextField
-            label="Nome"
+            label="O teu nome *"
+            placeholder="O teu primeiro e último nome"
             fullWidth
             {...register('nombre', { required: 'Nome é obrigatório', minLength: { value: 3, message: 'Nome deve ter pelo menos 3 caracteres' } })}
             margin="normal"
@@ -58,13 +65,14 @@ const UserForm = ({ onUserSubmit }) => {
             helperText={errors.nombre ? errors.nombre.message : ''}
           />
           <TextField
-            label="Email"
+            label="O teu melhor e-mail *"
+            placeholder="O teu email empresarial"
             fullWidth
             {...register('email', {
               required: 'Email é obrigatório',
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: 'Insere um email válido'
+                message: 'Insere um email válido',
               }
             })}
             margin="normal"
@@ -73,13 +81,14 @@ const UserForm = ({ onUserSubmit }) => {
             helperText={errors.email ? errors.email.message : ''}
           />
           <TextField
-            label="Telefone"
+            label="O teu Telefone *"
+            placeholder="O teu Telefone"
             fullWidth
             {...register('whatsapp', {
               required: 'Telefone é obrigatório',
               pattern: {
                 value: /^\+?[0-9\s-]+$/,
-                message: 'Insere um número de Telefone válido'
+                message: 'Insere um número de Telefone válido',
               }
             })}
             margin="normal"
@@ -87,18 +96,25 @@ const UserForm = ({ onUserSubmit }) => {
             error={!!errors.whatsapp}
             helperText={errors.whatsapp ? errors.whatsapp.message : ''}
           />
-          {/* Campo Honeypot */}
+          
+          {/* Honeypot field */}
           <TextField
             label="Website"
             fullWidth
             {...register('website')}
             margin="normal"
             variant="outlined"
-            style={{ display: 'none' }}  // Campo oculto
+            style={{ display: 'none' }}
           />
         </Paper>
-        <Box display="flex" justifyContent="center" mb={2}>
-          <Button variant="contained" color="primary" type="submit" sx={{ px: 4, py: 1.5 }}>Continuar com a cotação</Button>
+        <Box display="flex" justifyContent="center">
+           {/* Botón personalizado */}
+           <button className="dsn-btn" type="submit">
+           
+            <span className="title-btn" data-animate-text="SOLICITAR PROPOSTA">
+              SOLICITAR PROPOSTA
+            </span>
+          </button>
         </Box>
       </form>
     </Box>

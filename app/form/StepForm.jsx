@@ -23,7 +23,6 @@ const theme = createTheme({
     },
   },
 });
-
 const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
   const methods = useForm();
   const { handleSubmit, setValue, watch, getValues } = methods;
@@ -42,7 +41,6 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
   const [addMoreServicesPopupOpen, setAddMoreServicesPopupOpen] =
     useState(false);
   const [showSummary, setShowSummary] = useState(false);
-
   const handleSelection = useCallback(
     handleSelectionFactory(
       currentPhase,
@@ -76,7 +74,6 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
       });
     }
   }, [currentPhase, selections, setValue, currentService]);
-
   const onSubmit = () => {
     const currentSelections =
       selections[currentService?.uniqueId]?.[currentPhase] || {};
@@ -93,13 +90,18 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
       return;
     }
 
-    if (currentPhase < currentService.fases_do_servico.length - 1) {
+    const isLastPhase = currentPhase === currentService.fases_do_servico.length - 1;
+    const isLastPhaseUnique = isLastPhase && currentService.fases_do_servico[currentPhase]?.tipo_selecao === 'unica';
+
+    if (isLastPhaseUnique) {
+      // Si el último paso es de tipo 'unica', concluye el formulario sin avanzar
+      setShowSummary(true);
+    } else if (currentPhase < currentService.fases_do_servico.length - 1) {
       setCurrentPhase(currentPhase + 1);
     } else {
       setShowSummary(true);
     }
   };
-
   const handleConfirmAddMoreServices = () => {
     onServiceComplete(currentService);
     resetService();
@@ -129,7 +131,6 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
   const handleEditSelections = () => {
     setShowSummary(false);
   };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

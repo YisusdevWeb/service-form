@@ -3,6 +3,8 @@ import { Stepper, Step, StepLabel } from '@mui/material';
 import '../../../assets/scss/styles.scss'; 
 
 const PhaseStepper = ({ currentPhase, fases, onStepClick }) => {
+ // console.log('Fases:', fases, 'Current Phase:', currentPhase);
+
   return (
     <Stepper activeStep={currentPhase}>
       {fases.map((fase, index) => (
