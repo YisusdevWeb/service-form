@@ -1,0 +1,63 @@
+import React from 'react';
+import { Box, Button, Paper, Typography } from '@mui/material';
+import '../../../assets/scss/styles.scss'; 
+import DOMPurify from 'dompurify';
+
+
+
+const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
+  const sanitizedDescription = DOMPurify.sanitize(fase?.descricao || 'Sem descrição');
+
+  return (
+    <Paper sx={{ padding: 3,fontFamily: 'Poppins, sans-serif', backgroundColor: '#f4f4f4', borderRadius: 2, mb: 2, boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+      <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', fontWeight: 'bold', padding: '0 0 15px 0' }}>
+        {fase?.titulo || 'Sem título'}
+      </Typography>
+      <Typography
+  variant="body1"
+  gutterBottom
+  sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--font-color)', mb: 2.5 }}
+  dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+/>
+      {fase?.escrever_as_opcoes && (
+  <Box display="flex" flexDirection="column" gap={2}>
+    {fase.escrever_as_opcoes.map((opcao) => (
+      <Button
+        key={opcao.id_opcion || opcao.titulo}
+        variant={watch(opcao.titulo) ? 'contained' : 'outlined'}
+        onClick={() => handleSelection(opcao.titulo, !getValues(opcao.titulo))}
+        sx={{
+          backgroundColor: watch(opcao.titulo) ? 'var(--theme-color)' : 'transparent',
+          color: watch(opcao.titulo) ? 'white' : 'var(--theme-color)',
+          fontFamily: 'Poppins, sans-serif',
+          fontSize:'1rem' ,
+          borderColor: 'var(--theme-color)',
+          borderWidth: '1px',
+          borderRadius: '4px',
+          textTransform: 'none',
+          width: '100%',
+          whiteSpace: 'normal', // Permite que el texto se quiebre
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          '&:hover': {
+            backgroundColor: watch(opcao.titulo) ? 'var(--theme-color-darken)' : 'rgba(15, 76, 128, 0.1)',
+          },
+          '@media (max-width: 600px)': {
+            width: '100%',
+          },
+        }}
+      >
+        {opcao.titulo}
+      </Button>
+    ))}
+  </Box>
+)}
+
+
+
+    
+    </Paper>
+  );
+};
+
+export default PhaseContent;
