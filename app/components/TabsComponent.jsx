@@ -34,16 +34,16 @@ const TabsComponent = ({ tabs, value, handleChange, onEditSelections, onAddMoreS
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: "bold",
                   fontSize: "1rem",
-                  color: "var(--theme-color)",
+                  color: "#ffffff !important",
                   textTransform: "uppercase",
                   padding: "8px 16px",
                   '&.Mui-selected': {
-                    color: "white",
+                    color: "#ffffff !important",
                     backgroundColor: "var(--theme-color)",
                     fontSize: "1.1rem",
                   },
                   '&:hover': {
-                    color: "white",
+                    color: "#ffffff !important",
                     backgroundColor: "var(--theme-color-darken)",
                   },
                 }}

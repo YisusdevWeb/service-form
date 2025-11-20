@@ -51,18 +51,31 @@ const UserForm = ({ onUserSubmit }) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 1, backgroundColor: '#f9f9f9', borderRadius: 2 }}>
+    <Box sx={{ maxWidth: 600, mx: 'auto', p: 1, borderRadius: 2 }}>
       <Logo /> {/* Usando el componente Logo aquí */}
-      <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center', fontSize: '2rem' }}>
+      <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center', fontSize: '2rem' }}>
         PEDIDO DE PROPOSTA
       </Typography>
-      <Typography variant="body1" align="center" sx={{ marginBottom: 3, fontWeight: 'bold', fontSize: '1rem' }}>
+      <Typography variant="body1" align="center" sx={{ marginBottom: 3, fontWeight: 'bold', fontSize: '1rem', color: 'var(--font-color)' }}>
         Preenche os campos abaixo para pedires a tua proposta!
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Paper sx={{ p: 3, backgroundColor: '#ffffff', borderRadius: 2, mb: 2, boxShadow: 1 }}>
+        <Paper sx={{ 
+          p: 3, 
+          background: 'rgba(30, 90, 142, 0.25)', 
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: 2, 
+          mb: 2, 
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+          transition: 'transform 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-2px)'
+          }
+        }}>
           <FormControl fullWidth margin="dense" error={!!errors.nombre}>
-            <InputLabel shrink htmlFor="nombre" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px' }}>
+            <InputLabel shrink htmlFor="nombre" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
               Nome e Apelido *
             </InputLabel>
             <BootstrapInput
@@ -74,7 +87,7 @@ const UserForm = ({ onUserSubmit }) => {
           </FormControl>
 
           <FormControl fullWidth margin="dense" error={!!errors.email}>
-            <InputLabel shrink htmlFor="email" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px' }}>
+            <InputLabel shrink htmlFor="email" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
               E-mail *
             </InputLabel>
             <BootstrapInput
@@ -92,7 +105,7 @@ const UserForm = ({ onUserSubmit }) => {
           </FormControl>
 
           <FormControl fullWidth margin="dense" error={!!errors.whatsapp}>
-            <InputLabel shrink htmlFor="whatsapp" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px' }}>
+            <InputLabel shrink htmlFor="whatsapp" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
             O teu WhatsApp*
             </InputLabel>
             <BootstrapInput

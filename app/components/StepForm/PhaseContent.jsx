@@ -9,7 +9,22 @@ const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
   const sanitizedDescription = DOMPurify.sanitize(fase?.descricao || 'Sem descrição');
 
   return (
-    <Paper sx={{ padding: 3,fontFamily: 'Poppins, sans-serif', backgroundColor: '#f4f4f4', borderRadius: 2, mb: 2, boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+    <Paper sx={{ 
+      padding: 3,
+      fontFamily: 'Poppins, sans-serif', 
+      background: 'rgba(255, 255, 255, 0.05)', 
+      backdropFilter: 'blur(15px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(15px) saturate(180%)',
+      border: '1px solid rgba(255, 255, 255, 0.15)',
+      borderRadius: 2, 
+      mb: 2, 
+      boxShadow: '0 4px 16px 0 rgba(0, 0, 0, 0.3)',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      '&:hover': {
+        transform: 'translateY(-2px)',
+        boxShadow: '0 6px 20px 0 rgba(0, 0, 0, 0.4)'
+      }
+    }}>
       <Typography variant="h6" sx={{ fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', fontWeight: 'bold', padding: '0 0 15px 0' }}>
         {fase?.titulo || 'Sem título'}
       </Typography>
@@ -27,11 +42,15 @@ const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
         variant={watch(opcao.titulo) ? 'contained' : 'outlined'}
         onClick={() => handleSelection(opcao.titulo, !getValues(opcao.titulo))}
         sx={{
-          backgroundColor: watch(opcao.titulo) ? 'var(--theme-color)' : 'transparent',
-          color: watch(opcao.titulo) ? 'white' : 'var(--theme-color)',
+          background: watch(opcao.titulo) 
+            ? 'linear-gradient(135deg, var(--theme-color), var(--theme-color-light))' 
+            : 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: watch(opcao.titulo) ? 'none' : 'blur(10px)',
+          WebkitBackdropFilter: watch(opcao.titulo) ? 'none' : 'blur(10px)',
+          color: watch(opcao.titulo) ? 'white' : 'rgba(255, 255, 255, 0.9)',
           fontFamily: 'Poppins, sans-serif',
           fontSize:'1rem' ,
-          borderColor: 'var(--theme-color)',
+          borderColor: watch(opcao.titulo) ? 'var(--theme-color)' : 'rgba(255, 255, 255, 0.2)',
           borderWidth: '1px',
           borderRadius: '4px',
           textTransform: 'none',
@@ -40,7 +59,11 @@ const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           '&:hover': {
-            backgroundColor: watch(opcao.titulo) ? 'var(--theme-color-darken)' : 'rgba(15, 76, 128, 0.1)',
+            background: watch(opcao.titulo) 
+              ? 'linear-gradient(135deg, var(--theme-color-darken), var(--theme-color))' 
+              : 'rgba(255, 255, 255, 0.1)',
+            transform: 'translateY(-2px)',
+            boxShadow: '0 4px 12px rgba(15, 76, 128, 0.3)'
           },
           '@media (max-width: 600px)': {
             width: '100%',

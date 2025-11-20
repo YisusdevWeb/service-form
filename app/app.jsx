@@ -79,7 +79,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="funil-services-form-root">
       <Box
         sx={{
           maxWidth: "600px",
@@ -93,10 +93,8 @@ const App = () => {
           </Suspense>
         ) : !currentService ? (
           <Box>
-
-          <Logo /> {/* Usando el componente Logo aquí */}
-            <Typography variant="h5" gutterBottom sx={{ color: '#0f4c80', fontWeight: 'bold', textAlign: 'center',fontSize: '2rem', mb:3.75  }}>
-            
+            <Logo /> {/* Usando el componente Logo aquí */}
+            <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center',fontSize: '2rem', mb:3.75  }}>
               Selecionar um serviço
             </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -114,16 +112,14 @@ const App = () => {
                       cursor: "pointer",
                       marginBottom: "10px",
                       padding: "10px",
-                      backgroundColor: "#ffffff",
-                      borderRadius: "5px",
+                      backgroundColor: "rgba(255, 255, 255, 0.9)",
+                      borderRadius: "8px",
                       transition: "background-color 0.3s, transform 0.3s",
-                      boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
-                      borderColor: "#bebebe",
-                      borderWidth: "1px",
-                      borderStyle: "solid",
+                      boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
                     }}
                   >
-                    <Typography variant="h6" color="#0f4c80">
+                    <Typography variant="h6" sx={{ color: 'var(--input-text)', fontWeight: '600' }}>
                       {servico.titulo}
                     </Typography>
                   </li>
@@ -141,7 +137,6 @@ const App = () => {
         )}
       </Box>
       {/* <FloatingResetButton onClick={handleClearLocalStorage} /> */}
-      
       <Suspense fallback={<div>Loading...</div>}>
         <NoPhasePopup
           open={noPhasePopupOpen}
@@ -149,7 +144,7 @@ const App = () => {
           serviceTitle={serviceWithoutPhases?.titulo}
         />
       </Suspense>
-    </>
+    </div>
   );
 };
 

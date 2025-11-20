@@ -38,6 +38,7 @@ function FSF_enqueue_scripts_and_styles()
 
         // Datos a pasar a JavaScript
         $debug_enabled = get_option('fsf_debug_enabled', '0');
+        $logo_url = get_option('fsf_logo_url', '');
         $js_data_passed = array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'servicios' => $post_data,
@@ -49,11 +50,12 @@ function FSF_enqueue_scripts_and_styles()
             'thanks_url' => $thanks_url,
             'nonce' => wp_create_nonce('wp_rest'),
             'debug_enabled' => $debug_enabled,
+            'logo_url' => $logo_url,
         );
       // 
-      wp_enqueue_script( 'FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.3.4', true );
+    wp_enqueue_script( 'FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.3.2', true );
     // wp_enqueue_script('FSF-frontend', 'http://localhost:9000/app.js', array('jquery'), '1.0.0', true);
-     wp_enqueue_style('FSF-frontend-style', FSF_PLUGIN_URL .'dist/styles.css', array(), '1.0.4');
+    wp_enqueue_style('FSF-frontend-style', FSF_PLUGIN_URL .'dist/styles.css', array(), '1.3.2');
         wp_localize_script('FSF-frontend', 'FSF_data', $js_data_passed);
     }
 }

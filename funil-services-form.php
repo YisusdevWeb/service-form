@@ -2,7 +2,7 @@
 /*
 *Plugin Name: Funnel-services-form
 *Description: Plugin for services form with steps.
-*Version: 1.2.0
+*Version: 1.3.2
 *Author: Yisus_Dev
  * Author URI: https://enlaweb.co/
  * License: GNU General Public License v3.0
@@ -31,6 +31,7 @@ include 'includes/wp_rest_api.php';
 // Include admin menu 
 include 'includes/wp_admin_menu.php';
 include 'includes/wp_admin_config_mail.php';
+include 'includes/wp_admin_styles.php';
 
 
 

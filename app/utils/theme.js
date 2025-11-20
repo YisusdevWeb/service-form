@@ -2,20 +2,28 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Poppins, sans-serif', // Define Poppins como la fuente global
+    fontFamily: 'Poppins, sans-serif',
+    allVariants: {
+      color: '#ffffff',
+    },
   },
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#0f4c80',
+      main: '#1e5a8e',
+      light: '#3a7bc8',
+      dark: '#0a1929',
     },
     secondary: {
-      main: '#e6e6e6',
+      main: '#e5e7eb',
     },
     background: {
-      default: '#f9f9f9',
+      default: 'transparent',
+      paper: 'transparent',
     },
     text: {
-      primary: '#0009',
+      primary: '#ffffff',
+      secondary: '#e5e7eb',
     },
   },
   components: {
@@ -26,11 +34,66 @@ const theme = createTheme({
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: '#ffffff !important',
+          fontWeight: 500,
+          '&.Mui-focused': {
+            color: '#ffffff !important',
+          },
+          '&.MuiInputLabel-shrink': {
+            color: '#ffffff !important',
+          },
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          color: '#ffffff !important',
+          '&.Mui-focused': {
+            color: '#ffffff !important',
+          },
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#ffffff',
+        },
+        h1: {
+          color: '#ffffff !important',
+        },
+        h2: {
+          color: '#ffffff !important',
+        },
+        h3: {
+          color: '#ffffff !important',
+        },
+        h4: {
+          color: '#ffffff !important',
+        },
+        h5: {
+          color: '#ffffff !important',
+        },
+        h6: {
+          color: '#ffffff !important',
+        },
+        body1: {
+          color: '#ffffff !important',
+        },
+        body2: {
+          color: '#e5e7eb !important',
+        },
+      },
+    },
     MuiDialogTitle: {
       styleOverrides: {
         root: {
           fontFamily: 'Poppins, sans-serif',
-          color: 'var(--heading-color)',
+          color: '#ffffff',
         },
       },
     },
@@ -38,20 +101,30 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: 'Poppins, sans-serif',
-          color: 'var(--font-color)',
+          color: '#ffffff',
         },
       },
     },
     MuiStepIcon: {
       styleOverrides: {
         root: {
-          color: 'var(--assistant-color)',
+          color: 'rgba(255, 255, 255, 0.3)',
           '&.Mui-active': {
-            color: 'var(--theme-color-darken)',
+            color: '#ffffff !important',
           },
           '&.Mui-completed': {
-            color: 'var(--theme-color)',
+            color: '#ffffff !important',
           },
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          color: '#ffffff !important',
+        },
+        label: {
+          color: '#ffffff !important',
         },
       },
     },

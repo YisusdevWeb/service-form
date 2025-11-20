@@ -1,27 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 
 :root {
-  --bg-color: #f9f9f9;
-  --assistant-color: #e6e6e6;
-  --heading-color: #0f4c80;
-  --font-color: #0009;
-  --theme-color: #0f4c80;
-  --theme-color-darken: #0c3c66;
-  --border-color: #bebebe;
+  --bg-color: #0a1929;
+  --bg-gradient: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+  --assistant-color: rgba(255, 255, 255, 0.08);
+  --heading-color: #ffffff;
+  --font-color: rgba(255, 255, 255, 0.9);
+  --font-color-secondary: rgba(255, 255, 255, 0.7);
+  --theme-color: #2d6db5;
+  --theme-color-darken: #1e4a7a;
+  --theme-color-light: #4a90e2;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --input-bg: #ffffff;
+  --input-text: #1f2937;
+  --input-border: rgba(74, 144, 226, 0.4);
+  --input-placeholder: rgba(31, 41, 55, 0.5);
+  --label-color: #ffffff;
 }
+
+ .funil-services-form-root {
+   font-family: "Poppins", sans-serif;
+   background: var(--bg-gradient);
+   background-attachment: fixed;
+   color: var(--font-color);
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--bg-color);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--font-color);
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 .summary-form {
   max-width: 600px;
   margin: 0 auto;
-  padding: 1rem; /* Reduce el padding para pantallas pequeñas */
+  padding: 1rem;
 }
 
 .heading {
@@ -29,28 +48,67 @@ body {
   font-weight: bold;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos globales para títulos y textos - Mayor especificidad */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color) !important;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Asegurar que todos los Typography de MUI usen los colores correctos */
+.MuiTypography-root {
+  &.MuiTypography-h1,
+  &.MuiTypography-h2,
+  &.MuiTypography-h3,
+  &.MuiTypography-h4,
+  &.MuiTypography-h5,
+  &.MuiTypography-h6 {
+    color: var(--heading-color) !important;
+  }
+
+  &.MuiTypography-body1,
+  &.MuiTypography-body2 {
+    color: var(--font-color) !important;
+  }
 }
 
 .form-paper {
-  padding: 1rem; /* Reducido para pantallas más pequeñas */
-  background-color: var(--assistant-color);
-  border-radius: 1rem; /* Bordes más suaves */
+  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 1.5rem;
+  border: 1px solid var(--glass-border);
   margin-bottom: 2rem;
   font-family: "Poppins", sans-serif;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 var(--shadow-color);
+  }
 }
 
 .tab-panel {
-  padding: 0.5rem; /* Reducido para móviles */
-  margin-bottom: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
   font-family: "Poppins", sans-serif;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-radius: 1rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px 0 var(--shadow-color);
 
   .phase-title {
     color: var(--heading-color);
     font-weight: bold;
     font-family: "Poppins", sans-serif;
-  }
+      color: #ffffff !important;
+    }
 
   ul {
     list-style-type: none;
@@ -58,10 +116,12 @@ body {
 
     li {
       color: var(--font-color);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      padding: 4px 0;
     }
   }
 }
+ }
 
 .buttons {
   display: flex;
@@ -71,31 +131,37 @@ body {
   .edit-button,
   .add-button,
   .save-button {
-    background-color: var(--blank-color);
-    color: var(--theme-color);
-    border: solid 1px var(--theme-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--heading-color);
+    border: 1px solid var(--theme-color-light);
     border-radius: 31px;
-    padding: 5px 15px;
-    font-size: 15px; /* Tamaño de fuente más pequeño en móviles */
-    font-weight: bold;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(15, 76, 128, 0.2);
 
     &:hover {
-      background-color: var(--theme-color);
+      background: var(--theme-color);
       color: white;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(15, 76, 128, 0.4);
+      border-color: var(--theme-color);
     }
 
     &:active {
       transform: translateY(0);
     }
   }
+  
   @media (max-width: 768px) {
-    flex-direction: column;  /* Cambiar la dirección a columna */
-    align-items: center;  /* Centrar los botones */
-    gap: 1.5rem; /* Aumentar el espacio entre los botones */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
 }
 
@@ -104,22 +170,27 @@ button.custom-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 15px; /* Reducido para pantallas pequeñas */
-  background-color: var(--blank-color);
-  color: var(--theme-color);
-  border: solid 1px var(--theme-color);
+  padding: 8px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--button-text);
+  border: 1px solid var(--theme-color-light);
   border-radius: 31px;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 15px; /* Ajustado para pantallas pequeñas */
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(15, 76, 128, 0.2);
 
   &:hover {
     color: white;
+    background: var(--theme-color);
+    box-shadow: 0 6px 20px rgba(15, 76, 128, 0.4);
+    border-color: var(--theme-color);
   }
-
 
   span.icon-btn {
     padding: 7px 17px;
@@ -127,9 +198,11 @@ button.custom-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0f4c80;
+    background: linear-gradient(135deg, var(--theme-color), var(--theme-color-light));
     margin-right: 9px;
-}
+    box-shadow: 0 2px 8px rgba(15, 76, 128, 0.3);
+  }
+  
   .title-btn {
     position: relative;
     z-index: 2;
@@ -153,7 +226,7 @@ button.custom-button {
         height: 100%;
         left: 0;
         top: 0;
-        color: var(--theme-color-darken);
+        color: white;
         transform: rotateZ(7deg);
         opacity: 0;
       }
@@ -178,24 +251,28 @@ button.custom-button {
   .MuiTab-root {
     font-family: "Poppins", sans-serif;
     text-transform: none;
-    font-weight: bold;
-    color: #0f4c80;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 1rem;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: #0c3c66;
-      transition: color 0.3s ease;
+      color: var(--heading-color);
+      background: rgba(255, 255, 255, 0.05);
     }
   }
 
   .Mui-selected {
-    color: #0c3c66;
-    font-weight: bold;
-    border-bottom: 2px solid #0c3c66;
+    color: var(--heading-color);
+    font-weight: 700;
+    background: var(--glass-bg);
+    border-bottom: 2px solid var(--theme-color-light);
   }
 
   .MuiTabs-indicator {
-    background-color: #0c3c66;
+    background: linear-gradient(90deg, var(--theme-color), var(--theme-color-light));
+    height: 3px;
+    border-radius: 3px 3px 0 0;
   }
 }
 
@@ -208,26 +285,26 @@ button.custom-button {
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 768px) {
   .summary-form {
-    padding: 0.5rem; /* Reducido el padding para móviles */
+    padding: 0.5rem;
   }
 
   .form-paper {
-    padding: 1rem; /* Ajuste de padding */
+    padding: 1.5rem;
   }
 
   button.custom-button {
-    font-size: 13px; /* Tamaño más pequeño */
-    padding: 5px 18px; /* Menos padding en pantallas pequeñas */
+    font-size: 13px;
+    padding: 6px 16px;
   }
 
   .heading {
-    font-size: 18px; /* Reduce el tamaño de la fuente */
+    font-size: 20px;
   }
 
   .buttons {
-    flex-direction: column; /* Coloca los botones en columna */
-    align-items: center; /* Centra los botones */
-    gap: 1rem; /* Añade espacio entre los botones */
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }
 
@@ -239,10 +316,9 @@ button.custom-button {
   padding: 10px !important;
 
   @media (max-width: 600px) {
-    padding: 10px !important; // Reduce el padding para pantallas más pequeñas
+    padding: 10px !important;
   }
 }
-
 
 .css-mlh15c-MuiStep-root {
   padding-left: 30px !important;
@@ -250,9 +326,117 @@ button.custom-button {
   margin: auto;
 }
 
-
-/* styles.css */
+/* Glassmorphism effect para section background */
 .FSF_frontend-section-background {
-  background-color: #0f4c80;
-  border-radius: 8px;
+  background: var(--bg-gradient);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(58, 123, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(15, 76, 128, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+/* Estilos mejorados para inputs (MUI) */
+/* Labels de MUI - Mayor especificidad */
+.MuiTextField-root {
+  .MuiInputLabel-root,
+  .MuiFormLabel-root,
+  label {
+    color: var(--label-color) !important;
+    font-weight: 500 !important;
+  }
+  
+  .MuiInputBase-root {
+    background-color: var(--input-bg) !important;
+    border-radius: 8px;
+    
+    input,
+    textarea {
+      color: var(--input-text) !important;
+      font-family: "Poppins", sans-serif;
+      
+      &::placeholder {
+        color: var(--input-placeholder) !important;
+        opacity: 1;
+      }
+    }
+  }
+  
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--input-border) !important;
+    border-width: 1px;
+  }
+  
+  .Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--theme-color-light) !important;
+      border-width: 2px;
+    }
+    
+    .MuiInputLabel-root,
+    .MuiFormLabel-root {
+      color: var(--label-color) !important;
+    }
+  }
+  
+  &:hover {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--theme-color-light) !important;
+    }
+  }
+}
+
+/* Labels independientes y específicos */
+.MuiInputLabel-root,
+.MuiFormLabel-root {
+  color: var(--label-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Checkbox y FormControlLabel */
+.MuiFormControlLabel-root {
+  color: var(--font-color) !important;
+  
+  .MuiCheckbox-root {
+    color: var(--theme-color-light) !important;
+    
+    &.Mui-checked {
+      color: var(--theme-color-light) !important;
+    }
+  }
+  
+  .MuiTypography-root {
+    color: var(--font-color) !important;
+  }
+  
+  a {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    
+    &:hover {
+      color: var(--theme-color-light) !important;
+      text-decoration: none !important;
+    }
+  }
+}
+
+/* Links globales en el formulario */
+a {
+  color: #ffffff !important;
+  
+  &:hover {
+    color: var(--theme-color-light) !important;
+  }
 }

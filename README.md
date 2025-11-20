@@ -2,8 +2,35 @@
 
 ## Historial de cambios / Changelog
 
+### v1.3.1 (Nov 2025)
+- **Selector de Medios WordPress**: Logo ahora se selecciona desde la biblioteca de medios de WordPress
+- **Botón Reset de Estilos**: Botón para restaurar todos los colores a valores por defecto
+- **Valores por Defecto Mejorados**: Colores con mejor contraste y visibilidad
+  - Títulos blancos (#ffffff) sobre fondo azul oscuro
+  - Labels blancos (#ffffff) para mejor legibilidad
+  - Texto secundario más claro (#e5e7eb)
+  - Fondo secundario más saturado (#1e5a8e)
+  - Glassmorphism más visible (opacidad 0.08)
+- **Campos Vacíos = Default**: Si dejas un campo vacío, usa automáticamente el valor por defecto
+- **Fix Color Texto Botón**: Ahora usa correctamente la variable `--button-text` en SCSS
+- **Fix Logo Display**: Logo se muestra correctamente desde el inicio usando biblioteca WP
+
+### v1.3.0 (Nov 2025)
+- **Glassmorphism Design**: Diseño moderno con efecto glassmorphism inspirado en dappin.pt
+- **Panel de Personalización Completo**: Admin panel para personalizar logo, colores y estilos
+- **Logo Personalizado**: Upload de logo desde el admin de WordPress
+- **Sistema de Colores Dinámico**: Personalización completa con códigos hexadecimales:
+  - Colores de fondo (gradientes)
+  - Colores de textos y títulos
+  - Colores de inputs y bordes
+  - Colores de botones y hover
+  - Ajuste de glassmorphism (opacidad y blur)
+- **Mejora de Coherencia Visual**: Inputs blancos con texto oscuro, labels claros, mejor contraste
+- **CSS Dinámico**: Estilos generados automáticamente desde las opciones del admin
+- **Versiones de Assets Actualizadas**: Cache busting para JS y CSS
+
 ### v1.2.0 (Oct 2025)
-- Corrección definitiva del “paso fantasma”: se eliminó la bandera `recentlyAdvanced` y se consolidó la lógica para evitar doble avance en fases de selección única.
+- Corrección definitiva del "paso fantasma": se eliminó la bandera `recentlyAdvanced` y se consolidó la lógica para evitar doble avance en fases de selección única.
 - Limpieza de logs temporales y comentarios de depuración en frontend.
 - Revisión y consolidación de la navegación por fases, asegurando que solo se avanza una vez por fase.
 - Documentación actualizada con pasos para probar y validar el flujo.
