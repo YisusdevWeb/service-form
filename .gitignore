@@ -18,6 +18,3 @@ dist/
 
 # Ignorar archivos zip
 *.zip
-
-# Ignorar archivos de traducción compilados (se generan automáticamente)
-*.mo
