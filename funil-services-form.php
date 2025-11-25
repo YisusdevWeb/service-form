@@ -97,13 +97,19 @@ function fsf_debug_translations() {
         return;
     }
 
+    $current_locale = get_locale();
+    $textdomain_loaded = is_textdomain_loaded( 'funnel-services-form' ) ? 'Yes' : 'No';
+
     $test_strings = [
         'Privacy Policy Link Settings',
         'Thank You Page Link',
         'Debug / Logs'
     ];
 
-    echo '<div class="notice notice-info"><p><strong>FSF Translation Debug:</strong></p><ul>';
+    echo '<div class="notice notice-info"><p><strong>FSF Translation Debug:</strong></p>';
+    echo '<p>Current Locale: ' . esc_html( $current_locale ) . '</p>';
+    echo '<p>Textdomain Loaded: ' . esc_html( $textdomain_loaded ) . '</p>';
+    echo '<ul>';
     foreach ( $test_strings as $string ) {
         $translated = __( $string, 'funnel-services-form' );
         echo '<li>' . esc_html( $string ) . ' → ' . esc_html( $translated ) . '</li>';
