@@ -11,32 +11,32 @@ const UserForm = ({ onUserSubmit }) => {
   const apiBaseUrl = FSF_data.api_base_url.user_info;
   const termsUrl = FSF_data.terms_url;
   
-  // Obtener textos personalizados o usar valores por defecto
+  // Obtener textos personalizados o usar valores por defecto en inglés
   const texts = FSF_data.form_texts || {};
   const t = {
-    formTitle: texts.form_title || 'PEDIDO DE PROPOSTA',
-    formSubtitle: texts.form_subtitle || 'Preenche os campos abaixo para pedires a tua proposta!',
-    nameLabel: texts.name_label || 'Nome e Apelido *',
-    namePlaceholder: texts.name_placeholder || 'O teu Primeiro e último nome',
-    nameErrorRequired: texts.name_error_required || 'Nome é obrigatório',
-    nameErrorMin: texts.name_error_min || 'Deve ter pelo menos 3 caracteres',
-    emailLabel: texts.email_label || 'E-mail *',
-    emailPlaceholder: texts.email_placeholder || 'O teu melhor e-mail',
-    emailErrorRequired: texts.email_error_required || 'Email é obrigatório',
-    emailErrorInvalid: texts.email_error_invalid || 'Insere um email válido',
-    whatsappLabel: texts.whatsapp_label || 'O teu WhatsApp *',
-    whatsappPlaceholder: texts.whatsapp_placeholder || 'O teu WhatsApp',
-    whatsappErrorRequired: texts.whatsapp_error_required || 'Teu WhatsApp é obrigatório',
-    whatsappErrorInvalid: texts.whatsapp_error_invalid || 'Insere teu WhatsApp válido',
-    privacyText: texts.privacy_text || 'Li e aceito',
-    privacyLinkText: texts.privacy_link_text || 'a Política de Privacidade',
-    privacyError: texts.privacy_error || 'É necessário aceitar as políticas de privacidade',
-    submitButton: texts.submit_button || 'SOLICITAR PROPOSTA',
-    errorMessage: texts.error_message || 'Houve um erro ao criar a entrada.',
+    formTitle: texts.form_title || 'QUOTE REQUEST',
+    formSubtitle: texts.form_subtitle || 'Fill in the fields below to request your quote!',
+    nameLabel: texts.name_label || 'Name and Last Name *',
+    namePlaceholder: texts.name_placeholder || 'Your First and Last Name',
+    nameErrorRequired: texts.name_error_required || 'Name is required',
+    nameErrorMin: texts.name_error_min || 'Must be at least 3 characters',
+    emailLabel: texts.email_label || 'Email *',
+    emailPlaceholder: texts.email_placeholder || 'Your best email',
+    emailErrorRequired: texts.email_error_required || 'Email is required',
+    emailErrorInvalid: texts.email_error_invalid || 'Enter a valid email',
+    whatsappLabel: texts.whatsapp_label || 'Your WhatsApp *',
+    whatsappPlaceholder: texts.whatsapp_placeholder || 'Your WhatsApp',
+    whatsappErrorRequired: texts.whatsapp_error_required || 'Your WhatsApp is required',
+    whatsappErrorInvalid: texts.whatsapp_error_invalid || 'Enter a valid WhatsApp',
+    privacyText: texts.privacy_text || 'I have read and accept',
+    privacyLinkText: texts.privacy_link_text || 'the Privacy Policy',
+    privacyError: texts.privacy_error || 'You must accept the privacy policy',
+    submitButton: texts.submit_button || 'REQUEST QUOTE',
+    errorMessage: texts.error_message || 'There was an error creating the entry.',
   };
 
   useEffect(() => {
-    // Seleccionar el div con el ID 'FSF_frontend-seccion'
+    // Select div with ID 'FSF_frontend-seccion'
     const sectionElement = document.getElementById('FSF_frontend-seccion');
 
     if (sectionElement) {

@@ -11,18 +11,18 @@ if (!defined('ABSPATH')) exit;
     <!-- Header -->
     <div class="fsf-admin-header">
         <div class="fsf-admin-header-content">
-            <h1><span class="dashicons dashicons-edit"></span> <?php _e('Textos do Formulário', 'funnel-services-form'); ?></h1>
-            <p class="fsf-admin-subtitle"><?php _e('Personalize todos os textos do formulário inicial', 'funnel-services-form'); ?></p>
+            <h1><span class="dashicons dashicons-edit"></span> <?php _e('Form Texts', 'funnel-services-form'); ?></h1>
+            <p class="fsf-admin-subtitle"><?php _e('Customize all texts of the initial form', 'funnel-services-form'); ?></p>
         </div>
         <button type="button" class="button fsf-reset-btn" id="fsf_reset_texts">
-            <span class="dashicons dashicons-image-rotate"></span> <?php _e('Restaurar Padrão', 'funnel-services-form'); ?>
+            <span class="dashicons dashicons-image-rotate"></span> <?php _e('Restore Default', 'funnel-services-form'); ?>
         </button>
     </div>
 
     <?php if (!empty($show_success)): ?>
     <div class="fsf-success-message">
         <span class="dashicons dashicons-yes-alt"></span>
-        <span><?php _e('Textos atualizados com sucesso!', 'funnel-services-form'); ?></span>
+        <span><?php _e('Texts updated successfully!', 'funnel-services-form'); ?></span>
         <button type="button" class="fsf-dismiss-notice">&times;</button>
     </div>
     <?php endif; ?>
@@ -34,15 +34,15 @@ if (!defined('ABSPATH')) exit;
             <!-- Títulos Card -->
             <div class="fsf-admin-card">
                 <div class="fsf-card-header">
-                    <h2><span class="dashicons dashicons-heading"></span> <?php _e('Títulos', 'funnel-services-form'); ?></h2>
+                    <h2><span class="dashicons dashicons-heading"></span> <?php _e('Titles', 'funnel-services-form'); ?></h2>
                 </div>
                 <div class="fsf-card-body">
                     <div class="fsf-form-group">
-                        <label for="form_title"><?php _e('Título Principal', 'funnel-services-form'); ?></label>
+                        <label for="form_title"><?php _e('Main Title', 'funnel-services-form'); ?></label>
                         <input type="text" name="form_title" id="form_title" value="<?php echo esc_attr($texts['form_title']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['form_title']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="form_subtitle"><?php _e('Subtítulo', 'funnel-services-form'); ?></label>
+                        <label for="form_subtitle"><?php _e('Subtitle', 'funnel-services-form'); ?></label>
                         <input type="text" name="form_subtitle" id="form_subtitle" value="<?php echo esc_attr($texts['form_subtitle']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['form_subtitle']); ?>" />
                     </div>
                 </div>
@@ -51,15 +51,15 @@ if (!defined('ABSPATH')) exit;
             <!-- Botón Card -->
             <div class="fsf-admin-card">
                 <div class="fsf-card-header">
-                    <h2><span class="dashicons dashicons-button"></span> <?php _e('Botão', 'funnel-services-form'); ?></h2>
+                    <h2><span class="dashicons dashicons-button"></span> <?php _e('Button', 'funnel-services-form'); ?></h2>
                 </div>
                 <div class="fsf-card-body">
                     <div class="fsf-form-group">
-                        <label for="submit_button"><?php _e('Texto do Botão', 'funnel-services-form'); ?></label>
+                        <label for="submit_button"><?php _e('Button Text', 'funnel-services-form'); ?></label>
                         <input type="text" name="submit_button" id="submit_button" value="<?php echo esc_attr($texts['submit_button']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['submit_button']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="error_message"><?php _e('Mensagem de Erro', 'funnel-services-form'); ?></label>
+                        <label for="error_message"><?php _e('Error Message', 'funnel-services-form'); ?></label>
                         <input type="text" name="error_message" id="error_message" value="<?php echo esc_attr($texts['error_message']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['error_message']); ?>" />
                     </div>
                 </div>
@@ -69,7 +69,7 @@ if (!defined('ABSPATH')) exit;
         <!-- Campo Nome Card -->
         <div class="fsf-admin-card">
             <div class="fsf-card-header">
-                <h2><span class="dashicons dashicons-admin-users"></span> <?php _e('Campo Nome', 'funnel-services-form'); ?></h2>
+                <h2><span class="dashicons dashicons-admin-users"></span> <?php _e('Name Field', 'funnel-services-form'); ?></h2>
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
@@ -82,11 +82,11 @@ if (!defined('ABSPATH')) exit;
                         <input type="text" name="name_placeholder" id="name_placeholder" value="<?php echo esc_attr($texts['name_placeholder']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['name_placeholder']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="name_error_required"><?php _e('Erro: Campo obrigatório', 'funnel-services-form'); ?></label>
+                        <label for="name_error_required"><?php _e('Error: Required field', 'funnel-services-form'); ?></label>
                         <input type="text" name="name_error_required" id="name_error_required" value="<?php echo esc_attr($texts['name_error_required']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['name_error_required']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="name_error_min"><?php _e('Erro: Mínimo de caracteres', 'funnel-services-form'); ?></label>
+                        <label for="name_error_min"><?php _e('Error: Minimum characters', 'funnel-services-form'); ?></label>
                         <input type="text" name="name_error_min" id="name_error_min" value="<?php echo esc_attr($texts['name_error_min']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['name_error_min']); ?>" />
                     </div>
                 </div>
@@ -96,7 +96,7 @@ if (!defined('ABSPATH')) exit;
         <!-- Campo Email Card -->
         <div class="fsf-admin-card">
             <div class="fsf-card-header">
-                <h2><span class="dashicons dashicons-email"></span> <?php _e('Campo E-mail', 'funnel-services-form'); ?></h2>
+                <h2><span class="dashicons dashicons-email"></span> <?php _e('Email Field', 'funnel-services-form'); ?></h2>
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
@@ -109,11 +109,11 @@ if (!defined('ABSPATH')) exit;
                         <input type="text" name="email_placeholder" id="email_placeholder" value="<?php echo esc_attr($texts['email_placeholder']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['email_placeholder']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="email_error_required"><?php _e('Erro: Campo obrigatório', 'funnel-services-form'); ?></label>
+                        <label for="email_error_required"><?php _e('Error: Required field', 'funnel-services-form'); ?></label>
                         <input type="text" name="email_error_required" id="email_error_required" value="<?php echo esc_attr($texts['email_error_required']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['email_error_required']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="email_error_invalid"><?php _e('Erro: E-mail inválido', 'funnel-services-form'); ?></label>
+                        <label for="email_error_invalid"><?php _e('Error: Invalid email', 'funnel-services-form'); ?></label>
                         <input type="text" name="email_error_invalid" id="email_error_invalid" value="<?php echo esc_attr($texts['email_error_invalid']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['email_error_invalid']); ?>" />
                     </div>
                 </div>
@@ -123,7 +123,7 @@ if (!defined('ABSPATH')) exit;
         <!-- Campo WhatsApp Card -->
         <div class="fsf-admin-card">
             <div class="fsf-card-header">
-                <h2><span class="dashicons dashicons-phone"></span> <?php _e('Campo WhatsApp', 'funnel-services-form'); ?></h2>
+                <h2><span class="dashicons dashicons-phone"></span> <?php _e('WhatsApp Field', 'funnel-services-form'); ?></h2>
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
@@ -136,11 +136,11 @@ if (!defined('ABSPATH')) exit;
                         <input type="text" name="whatsapp_placeholder" id="whatsapp_placeholder" value="<?php echo esc_attr($texts['whatsapp_placeholder']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['whatsapp_placeholder']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="whatsapp_error_required"><?php _e('Erro: Campo obrigatório', 'funnel-services-form'); ?></label>
+                        <label for="whatsapp_error_required"><?php _e('Error: Required field', 'funnel-services-form'); ?></label>
                         <input type="text" name="whatsapp_error_required" id="whatsapp_error_required" value="<?php echo esc_attr($texts['whatsapp_error_required']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['whatsapp_error_required']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="whatsapp_error_invalid"><?php _e('Erro: WhatsApp inválido', 'funnel-services-form'); ?></label>
+                        <label for="whatsapp_error_invalid"><?php _e('Error: Invalid WhatsApp', 'funnel-services-form'); ?></label>
                         <input type="text" name="whatsapp_error_invalid" id="whatsapp_error_invalid" value="<?php echo esc_attr($texts['whatsapp_error_invalid']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['whatsapp_error_invalid']); ?>" />
                     </div>
                 </div>
@@ -150,20 +150,20 @@ if (!defined('ABSPATH')) exit;
         <!-- Privacidad Card -->
         <div class="fsf-admin-card">
             <div class="fsf-card-header">
-                <h2><span class="dashicons dashicons-shield"></span> <?php _e('Política de Privacidade', 'funnel-services-form'); ?></h2>
+                <h2><span class="dashicons dashicons-shield"></span> <?php _e('Privacy Policy', 'funnel-services-form'); ?></h2>
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
                     <div class="fsf-form-group">
-                        <label for="privacy_text"><?php _e('Texto antes do link', 'funnel-services-form'); ?></label>
+                        <label for="privacy_text"><?php _e('Text before link', 'funnel-services-form'); ?></label>
                         <input type="text" name="privacy_text" id="privacy_text" value="<?php echo esc_attr($texts['privacy_text']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['privacy_text']); ?>" />
                     </div>
                     <div class="fsf-form-group">
-                        <label for="privacy_link_text"><?php _e('Texto do link', 'funnel-services-form'); ?></label>
+                        <label for="privacy_link_text"><?php _e('Link text', 'funnel-services-form'); ?></label>
                         <input type="text" name="privacy_link_text" id="privacy_link_text" value="<?php echo esc_attr($texts['privacy_link_text']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['privacy_link_text']); ?>" />
                     </div>
                     <div class="fsf-form-group fsf-full-width">
-                        <label for="privacy_error"><?php _e('Erro: Não aceito', 'funnel-services-form'); ?></label>
+                        <label for="privacy_error"><?php _e('Error: Not accepted', 'funnel-services-form'); ?></label>
                         <input type="text" name="privacy_error" id="privacy_error" value="<?php echo esc_attr($texts['privacy_error']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['privacy_error']); ?>" />
                     </div>
                 </div>
@@ -172,7 +172,7 @@ if (!defined('ABSPATH')) exit;
 
         <!-- Submit -->
         <div class="fsf-admin-footer">
-            <?php submit_button(__('Guardar Alterações', 'funnel-services-form'), 'primary large', 'submit', false); ?>
+            <?php submit_button(__('Save Changes', 'funnel-services-form'), 'primary large', 'submit', false); ?>
         </div>
     </form>
 </div>

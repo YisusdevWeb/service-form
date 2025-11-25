@@ -1,8 +1,42 @@
 <?php
+/**
+ * Sistema de internacionalización para el frontend del plugin
+ *
+ * Este archivo maneja la carga de cadenas de traducción para el frontend
+ * basado en el idioma actual de WordPress
+ */
 
-add_action('wp_enqueue_scripts', 'FSF_enqueue_scripts_and_styles', 100);
-function FSF_enqueue_scripts_and_styles()
-{
+/**
+ * Cargar cadenas de traducción para el frontend
+ */
+function fsf_load_frontend_translations() {
+    // Get default texts (now in English)
+    $default_texts = array(
+        // Textos del formulario (ya gestionados por fsf_get_current_form_texts)
+        // Textos del frontend React
+        'loading' => __('Loading...', 'funnel-services-form'),
+        'service_selection' => __('Select a service', 'funnel-services-form'),
+        'email_sent_success' => __('Email sent successfully!', 'funnel-services-form'),
+        'redirecting' => __('Redirecting...', 'funnel-services-form'),
+        'notice' => __('Notice', 'funnel-services-form'),
+        'close' => __('Close', 'funnel-services-form'),
+        'service_no_phase' => __('The service "%s" has no phase options available.', 'funnel-services-form'),
+    );
+    
+    // Combinar con textos personalizados del formulario
+    $form_texts = function_exists('fsf_get_current_form_texts') ? fsf_get_current_form_texts() : array();
+    
+    // Combinar todos los textos
+    $all_texts = array_merge($default_texts, $form_texts);
+    
+    return $all_texts;
+}
+
+/**
+ * Extender la función de enqueue para incluir los textos traducidos
+ */
+function fsf_enqueue_scripts_and_styles_with_translations() {
+    // Código existente de fsf_enqueue_scripts_and_styles
     global $post;
 
     // Check if post content has 'Funnel-services-form' shortcode
@@ -29,7 +63,6 @@ function FSF_enqueue_scripts_and_styles()
             );
         }
 
-
         // Obtener la URL de los términos y condiciones desde las opciones de WordPress
          $terms_url = get_option('fsf_terms_url', '');
 
@@ -41,10 +74,10 @@ function FSF_enqueue_scripts_and_styles()
         $logo_url = get_option('fsf_logo_url', '');
         $logo_max_width = get_option('fsf_logo_max_width', 200);
         $logo_max_height = get_option('fsf_logo_max_height', 80);
-        
-        // Get custom form texts
-        $form_texts = function_exists('fsf_get_current_form_texts') ? fsf_get_current_form_texts() : array();
-        
+
+        // Get translated texts for frontend
+        $frontend_texts = fsf_load_frontend_translations();
+
         $js_data_passed = array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'servicios' => $post_data,
@@ -59,36 +92,15 @@ function FSF_enqueue_scripts_and_styles()
             'logo_url' => $logo_url,
             'logo_max_width' => $logo_max_width,
             'logo_max_height' => $logo_max_height,
-            'form_texts' => $form_texts,
+            'form_texts' => $frontend_texts, // Ahora incluye todos los textos
         );
-      // 
-    wp_enqueue_script( 'FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.3.7', true );
-    // wp_enqueue_script('FSF-frontend', 'http://localhost:9000/app.js', array('jquery'), '1.0.0', true);
-    wp_enqueue_style('FSF-frontend-style', FSF_PLUGIN_URL .'dist/styles.css', array(), '1.3.7');
+
+        wp_enqueue_script('FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.4.2', true);
+        wp_enqueue_style('FSF-frontend-style', FSF_PLUGIN_URL .'dist/styles.css', array(), '1.4.2');
         wp_localize_script('FSF-frontend', 'FSF_data', $js_data_passed);
     }
 }
 
-add_action('admin_enqueue_scripts', 'FSF_enqueue_admin_scripts_and_styles');
-function FSF_enqueue_admin_scripts_and_styles()
-{
-    wp_enqueue_style('FSF-settings-style', FSF_PLUGIN_URL . '/assets/css/style.css', array(), '1.0.1');
-}
-
-/**
- * Encolar CSS de compatibilidad personalizada para temas conflictivos
- * Los usuarios pueden agregar sus propias reglas CSS en custom-theme-override.css
- */
-add_action('wp_enqueue_scripts', 'FSF_enqueue_theme_compat', 999);
-function FSF_enqueue_theme_compat()
-{
-    // SIEMPRE cargar el archivo de sobrescritura personalizada
-    // Este archivo permite a los usuarios agregar sus propias reglas CSS
-    // para solucionar conflictos específicos con su tema
-    wp_enqueue_style(
-        'fsf-custom-theme-override',
-        FSF_PLUGIN_URL . 'includes/compat/custom-theme-override.css',
-        array(),
-        '1.0.0'
-    );
-}
+// Replace original function with improved version
+remove_action('wp_enqueue_scripts', 'FSF_enqueue_scripts_and_styles');
+add_action('wp_enqueue_scripts', 'fsf_enqueue_scripts_and_styles_with_translations', 100);

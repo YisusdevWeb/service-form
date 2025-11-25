@@ -2,7 +2,7 @@ import { debounce } from '../utils/debounce';
 
 export const handleSelectionFactory = (currentPhase, selections, addSelection, currentService, setCurrentPhase, setSnackbarMessage, setSnackbarSeverity, setSnackbarOpen, onAutoAdvance) => {
   return debounce((option, value) => {
-    // Identificar el servicio actual por uniqueId y leer selecciones sólo de ese servicio
+    // Identify current service by uniqueId and read selections only from that service
     const uniqueId = currentService?.uniqueId;
     const currentSelections = uniqueId ? (selections?.[uniqueId]?.[currentPhase] || {}) : (selections[currentPhase] || {});
 

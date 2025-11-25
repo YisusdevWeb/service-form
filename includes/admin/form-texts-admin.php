@@ -16,8 +16,8 @@ add_action('admin_menu', 'fsf_add_form_texts_menu');
 function fsf_add_form_texts_menu() {
     add_submenu_page(
         'fsf-informacion-de-usuario',
-        __('Textos do Formulário', 'funnel-services-form'),
-        __('Textos do Formulário', 'funnel-services-form'),
+        __('Form Texts', 'funnel-services-form'),
+        __('Form Texts', 'funnel-services-form'),
         'manage_options',
         'fsf-form-texts',
         'fsf_display_form_texts_page'
@@ -46,7 +46,7 @@ function fsf_enqueue_form_texts_scripts($hook_suffix) {
     wp_localize_script('fsf-form-texts-admin', 'fsfFormTextsData', array(
         'defaults' => fsf_get_default_form_texts(),
         'i18n' => array(
-            'confirmReset' => __('¿Restaurar textos por defecto?', 'funnel-services-form'),
+            'confirmReset' => __('Restore default texts?', 'funnel-services-form'),
         )
     ));
 }
@@ -56,38 +56,38 @@ function fsf_enqueue_form_texts_scripts($hook_suffix) {
  */
 function fsf_get_default_form_texts() {
     return array(
-        // Títulos
-        'form_title' => 'PEDIDO DE PROPOSTA',
-        'form_subtitle' => 'Preenche os campos abaixo para pedires a tua proposta!',
+        // Titles
+        'form_title' => 'REQUEST A QUOTE',
+        'form_subtitle' => 'Fill in the fields below to request your quote!',
         
-        // Campo Nombre
-        'name_label' => 'Nome e Apelido *',
-        'name_placeholder' => 'O teu Primeiro e último nome',
-        'name_error_required' => 'Nome é obrigatório',
-        'name_error_min' => 'Deve ter pelo menos 3 caracteres',
+        // Name field
+        'name_label' => 'Full Name *',
+        'name_placeholder' => 'Your first and last name',
+        'name_error_required' => 'Name is required',
+        'name_error_min' => 'Must be at least 3 characters',
         
-        // Campo Email
-        'email_label' => 'E-mail *',
-        'email_placeholder' => 'O teu melhor e-mail',
-        'email_error_required' => 'Email é obrigatório',
-        'email_error_invalid' => 'Insere um email válido',
+        // Email field
+        'email_label' => 'Email *',
+        'email_placeholder' => 'Your best email',
+        'email_error_required' => 'Email is required',
+        'email_error_invalid' => 'Enter a valid email',
         
-        // Campo WhatsApp
-        'whatsapp_label' => 'O teu WhatsApp *',
-        'whatsapp_placeholder' => 'O teu WhatsApp',
-        'whatsapp_error_required' => 'Teu WhatsApp é obrigatório',
-        'whatsapp_error_invalid' => 'Insere teu WhatsApp válido',
+        // WhatsApp field
+        'whatsapp_label' => 'Your WhatsApp *',
+        'whatsapp_placeholder' => 'Your WhatsApp number',
+        'whatsapp_error_required' => 'WhatsApp is required',
+        'whatsapp_error_invalid' => 'Enter a valid WhatsApp number',
         
-        // Privacidad
-        'privacy_text' => 'Li e aceito',
-        'privacy_link_text' => 'a Política de Privacidade',
-        'privacy_error' => 'É necessário aceitar as políticas de privacidade',
+        // Privacy
+        'privacy_text' => 'I have read and accept',
+        'privacy_link_text' => 'the Privacy Policy',
+        'privacy_error' => 'You must accept the privacy policy',
         
-        // Botón
-        'submit_button' => 'SOLICITAR PROPOSTA',
+        // Button
+        'submit_button' => 'REQUEST QUOTE',
         
-        // Mensajes
-        'error_message' => 'Houve um erro ao criar a entrada.',
+        // Messages
+        'error_message' => 'There was an error creating the entry.',
     );
 }
 

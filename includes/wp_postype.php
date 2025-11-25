@@ -2,28 +2,28 @@
 
 
 add_action('init', function() {
-    // Registro do Custom Post Type 'form-servico'
+    // Register Custom Post Type 'form-servico'
     register_post_type('form-servico', array(
         'labels' => array(
-            'name' => __('Serviços', 'funnel-services-form'),
-            'singular_name' => __('Serviço', 'funnel-services-form'),
-            'menu_name' => __('Serviços', 'funnel-services-form'),
-            'all_items' => __('Todos os Serviços', 'funnel-services-form'),
-            'edit_item' => __('Editar Serviço', 'funnel-services-form'),
-            'view_item' => __('Ver Serviço', 'funnel-services-form'),
-            'add_new_item' => __('Adicionar Novo Serviço', 'funnel-services-form'),
-            'new_item' => __('Novo Serviço', 'funnel-services-form'),
-            'parent_item_colon' => __('Serviço Pai:', 'funnel-services-form'),
-            'search_items' => __('Procurar Serviços', 'funnel-services-form'),
-            'not_found' => __('Nenhum serviço encontrado.', 'funnel-services-form'),
-            'not_found_in_trash' => __('Nenhum serviço encontrado na lixeira.', 'funnel-services-form'),
-            'archives' => __('Arquivos de Serviços', 'funnel-services-form'),
-            'attributes' => __('Atributos do Serviço', 'funnel-services-form'),
-            'insert_into_item' => __('Inserir no Serviço', 'funnel-services-form'),
-            'uploaded_to_this_item' => __('Enviado para este Serviço', 'funnel-services-form'),
-            'filter_items_list' => __('Filtrar lista de Serviços', 'funnel-services-form'),
+            'name' => __('Services', 'funnel-services-form'),
+            'singular_name' => __('Service', 'funnel-services-form'),
+            'menu_name' => __('Services', 'funnel-services-form'),
+            'all_items' => __('All Services', 'funnel-services-form'),
+            'edit_item' => __('Edit Service', 'funnel-services-form'),
+            'view_item' => __('View Service', 'funnel-services-form'),
+            'add_new_item' => __('Add New Service', 'funnel-services-form'),
+            'new_item' => __('New Service', 'funnel-services-form'),
+            'parent_item_colon' => __('Parent Service:', 'funnel-services-form'),
+            'search_items' => __('Search Services', 'funnel-services-form'),
+            'not_found' => __('No services found.', 'funnel-services-form'),
+            'not_found_in_trash' => __('No services found in trash.', 'funnel-services-form'),
+            'archives' => __('Service Archives', 'funnel-services-form'),
+            'attributes' => __('Service Attributes', 'funnel-services-form'),
+            'insert_into_item' => __('Insert into Service', 'funnel-services-form'),
+            'uploaded_to_this_item' => __('Uploaded to this Service', 'funnel-services-form'),
+            'filter_items_list' => __('Filter Services List', 'funnel-services-form'),
         ),
-        'description' => __('Informações de Serviços', 'funnel-services-form'),
+        'description' => __('Services Information', 'funnel-services-form'),
         'public' => true,
         'hierarchical' => true,
         'show_in_rest' => true,
@@ -33,15 +33,15 @@ add_action('init', function() {
         'delete_with_user' => false,
     ));
 
-    // Registro do Custom Post Type 'user-info'
+    // Register Custom Post Type 'user-info'
     register_post_type('user-info', array(
         'labels' => array(
-            'name' => __('Informações de Usuário', 'funnel-services-form'),
-            'singular_name' => __('Informação de Usuário', 'funnel-services-form'),
-            'menu_name' => __('Info Usuário', 'funnel-services-form'),
-            'all_items' => __('Todas as Informações de Usuário', 'funnel-services-form'),
+            'name' => __('User Information', 'funnel-services-form'),
+            'singular_name' => __('User Information', 'funnel-services-form'),
+            'menu_name' => __('User Info', 'funnel-services-form'),
+            'all_items' => __('All User Information', 'funnel-services-form'),
         ),
-        'description' => __('Informações dos Usuários', 'funnel-services-form'),
+        'description' => __('User Information', 'funnel-services-form'),
         'public' => false,
         'show_ui' => true,
         'show_in_menu' => false,

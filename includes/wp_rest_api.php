@@ -42,14 +42,14 @@ add_action('rest_api_init', function() {
 function fsf_create_user_post(WP_REST_Request $request) {
     $data = $request->get_json_params();
 
-    // Verificar honeypot
+    // Verify honeypot
     if (!empty($data['website'])) {
-        return new WP_Error('honeypot_failed', 'A verificação do honeypot falhou.', array('status' => 400));
+        return new WP_Error('honeypot_failed', 'Honeypot verification failed.', array('status' => 400));
     }
 
     $post_id = wp_insert_post(array(
         'post_type' => 'user-info',
-        'post_title' => 'Informação de ' . sanitize_text_field($data['nombre']),
+        'post_title' => 'User info - ' . sanitize_text_field($data['nombre']),
         'post_status' => 'publish',
         'meta_input' => array(
             'nombre' => sanitize_text_field($data['nombre']),
@@ -59,13 +59,13 @@ function fsf_create_user_post(WP_REST_Request $request) {
     ));
 
     if (is_wp_error($post_id)) {
-        return new WP_Error('error', 'Falha ao criar o post.', array('status' => 500));
+        return new WP_Error('error', 'Failed to create post.', array('status' => 500));
     }
-    // Enviar e-mail al administrador como lead cuando se crea el primer formulario
+    // Send email to admin as lead when first form is created
     if (!empty($data) && is_email($data['email'])) {
-        $subject = get_option('fsf_email_subject', 'Novo Lead Recebido');
+        $subject = get_option('fsf_email_subject', 'New Lead Received');
         fsf_send_email_to_admin($data, $subject);
-        // Enviar e-mail al usuario registrado
+        // Send email to registered user
         fsf_send_email_to_user($data, $subject);
     }
     
@@ -82,23 +82,23 @@ function fsf_update_user_post(WP_REST_Request $request) {
             'nombre' => sanitize_text_field($data['nombre']),
             'email' => sanitize_email($data['email']),
             'Telefone' => sanitize_text_field($data['whatsapp']),
-            'services' => maybe_serialize($data['selections']), // Atualizar os serviços selecionados
+            'services' => maybe_serialize($data['selections']), // Update selected services
         ),
     );
 
     $updated_post_id = wp_update_post($post_data);
 
     if (is_wp_error($updated_post_id)) {
-        return new WP_Error('error', 'Falha ao atualizar o post.', array('status' => 500));
+        return new WP_Error('error', 'Failed to update post.', array('status' => 500));
     }
 
-    // Personalize o assunto do e-mail aqui
-    $subject = get_option('fsf_email_subject', 'Cotação Nova');
+    // Customize email subject here
+    $subject = get_option('fsf_email_subject', 'New Quote');
 
-    // Enviar e-mail para o administrador
+    // Send email to admin
     fsf_send_email_to_admin($data, $subject);
 
-    // Enviar e-mail para o usuário
+    // Send email to user
     fsf_send_email_to_user($data, $subject);
 
     return array('post_id' => $updated_post_id);

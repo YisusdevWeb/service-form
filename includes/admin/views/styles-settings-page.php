@@ -11,14 +11,14 @@ if (!defined('ABSPATH')) exit;
     <!-- Header -->
     <div class="fsf-admin-header">
         <div class="fsf-admin-header-content">
-            <h1><span class="dashicons dashicons-art"></span> <?php _e('Personalização de Estilos e Logo', 'funnel-services-form'); ?></h1>
-            <p class="fsf-admin-subtitle"><?php _e('Personalize a aparência do formulário de serviços', 'funnel-services-form'); ?></p>
+            <h1><span class="dashicons dashicons-art"></span> <?php _e('Styles and Logo Customization', 'funnel-services-form'); ?></h1>
+            <p class="fsf-admin-subtitle"><?php _e('Customize the appearance of the service form', 'funnel-services-form'); ?></p>
         </div>
         <?php
         $fsf_active_name = isset($color_templates[$active_template]) && !empty($color_templates[$active_template]['name']) ? $color_templates[$active_template]['name'] : $active_template;
         ?>
         <div class="fsf-admin-badge">
-            <span class="fsf-badge-label"><?php _e('Plantilla activa', 'funnel-services-form'); ?></span>
+            <span class="fsf-badge-label"><?php _e('Active Template', 'funnel-services-form'); ?></span>
             <span class="fsf-badge-value"><?php echo esc_html($fsf_active_name); ?></span>
         </div>
     </div>
@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) exit;
     <?php if (!empty($show_success)): ?>
     <div class="fsf-success-message">
         <span class="dashicons dashicons-yes-alt"></span>
-        <span><?php _e('Estilos atualizados com sucesso!', 'funnel-services-form'); ?></span>
+        <span><?php _e('Styles updated successfully!', 'funnel-services-form'); ?></span>
         <button type="button" class="fsf-dismiss-notice">&times;</button>
     </div>
     <?php endif; ?>
@@ -35,9 +35,9 @@ if (!defined('ABSPATH')) exit;
         <!-- Templates de colores -->
         <div class="fsf-admin-card">
             <div class="fsf-card-header">
-                <h2><span class="dashicons dashicons-admin-customizer"></span> <?php _e('Templates de Cores', 'funnel-services-form'); ?></h2>
+                <h2><span class="dashicons dashicons-admin-customizer"></span> <?php _e('Color Templates', 'funnel-services-form'); ?></h2>
                 <button type="button" class="button button-secondary" id="fsf_reset_defaults">
-                    <span class="dashicons dashicons-image-rotate"></span> <?php _e('Restaurar Padrão', 'funnel-services-form'); ?>
+                    <span class="dashicons dashicons-image-rotate"></span> <?php _e('Restore Default', 'funnel-services-form'); ?>
                 </button>
             </div>
             <div class="fsf-templates-grid">
@@ -72,20 +72,20 @@ if (!defined('ABSPATH')) exit;
                             <img src="<?php echo esc_url($logo_url); ?>" id="fsf-logo-preview" class="fsf-logo-preview <?php echo $logo_url ? '' : 'hidden'; ?>" />
                             <div id="fsf-no-logo" class="fsf-no-logo <?php echo $logo_url ? 'hidden' : ''; ?>">
                                 <span class="dashicons dashicons-format-image"></span>
-                                <p><?php _e('Sem logo', 'funnel-services-form'); ?></p>
+                                <p><?php _e('No logo', 'funnel-services-form'); ?></p>
                             </div>
                         </div>
                         <input type="hidden" name="logo_url" id="fsf_logo_url" value="<?php echo esc_attr($logo_url); ?>" />
                         <div class="fsf-logo-actions">
                             <button type="button" class="button button-primary" id="fsf_upload_logo_button">
-                                <span class="dashicons dashicons-upload"></span> <?php _e('Selecionar', 'funnel-services-form'); ?>
+                                <span class="dashicons dashicons-upload"></span> <?php _e('Select', 'funnel-services-form'); ?>
                             </button>
                             <button type="button" class="button button-secondary" id="fsf_remove_logo_button">
-                                <span class="dashicons dashicons-trash"></span> <?php _e('Remover', 'funnel-services-form'); ?>
+                                <span class="dashicons dashicons-trash"></span> <?php _e('Remove', 'funnel-services-form'); ?>
                             </button>
                         </div>
                         <div class="fsf-logo-size">
-                            <label><?php _e('Tamanho Máximo', 'funnel-services-form'); ?></label>
+                            <label><?php _e('Maximum Size', 'funnel-services-form'); ?></label>
                             <div class="fsf-size-inputs">
                                 <input type="number" name="logo_max_width" value="<?php echo esc_attr(get_option('fsf_logo_max_width', 200)); ?>" min="50" max="500" /> 
                                 <span>×</span>
@@ -108,12 +108,12 @@ if (!defined('ABSPATH')) exit;
                             <div class="fsf-glass-bg" id="fsf-glass-bg"></div>
                             <div class="fsf-glass-content">
                                 <span class="dashicons dashicons-admin-appearance"></span>
-                                <p><?php _e('Vista previa', 'funnel-services-form'); ?></p>
+                                <p><?php _e('Preview', 'funnel-services-form'); ?></p>
                             </div>
                         </div>
                         <div class="fsf-glass-controls">
                             <div class="fsf-control-group">
-                                <label for="glass_bg_opacity"><?php _e('Opacidade', 'funnel-services-form'); ?></label>
+                                <label for="glass_bg_opacity"><?php _e('Opacity', 'funnel-services-form'); ?></label>
                                 <input type="range" id="glass_bg_opacity_range" min="0" max="1" step="0.01" value="<?php echo esc_attr($colors['glass_bg_opacity']); ?>" />
                                 <input type="number" name="glass_bg_opacity" id="glass_bg_opacity" value="<?php echo esc_attr($colors['glass_bg_opacity']); ?>" step="0.01" min="0" max="1" />
                             </div>
@@ -130,24 +130,24 @@ if (!defined('ABSPATH')) exit;
             <!-- Colores Card -->
             <div class="fsf-admin-card fsf-colors-card">
                 <div class="fsf-card-header">
-                    <h2><span class="dashicons dashicons-admin-appearance"></span> <?php _e('Cores', 'funnel-services-form'); ?></h2>
+                    <h2><span class="dashicons dashicons-admin-appearance"></span> <?php _e('Colors', 'funnel-services-form'); ?></h2>
                 </div>
                 <div class="fsf-card-body">
                     <div class="fsf-colors-grid">
                         <?php
                         $color_fields = [
-                            'bg_primary' => ['label' => __('Fundo Principal', 'funnel-services-form'), 'icon' => 'format-image'],
-                            'bg_secondary' => ['label' => __('Fundo Secundário', 'funnel-services-form'), 'icon' => 'format-image'],
-                            'title_color' => ['label' => __('Títulos', 'funnel-services-form'), 'icon' => 'heading'],
-                            'text_primary' => ['label' => __('Texto Principal', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
-                            'text_secondary' => ['label' => __('Texto Secundário', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
+                            'bg_primary' => ['label' => __('Primary Background', 'funnel-services-form'), 'icon' => 'format-image'],
+                            'bg_secondary' => ['label' => __('Secondary Background', 'funnel-services-form'), 'icon' => 'format-image'],
+                            'title_color' => ['label' => __('Titles', 'funnel-services-form'), 'icon' => 'heading'],
+                            'text_primary' => ['label' => __('Primary Text', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
+                            'text_secondary' => ['label' => __('Secondary Text', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
                             'label_color' => ['label' => __('Labels', 'funnel-services-form'), 'icon' => 'tag'],
-                            'theme_color_light' => ['label' => __('Cor Tema', 'funnel-services-form'), 'icon' => 'art'],
-                            'input_text' => ['label' => __('Texto Input', 'funnel-services-form'), 'icon' => 'edit'],
-                            'input_border' => ['label' => __('Borda Input', 'funnel-services-form'), 'icon' => 'forms'],
-                            'button_bg' => ['label' => __('Botão', 'funnel-services-form'), 'icon' => 'button'],
-                            'button_text' => ['label' => __('Texto Botão', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
-                            'button_hover_bg' => ['label' => __('Botão Hover', 'funnel-services-form'), 'icon' => 'button'],
+                            'theme_color_light' => ['label' => __('Theme Color', 'funnel-services-form'), 'icon' => 'art'],
+                            'input_text' => ['label' => __('Input Text', 'funnel-services-form'), 'icon' => 'edit'],
+                            'input_border' => ['label' => __('Input Border', 'funnel-services-form'), 'icon' => 'forms'],
+                            'button_bg' => ['label' => __('Button', 'funnel-services-form'), 'icon' => 'button'],
+                            'button_text' => ['label' => __('Button Text', 'funnel-services-form'), 'icon' => 'editor-textcolor'],
+                            'button_hover_bg' => ['label' => __('Button Hover', 'funnel-services-form'), 'icon' => 'button'],
                         ];
                         foreach ($color_fields as $field => $config): ?>
                         <div class="fsf-color-field">
@@ -164,7 +164,7 @@ if (!defined('ABSPATH')) exit;
 
             <!-- Submit -->
             <div class="fsf-admin-footer">
-                <?php submit_button(__('Guardar Alterações', 'funnel-services-form'), 'primary large', 'submit', false); ?>
+                <?php submit_button(__('Save Changes', 'funnel-services-form'), 'primary large', 'submit', false); ?>
             </div>
         </form>
     </div>

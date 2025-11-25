@@ -13,11 +13,11 @@ if (!defined('ABSPATH')) exit;
 function fsf_get_color_templates() {
     return [
         'dark' => [
-            'name' => __('🌙 Escuro (Padrão)', 'funnel-services-form'),
+            'name' => __('🌙 Dark (Default)', 'funnel-services-form'),
             'colors' => fsf_get_default_colors()
         ],
         'light' => [
-            'name' => __('☀️ Claro', 'funnel-services-form'),
+            'name' => __('☀️ Light', 'funnel-services-form'),
             'colors' => [
                 'bg_primary' => '#f8fafc',
                 'bg_secondary' => '#e2e8f0',
@@ -37,7 +37,7 @@ function fsf_get_color_templates() {
             ]
         ],
         'blue_corporate' => [
-            'name' => __('🔵 Azul Corporativo', 'funnel-services-form'),
+            'name' => __('🔵 Corporate Blue', 'funnel-services-form'),
             'colors' => [
                 'bg_primary' => '#0c4a6e',
                 'bg_secondary' => '#0369a1',
@@ -57,7 +57,7 @@ function fsf_get_color_templates() {
             ]
         ],
         'green_nature' => [
-            'name' => __('🟢 Verde Natural', 'funnel-services-form'),
+            'name' => __('🟢 Natural Green', 'funnel-services-form'),
             'colors' => [
                 'bg_primary' => '#14532d',
                 'bg_secondary' => '#166534',
@@ -77,7 +77,7 @@ function fsf_get_color_templates() {
             ]
         ],
         'purple_elegant' => [
-            'name' => __('🟣 Púrpura Elegante', 'funnel-services-form'),
+            'name' => __('🟣 Elegant Purple', 'funnel-services-form'),
             'colors' => [
                 'bg_primary' => '#3b0764',
                 'bg_secondary' => '#6b21a8',
@@ -97,7 +97,7 @@ function fsf_get_color_templates() {
             ]
         ],
         'orange_warm' => [
-            'name' => __('🟠 Laranja Quente', 'funnel-services-form'),
+            'name' => __('🟠 Warm Orange', 'funnel-services-form'),
             'colors' => [
                 'bg_primary' => '#7c2d12',
                 'bg_secondary' => '#c2410c',

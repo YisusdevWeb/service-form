@@ -43,7 +43,7 @@ class FSF_Page_Templates {
      */
     private function __construct() {
         $this->templates = array(
-            self::TEMPLATE_SLUG => __( '🚀 Formulário Full Screen (Plugin)', 'funnel-services-form' ),
+            self::TEMPLATE_SLUG => __( '🚀 Full Screen Form (Plugin)', 'funnel-services-form' ),
         );
 
         // Filtros para temas clásicos y Gutenberg
@@ -88,7 +88,7 @@ class FSF_Page_Templates {
         // Registrar el template como un block template
         $template_content = '<!-- wp:shortcode -->[funil_services_form]<!-- /wp:shortcode -->';
 
-        // Verificar si ya existe
+        // Check if it already exists
         $existing = get_block_templates( array( 'slug__in' => array( self::TEMPLATE_SLUG ) ), 'wp_template' );
         
         if ( empty( $existing ) ) {
@@ -113,8 +113,8 @@ class FSF_Page_Templates {
         $template->slug           = self::TEMPLATE_SLUG;
         $template->source         = 'plugin';
         $template->type           = 'wp_template';
-        $template->title          = __( '🚀 Formulário Full Screen', 'funnel-services-form' );
-        $template->description    = __( 'Template de página completa para el formulario de servicios', 'funnel-services-form' );
+        $template->title          = __( '🚀 Full Screen Form', 'funnel-services-form' );
+        $template->description    = __( 'Full page template for services form', 'funnel-services-form' );
         $template->status         = 'publish';
         $template->has_theme_file = true;
         $template->is_custom      = true;
@@ -157,7 +157,7 @@ class FSF_Page_Templates {
 
         $page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-        // Verificar si es nuestro template (con o sin extensión)
+        // Check if it's our template (with or without extension)
         $is_our_template = ( 
             $page_template === self::TEMPLATE_SLUG || 
             $page_template === self::TEMPLATE_SLUG . '.php' ||

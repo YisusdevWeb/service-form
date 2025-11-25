@@ -55,7 +55,7 @@ const App = () => {
   };
 
   const handleServiceClick = (service) => {
-    resetService(); // Limpiar estado anterior
+    resetService(); // Clear previous state
     if (!service.fases_do_servico || service.fases_do_servico.length === 0) {
       setServiceWithoutPhases(service);
       setNoPhasePopupOpen(true);
@@ -84,7 +84,7 @@ const App = () => {
         sx={{
           maxWidth: "600px",
           mx: "auto",
-          p: !currentService ? { xs: 3, md: '50px' } : 0 // Padding 50px en la selección de servicios
+          p: !currentService ? { xs: 3, md: '50px' } : 0 // 50px padding in service selection
         }}
       >
         {showUserForm ? (
@@ -95,7 +95,7 @@ const App = () => {
           <Box>
             <Logo /> {/* Usando el componente Logo aquí */}
             <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center', fontSize: '1.5rem', mb: 3 }}>
-              Selecionar um serviço
+              {FSF_data?.form_texts?.service_selection || 'Select a service'}
             </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
               {[...availableServices]

@@ -3,7 +3,7 @@
 function fsf_send_email_to_admin($data, $subject) {
     $to = get_option('fsf_email_recipient', get_option('admin_email'));
     $email_from = get_option('fsf_email_from', 'web@dappin.pt');
-    $subject = 'Nova cotação'  . ' - ' . $data['email'];
+    $subject = 'New Quote'  . ' - ' . $data['email'];
 
     $created_quotation_date = date_i18n(get_option('date_format') . ' ' . get_option('time_format') . ' T');
 
@@ -13,7 +13,7 @@ function fsf_send_email_to_admin($data, $subject) {
     ob_end_clean();
 
     if (empty($message)) {
-        error_log('O corpo da mensagem está vazio.');
+        error_log('Message body is empty.');
         return;
     }
 
@@ -28,16 +28,16 @@ function fsf_send_email_to_user($data, $subject) {
     $to = $data['email'];
     $email_from = get_option('fsf_email_from', 'web@dappin.pt');
     $email_subject = get_option('fsf_email_subject', $subject);
-    $subject = 'Sua Cotação - ' . $email_subject;
-       /* $subject = 'Sua Cotação - ' . get_option('fsf_email_subject', $subject);*/
+    $subject = 'Your Quote - ' . $email_subject;
+
 
 
     $created_quotation_date = date_i18n(get_option('date_format') . ' ' . get_option('time_format') . ' T');
 
-    // Obtener la plantilla del cuerpo del correo desde las opciones
+    // Get email body template from options
     $email_body_template = get_option('fsf_email_body', '');
 
-    // Reemplazar los placeholders con los datos reales
+    // Replace placeholders with actual data
     $email_body = str_replace(
         ['{nome}', '{email}', '{whatsapp}', '{data_criacao}'],
         [
@@ -54,7 +54,7 @@ function fsf_send_email_to_user($data, $subject) {
     $message = ob_get_clean();
 
     if (empty($message)) {
-        error_log('O corpo da mensagem para o usuário está vazio.');
+        error_log('Message body for user is empty.');
         return;
     }
 

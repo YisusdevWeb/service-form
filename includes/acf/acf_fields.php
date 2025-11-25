@@ -1,5 +1,5 @@
 <?php
-// Definición del grupo de campos ACF
+// ACF field group definition
 add_action('acf/include_fields', function() {
     if (!function_exists('acf_add_local_field_group')) {
         return;
@@ -7,24 +7,24 @@ add_action('acf/include_fields', function() {
 
     acf_add_local_field_group(array(
         'key' => 'group_672e3381d5343',
-        'title' => __('Informações de Serviço', 'Funnel-services-form'),
+        'title' => __('Service Information', 'Funnel-services-form'),
         'fields' => array(
             array(
                 'key' => 'field_672e3382181e3',
-                'label' => __('Fases dos Serviço', 'Funnel-services-form'),
+                'label' => __('Service Phases', 'Funnel-services-form'),
                 'name' => 'fases_do_servico',
                 'type' => 'repeater',
-                'button_label' => __('Adicionar Fase', 'Funnel-services-form'),
+                'button_label' => __('Add Phase', 'Funnel-services-form'),
                 'sub_fields' => array(
                     array(
                         'key' => 'field_672e873ee99a4',
-                        'label' => __('Título', 'Funnel-services-form'),
+                        'label' => __('Title', 'Funnel-services-form'),
                         'name' => 'titulo',
                         'type' => 'text',
                     ),
                     array(
                         'key' => 'field_672e8745e99a5',
-                        'label' => __('Descripción', 'Funnel-services-form'),
+                        'label' => __('Description', 'Funnel-services-form'),
                         'name' => 'descricao',
                         'type' => 'wysiwyg',  // Cambié 'text' por 'wysiwyg'
                         'toolbar' => 'full',  // Puedes definir una barra de herramientas personalizada si lo deseas
@@ -32,26 +32,26 @@ add_action('acf/include_fields', function() {
                     ),
                     array(
                         'key' => 'field_672e8758e99a6',
-                        'label' => __('Tipo de Seleção', 'Funnel-services-form'),
+                        'label' => __('Selection Type', 'Funnel-services-form'),
                         'name' => 'tipo_selecao',
                         'type' => 'select',
                         'choices' => array(
-                            'multipla' => 'Selección Múltiple',
-                            'unica' => 'Selección Única',
+                            'multipla' => 'Multiple Selection',
+                            'unica' => 'Single Selection',
                         ),
                         'default_value' => 'multipla',
-                        'instructions' => __('Seleccione el tipo de selección para esta fase.'),
+                        'instructions' => __('Select the selection type for this phase.'),
                     ),
                     array(
                         'key' => 'field_672e8758e99a7',
-                        'label' => __('Escrever as Opções', 'Funnel-services-form'),
+                        'label' => __('Write Options', 'Funnel-services-form'),
                         'name' => 'escrever_as_opcoes',
                         'type' => 'repeater',
-                        'button_label' => __('Adicionar Opção', 'Funnel-services-form'),
+                        'button_label' => __('Add Option', 'Funnel-services-form'),
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_672e8765e99a7',
-                                'label' => __('Título', 'Funnel-services-form'),
+                                'label' => __('Title', 'Funnel-services-form'),
                                 'name' => 'titulo',
                                 'type' => 'text',
                             ),
@@ -60,7 +60,7 @@ add_action('acf/include_fields', function() {
                                 'label' => __('ID', 'Funnel-services-form'),
                                 'name' => 'id_opcion',
                                 'type' => 'text',
-                                'instructions' => __('ID único gerado automaticamente.'),
+                                'instructions' => __('Unique ID generated automatically.'),
                                 'readonly' => 1,
                                 'wrapper' => array(
                                     'class' => '', // Clases adicionales, si las hay
@@ -85,16 +85,16 @@ add_action('acf/include_fields', function() {
     ));
 });
 
-// Generar un ID único automáticamente si el campo está vacío
+// Generate unique ID automatically if field is empty
 add_filter('acf/update_value/name=id_opcion', function($value, $post_id, $field) {
     // Si el valor está vacío, generar un ID único
     if (empty($value)) {
-        $value = uniqid(); // Generar un valor único
+        $value = uniqid(); // Generate unique value
     }
     return $value;
 }, 10, 3);
 
-// Eliminar el campo 'id_opcion' del DOM
+// Remove 'id_opcion' field from DOM
 
 add_filter('acf/prepare_field/key=field_672e876fe99a8', function($field) {
     return false; // Elimina completamente el campo del DOM
@@ -107,12 +107,12 @@ add_filter('acf/load_value/name=fases_do_servico', function($value, $post_id, $f
     }
 
     foreach ($value as $faseIndex => &$fase) {
-        // Agregar un ID único a cada fase en la repetición
+        // Add unique ID to each phase in the repeater
         $fase['id_fase'] = 'f_' . ($faseIndex + 1);
 
         if (isset($fase['escrever_as_opcoes']) && is_array($fase['escrever_as_opcoes'])) {
             foreach ($fase['escrever_as_opcoes'] as $opcaoIndex => &$opcao) {
-                // Agregar un ID único a cada opción dentro de cada fase
+                // Add unique ID to each option within each phase
                 $opcao['id_opcion'] = 'opcao_' . ($faseIndex + 1) . '_' . ($opcaoIndex + 1);
             }
         }

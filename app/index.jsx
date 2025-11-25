@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </React.StrictMode>
     );
 
-    // Desplazar la vista al formulario después de montar la aplicación con un pequeño retardo
+    // Scroll view to form after mounting app with a small delay
     setTimeout(() => {
       container.scrollIntoView({ behavior: 'smooth' });
     }, 110); // 100 ms para permitir la carga completa

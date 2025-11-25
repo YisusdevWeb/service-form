@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notificação de nova cotação</title>
+    <title>New Quote Notification</title>
 </head>
 <body>
     <div>
-        <h1>Nova Cotação Recebida!</h1>
-        <p>Nome: <?php echo esc_html($data['nombre']); ?></p>
+        <h1>New Quote Received!</h1>
+        <p>Name: <?php echo esc_html($data['nombre']); ?></p>
         <p>Email: <?php echo esc_html($data['email']); ?></p>
-        <p>Telefone: <?php echo esc_html($data['whatsapp']); ?></p>
-        <p>Data de criação: <?php echo esc_html($created_quotation_date); ?></p>
-        <h3>Serviços Selecionados</h3>
+        <p>Phone: <?php echo esc_html($data['whatsapp']); ?></p>
+        <p>Created at: <?php echo esc_html($created_quotation_date); ?></p>
+        <h3>Selected Services</h3>
         <?php
         if (!empty($data['selections'])) {
             foreach ($data['selections'] as $serviceId => $serviceData) {
@@ -31,7 +31,7 @@
                 }
             }
         } else {
-            echo '<p>Não foram selecionados serviços.</p>';
+            echo '<p>No services were selected.</p>';
         }
         ?>
     </div>

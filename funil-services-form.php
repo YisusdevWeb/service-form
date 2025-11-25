@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: EWEB - Funnel Services Form
- * Description: Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos.
- * Version: 1.4.2
+ * Description: Multi-step services form plugin for quotations. Allows creating multi-phase forms with color and style customization.
+ * Version: 1.4.3
  * Author: Yisus Develop
  * Author URI: https://github.com/Yisus-Develop
  * Plugin URI: https://enlaweb.co/
@@ -29,7 +29,7 @@ if ( ! defined( 'FSF_PLUGIN_PATH' ) ) {
 }
 
 if ( ! defined( 'FSF_PLUGIN_VERSION' ) ) {
-    define( 'FSF_PLUGIN_VERSION', '1.4.2' );
+    define( 'FSF_PLUGIN_VERSION', '1.4.3' );
 }
 
 if ( ! defined( 'FSF_TEXT_DOMAIN' ) ) {
@@ -68,6 +68,9 @@ include FSF_PLUGIN_PATH . 'includes/wp_shortcode.php';
 // Include page templates
 include FSF_PLUGIN_PATH . 'includes/wp_page_templates.php';
 
+// Include internationalization for frontend
+include FSF_PLUGIN_PATH . 'includes/wp_i18n_frontend.php';
+
 /**
  * Load plugin textdomain for translations.
  *
@@ -82,4 +85,45 @@ function fsf_load_textdomain() {
     );
 }
 add_action( 'plugins_loaded', 'fsf_load_textdomain' );
+
+/**
+ * Debug translation function to check if strings are translating correctly.
+ *
+ * @since 1.4.3
+ * @return void
+ */
+function fsf_debug_translations() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    global $l10n;
+    
+    $current_locale = get_locale();
+    $textdomain_loaded = is_textdomain_loaded( 'funnel-services-form' ) ? 'Yes' : 'No';
+    
+    // Check MO file path
+    $mofile = WP_LANG_DIR . '/plugins/funnel-services-form-' . $current_locale . '.mo';
+    $mofile_plugin = FSF_PLUGIN_PATH . 'languages/funnel-services-form-' . $current_locale . '.mo';
+    
+    $test_strings = [
+        'Privacy Policy Link Settings',
+        'Thank You Page Link',
+        'Debug / Logs'
+    ];
+
+    echo '<div class="notice notice-warning"><p><strong>FSF Translation Debug:</strong></p>';
+    echo '<p>Current Locale: ' . esc_html( $current_locale ) . '</p>';
+    echo '<p>Textdomain Loaded: ' . esc_html( $textdomain_loaded ) . '</p>';
+    echo '<p>MO Global: ' . (file_exists($mofile) ? 'EXISTS ('.filesize($mofile).' bytes)' : 'NOT FOUND') . '</p>';
+    echo '<p>MO Plugin: ' . (file_exists($mofile_plugin) ? 'EXISTS ('.filesize($mofile_plugin).' bytes)' : 'NOT FOUND') . '</p>';
+    echo '<p>Translation Object: ' . (isset($l10n['funnel-services-form']) ? 'LOADED' : 'NOT LOADED') . '</p>';
+    echo '<ul>';
+    foreach ( $test_strings as $string ) {
+        $translated = __( $string, 'funnel-services-form' );
+        echo '<li>' . esc_html( $string ) . ' → ' . esc_html( $translated ) . '</li>';
+    }
+    echo '</ul></div>';
+}
+add_action( 'admin_notices', 'fsf_debug_translations' );
 

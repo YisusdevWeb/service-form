@@ -19,8 +19,8 @@ add_action('admin_menu', 'fsf_add_styles_menu');
 function fsf_add_styles_menu() {
     add_submenu_page(
         'fsf-informacion-de-usuario',
-        __('Personalização de Estilos e Logo', 'funnel-services-form'),
-        __('Estilos e Logo', 'funnel-services-form'),
+        __('Styles and Logo Customization', 'funnel-services-form'),
+        __('Styles and Logo', 'funnel-services-form'),
         'manage_options',
         'fsf-styles-settings',
         'fsf_display_styles_settings_page'
@@ -55,9 +55,9 @@ function fsf_enqueue_admin_scripts($hook_suffix) {
     wp_localize_script('fsf-styles-admin', 'fsfAdminData', array(
         'defaultColors' => fsf_get_default_colors(),
         'i18n' => array(
-            'confirmReset' => __('¿Restaurar colores por defecto?', 'funnel-services-form'),
-            'selectLogo' => __('Selecionar Logo', 'funnel-services-form'),
-            'useImage' => __('Usar esta imagem', 'funnel-services-form'),
+            'confirmReset' => __('Restore default colors?', 'funnel-services-form'),
+            'selectLogo' => __('Select Logo', 'funnel-services-form'),
+            'useImage' => __('Use this image', 'funnel-services-form'),
         )
     ));
 }

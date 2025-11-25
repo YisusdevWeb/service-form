@@ -22,16 +22,18 @@ const NoPhasePopup = ({ open, onClose, serviceTitle }) => {
       }}
     >
       <DialogTitle id="no-phase-popup-title" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center' }}>
-        Aviso
+        {FSF_data?.form_texts?.notice || 'Notice'}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="no-phase-popup-description" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--font-color)', textAlign: 'center' }}>
-        O serviço “{serviceTitle}” não tem opções de fase disponíveis.
+          {FSF_data?.form_texts?.service_no_phase ? 
+            FSF_data.form_texts.service_no_phase.replace('%s', serviceTitle) : 
+            `The service "${serviceTitle}" has no phase options available.`}
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ justifyContent: 'center', paddingBottom: '1rem' }}>
-        <Button 
-          onClick={onClose} 
+        <Button
+          onClick={onClose}
           sx={{
             fontFamily: 'Poppins, sans-serif',
             backgroundColor: 'var(--theme-color)',
@@ -48,7 +50,7 @@ const NoPhasePopup = ({ open, onClose, serviceTitle }) => {
             },
           }}
         >
-          Fechar
+          {FSF_data?.form_texts?.close || 'Close'}
         </Button>
       </DialogActions>
     </Dialog>

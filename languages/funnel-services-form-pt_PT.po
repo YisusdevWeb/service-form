@@ -1,747 +1,780 @@
 # Copyright (C) 2024 Yisus Develop
 # This file is distributed under the GNU General Public License v3.0.
-# POT Template for Funnel Services Form
-
+# Portuguese (Portugal) translation for Funnel Services Form
 msgid ""
 msgstr ""
 "Project-Id-Version: EWEB - Funnel Services Form 1.4.3\n"
 "Report-Msgid-Bugs-To: https://github.com/Yisus-Develop\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2025-11-25T00:00:00+00:00\n"
+"PO-Revision-Date: 2025-11-25 22:17+0000\n"
+"Last-Translator: Yisus Develop\n"
+"Language-Team: Portuguese (Portugal)\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-25T00:00:00+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Custom PHP Extractor\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Domain: funnel-services-form\n"
-
+"X-Generator: Loco https://localise.biz/\n"
 
 #: includes/acf/alert_acf_active.php
 msgid "ACF Pro"
-msgstr ""
+msgstr "ACF Pro"
 
 #: includes/wp_admin_menu.php
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Active Template"
-msgstr ""
+msgstr "Modelo Ativo"
 
 #: languages/english-base.php
 msgid "Active Theme:"
-msgstr ""
+msgstr "Tema Ativo:"
 
 #: languages/english-base.php
 msgid "Add New Service"
-msgstr ""
+msgstr "Adicionar Novo Serviço"
 
 #: languages/english-base.php
 msgid "Administrator Email"
-msgstr ""
+msgstr "E-mail do Administrador"
 
 #: includes/acf/alert_acf_active.php
 msgid "Advanced Custom Fields (ACF)"
-msgstr ""
+msgstr "Campos Personalizados Avançados (ACF)"
 
 #: languages/english-base.php
 msgid "All Services"
-msgstr ""
+msgstr "Todos os Serviços"
 
 #: includes/wp_postype.php
 msgid "All User Information"
-msgstr ""
+msgstr "Toda a Informação do Utilizador"
+
+#: includes/acf/alert_acf_active.php
+msgid "and"
+msgstr "e"
 
 #: includes/wp_admin_menu.php
 msgid "Are you sure you want to delete the selected users?"
-msgstr ""
+msgstr "Tem certeza de que deseja eliminar os utilizadores selecionados?"
 
 #: includes/wp_admin_menu.php
 msgid "Are you sure you want to delete this user?"
-msgstr ""
+msgstr "Tem certeza de que deseja eliminar este utilizador?"
 
 #: includes/acf/alert_acf_active.php
 msgid "Attention!"
-msgstr ""
+msgstr "Atenção!"
 
 #: includes/wp_admin_menu.php
 msgid "Back"
-msgstr ""
+msgstr "Voltar"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Blur (px)"
-msgstr ""
+msgstr "Desfoque (px)"
 
 #: languages/english-base.php
 msgid "Button"
-msgstr ""
+msgstr "Botão"
 
 #: languages/english-base.php
 msgid "Button Hover"
-msgstr ""
+msgstr "Botão ao Passar"
 
 #: languages/english-base.php
 msgid "Button Text"
-msgstr ""
+msgstr "Texto do Botão"
 
 #: languages/english-base.php
 msgid "Click on a template to automatically apply all colors."
-msgstr ""
+msgstr "Clique num modelo para aplicar automaticamente todas as cores."
 
 #: languages/english-base.php
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Color Templates"
-msgstr ""
+msgstr "Modelos de Cores"
 
 #: languages/english-base.php
 msgid "Colors"
-msgstr ""
+msgstr "Cores"
 
 #: languages/english-base.php
 msgid "Configure your logo and form colors. Use hexadecimal codes for colors."
 msgstr ""
+"Configure o seu logótipo e cores do formulário. Utilize códigos hexadecimais"
+" para as cores."
 
 #: languages/english-base.php
 msgid "Corporate Blue"
-msgstr ""
+msgstr "Azul Corporativo"
 
 #: languages/english-base.php
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 #: includes/admin/views/form-texts-page.php
 msgid "Customize all texts of the initial form"
-msgstr ""
+msgstr "Personalize todos os textos do formulário inicial"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Customize the appearance of the service form"
-msgstr ""
+msgstr "Personalize a aparência do formulário de serviços"
 
 #: languages/english-base.php
 msgid "Dark (Default)"
-msgstr ""
+msgstr "Escuro (Predefinição)"
 
 #: includes/wp_admin_menu.php
 msgid "Debug / Logs"
-msgstr ""
+msgstr "Depuração / Registos"
 
 #: includes/wp_admin_menu.php
 msgid "Delete"
-msgstr ""
-
-#: languages/english-base.php
-msgid "EWEB - Funnel Services Form"
-msgstr ""
+msgstr "Eliminar"
 
 #: languages/english-base.php
 msgid "Edit Service"
-msgstr ""
+msgstr "Editar Serviço"
 
 #: languages/english-base.php
 msgid "Elegant Purple"
-msgstr ""
+msgstr "Roxo Elegante"
 
 #: includes/wp_admin_menu.php
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: languages/english-base.php
 msgid "Email *"
-msgstr ""
+msgstr "E-mail *"
 
 #: includes/wp_admin_config_mail.php
 msgid "Email Body"
-msgstr ""
+msgstr "Corpo do E-mail"
 
+# ============================================
+# Email Configuration
+# ============================================
 #: languages/english-base.php
 msgid "Email Configuration"
-msgstr ""
+msgstr "Configuração de E-mail"
 
 #: languages/english-base.php
 msgid "Email Field"
-msgstr ""
-
-#: includes/wp_admin_config_mail.php
-msgid "Email Recipient"
-msgstr ""
-
-#: includes/wp_admin_config_mail.php
-msgid "Email Sender"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Email Subject"
-msgstr ""
+msgstr "Campo E-mail"
 
 #: languages/english-base.php
 msgid "Email is required"
-msgstr ""
+msgstr "E-mail é obrigatório"
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Recipient"
+msgstr "Destinatário do E-mail"
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Sender"
+msgstr "Remetente do E-mail"
 
 #: languages/english-base.php
 msgid "Email sent successfully!"
-msgstr ""
+msgstr "E-mail enviado com sucesso!"
+
+#: languages/english-base.php
+msgid "Email Subject"
+msgstr "Assunto do E-mail"
 
 #: includes/wp_admin_menu.php
 msgid "Enable debug/logs mode"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Enter a valid WhatsApp"
-msgstr ""
+msgstr "Ativar modo de depuração/registos"
 
 #: languages/english-base.php
 msgid "Enter a valid email"
-msgstr ""
+msgstr "Introduza um e-mail válido"
+
+#: languages/english-base.php
+msgid "Enter a valid WhatsApp"
+msgstr "Introduza um WhatsApp válido"
 
 #: languages/english-base.php
 msgid "Error Message"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Error: Invalid WhatsApp"
-msgstr ""
+msgstr "Mensagem de Erro"
 
 #: languages/english-base.php
 msgid "Error: Invalid email"
-msgstr ""
+msgstr "Erro: E-mail inválido"
+
+#: languages/english-base.php
+msgid "Error: Invalid WhatsApp"
+msgstr "Erro: WhatsApp inválido"
 
 #: languages/english-base.php
 msgid "Error: Minimum characters"
-msgstr ""
+msgstr "Erro: Mínimo de caracteres"
 
 #: languages/english-base.php
 msgid "Error: Not accepted"
-msgstr ""
+msgstr "Erro: Não aceite"
 
 #: languages/english-base.php
 msgid "Error: Required field"
-msgstr ""
+msgstr "Erro: Campo obrigatório"
+
+#: languages/english-base.php
+msgid "EWEB - Funnel Services Form"
+msgstr "EWEB - Formulário de Serviços Funil"
 
 #: includes/wp_admin_menu.php
 msgid "Export Selected"
-msgstr ""
+msgstr "Exportar Selecionados"
 
 #: languages/english-base.php
 msgid "Fill in the fields below to request your quote!"
-msgstr ""
+msgstr "Preencha os campos para solicitar o seu orçamento!"
 
 #: languages/english-base.php
 msgid "Filter Service list"
-msgstr ""
+msgstr "Filtrar lista de Serviços"
 
 #: includes/wp_postype.php
 msgid "Filter Services List"
-msgstr ""
+msgstr "Filtrar lista de Serviços"
 
+# ============================================
+# Admin - Form Texts Page
+# ============================================
 #: includes/admin/views/form-texts-page.php
 msgid "Form Texts"
-msgstr ""
+msgstr "Textos do Formulário"
 
 #: includes/wp_page_templates.php
 msgid "Full page template for services form"
-msgstr ""
+msgstr "Modelo de página completa para formulário de serviços"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Glassmorphism"
-msgstr ""
+msgstr "Glassmorfismo"
 
 #: languages/english-base.php
 msgid "I have read and accept"
-msgstr ""
+msgstr "Li e aceito"
 
 #: languages/english-base.php
 msgid "Input Border"
-msgstr ""
+msgstr "Borda dos Campos"
 
 #: languages/english-base.php
 msgid "Input Text"
-msgstr ""
+msgstr "Texto dos Campos"
 
 #: languages/english-base.php
 msgid "Insert into Service"
-msgstr ""
+msgstr "Inserir no Serviço"
 
 #: includes/acf/alert_acf_active.php
 msgid "Install them to take advantage of all plugin features!"
-msgstr ""
+msgstr "Instale-os para aproveitar todas as funcionalidades do plugin!"
 
 #: includes/wp_admin_menu.php
 msgid "Insufficient permissions to perform this action."
-msgstr ""
+msgstr "Permissões insuficientes para realizar esta ação."
 
 #: includes/wp_admin_menu.php
 msgid "Invalid post ID"
-msgstr ""
+msgstr "ID de publicação inválido"
 
 #: includes/wp_admin_menu.php
 msgid "Invalid post."
-msgstr ""
+msgstr "Publicação inválida"
 
 #: languages/english-base.php
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: languages/english-base.php
 msgid "Labels"
-msgstr ""
+msgstr "Etiquetas"
 
 #: languages/english-base.php
 msgid "Light"
-msgstr ""
+msgstr "Claro"
 
 #: languages/english-base.php
 msgid "Link text"
-msgstr ""
+msgstr "Texto da ligação"
 
 #: languages/english-base.php
 msgid "Loading..."
-msgstr ""
+msgstr "A carregar..."
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Logo"
-msgstr ""
+msgstr "Logótipo"
 
 #: languages/english-base.php
 msgid "Main Background"
-msgstr ""
+msgstr "Fundo Principal"
 
 #: languages/english-base.php
 msgid "Main Text"
-msgstr ""
+msgstr "Texto Principal"
 
 #: languages/english-base.php
 msgid "Main Title"
-msgstr ""
+msgstr "Título Principal"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Maximum Size"
-msgstr ""
+msgstr "Tamanho Máximo"
 
 #: languages/english-base.php
 msgid "Must be at least 3 characters"
-msgstr ""
+msgstr "Deve ter pelo menos 3 caracteres"
 
 #: includes/wp_admin_menu.php
 msgid "Name"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Name Field"
-msgstr ""
+msgstr "Nome"
 
 #: languages/english-base.php
 msgid "Name and Last Name *"
-msgstr ""
+msgstr "Nome e Apelido *"
+
+#: languages/english-base.php
+msgid "Name Field"
+msgstr "Campo Nome"
 
 #: languages/english-base.php
 msgid "Name is required"
-msgstr ""
+msgstr "O nome é obrigatório"
 
 #: languages/english-base.php
 msgid "Natural Green"
-msgstr ""
+msgstr "Verde Natural"
 
 #: languages/english-base.php
 msgid "New Service"
-msgstr ""
+msgstr "Novo Serviço"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "No logo"
-msgstr ""
+msgstr "Sem logótipo"
 
 #: languages/english-base.php
 msgid "No services found in trash."
-msgstr ""
+msgstr "Nenhum serviço encontrado no lixo."
 
 #: languages/english-base.php
 msgid "No services found."
-msgstr ""
+msgstr "Nenhum serviço encontrado."
 
 #: includes/wp_admin_menu.php
 msgid "No services selected."
-msgstr ""
+msgstr "Nenhum serviço selecionado."
 
 #: languages/english-base.php
 msgid "Notice"
-msgstr ""
+msgstr "Aviso"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Opacity"
-msgstr ""
+msgstr "Opacidade"
 
 #: languages/english-base.php
 msgid "Or customize each color individually below:"
-msgstr ""
+msgstr "Ou personalize cada cor individualmente abaixo:"
 
 #: languages/english-base.php
 msgid "Parent Service:"
-msgstr ""
+msgstr "Serviço Pai:"
 
 #: languages/english-base.php
 msgid "Personalization of Styles and Logo"
-msgstr ""
+msgstr "Personalização de Estilos e Logotipo"
 
 #: languages/english-base.php
 msgid "Personalize all texts of the initial form"
-msgstr ""
+msgstr "Personalize todos os textos do formulário inicial"
 
 #: includes/wp_admin_menu.php
 msgid "Phone"
-msgstr ""
+msgstr "Telefone"
 
 #: languages/english-base.php
 msgid "Placeholder"
-msgstr ""
+msgstr "Texto de Exemplo"
 
 #: languages/english-base.php
-msgid "Plugin for service forms with steps for quotes. Allows creating multi-phase forms with color and style customization."
+msgid ""
+"Plugin for service forms with steps for quotes. Allows creating multi-phase "
+"forms with color and style customization."
 msgstr ""
+"Plugin de formulário de serviços com etapas para orçamentos. Permite criar "
+"formulários de múltiplas fases com personalização de cores e estilos."
 
 #: includes/wp_admin_menu.php
 msgid "Post not found"
-msgstr ""
+msgstr "Publicação não encontrada"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Preview"
-msgstr ""
+msgstr "Pré-visualização"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Primary Background"
-msgstr ""
+msgstr "Fundo Principal"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Primary Text"
-msgstr ""
+msgstr "Texto Principal"
 
 #: languages/english-base.php
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Política de Privacidade"
 
 #: includes/wp_admin_menu.php
 msgid "Privacy Policy Link Settings"
-msgstr ""
+msgstr "Configuração do Link da Política de Privacidade"
 
 #: includes/wp_admin_menu.php
 msgid "Privacy Policy URL"
-msgstr ""
+msgstr "URL da Política de Privacidade"
 
 #: languages/english-base.php
 msgid "QUOTE REQUEST"
-msgstr ""
-
-#: languages/english-base.php
-msgid "REQUEST QUOTE"
-msgstr ""
+msgstr "PEDIDO DE ORÇAMENTO"
 
 #: languages/english-base.php
 msgid "Redirecting..."
-msgstr ""
+msgstr "A redirecionar..."
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: includes/wp_admin_menu.php
 msgid "Remove Selected"
-msgstr ""
+msgstr "Eliminar Selecionados"
+
+#: languages/english-base.php
+msgid "REQUEST QUOTE"
+msgstr "SOLICITAR ORÇAMENTO"
 
 #: languages/english-base.php
 msgid "Restore Default"
-msgstr ""
+msgstr "Restaurar Predefinição"
 
 #: languages/english-base.php
 msgid "Restore Default Colors"
-msgstr ""
+msgstr "Restaurar Cores Predefinidas"
 
 #: includes/admin/styles-admin.php
 msgid "Restore default colors?"
-msgstr ""
+msgstr "Restaurar cores predefinidas?"
 
 #: includes/admin/form-texts-admin.php
 msgid "Restore default texts?"
-msgstr ""
+msgstr "Restaurar textos predefinidos?"
 
 #: languages/english-base.php
 msgid "Save Changes"
-msgstr ""
+msgstr "Guardar Alterações"
 
 #: includes/wp_admin_config_mail.php
 msgid "Save Settings"
-msgstr ""
+msgstr "Guardar definições"
 
 #: languages/english-base.php
 msgid "Search Services"
-msgstr ""
+msgstr "Pesquisar Serviços"
 
 #: languages/english-base.php
 msgid "Secondary Background"
-msgstr ""
+msgstr "Fundo Secundário"
 
 #: languages/english-base.php
 msgid "Secondary Text"
-msgstr ""
+msgstr "Texto Secundário"
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Select"
-msgstr ""
+msgstr "Selecionar"
 
-#: languages/english-base.php
-msgid "Select Logo"
-msgstr ""
-
+# ============================================
+# Frontend - React Components
+# ============================================
 #: languages/english-base.php
 msgid "Select a service"
-msgstr ""
+msgstr "Selecione um serviço"
 
 #: languages/english-base.php
 msgid "Select a template or customize colors manually below."
-msgstr ""
+msgstr "Selecione um modelo ou personalize as cores manualmente abaixo."
+
+#: languages/english-base.php
+msgid "Select Logo"
+msgstr "Selecionar Logótipo"
 
 #: includes/wp_admin_menu.php
 msgid "Selected Services"
-msgstr ""
+msgstr "Serviços Selecionados"
 
 #: languages/english-base.php
 msgid "Service"
-msgstr ""
+msgstr "Serviço"
 
 #: languages/english-base.php
 msgid "Service Archives"
-msgstr ""
+msgstr "Arquivo de Serviços"
 
 #: languages/english-base.php
 msgid "Service Attributes"
-msgstr ""
+msgstr "Atributos do Serviço"
 
 #: languages/english-base.php
 msgid "Service Form"
-msgstr ""
+msgstr "Formulário de Serviço"
 
+# ============================================
+# Page Templates
+# ============================================
 #: languages/english-base.php
 msgid "Service Form (Full Screen)"
-msgstr ""
+msgstr "Formulário de Serviço (Ecrã Inteiro)"
 
 #: languages/english-base.php
 msgid "Service Information"
-msgstr ""
+msgstr "Informação do Serviço"
 
+# ============================================
+# Post Type - Services
+# ============================================
 #: languages/english-base.php
 msgid "Services"
-msgstr ""
+msgstr "Serviços"
 
 #: includes/wp_postype.php
 msgid "Services Information"
-msgstr ""
+msgstr "Informação de Serviços"
 
 #: includes/wp_admin_config_mail.php
 msgid "Services Quote"
-msgstr ""
+msgstr "Orçamento de Serviços"
 
 #: languages/english-base.php
 msgid "Settings saved successfully!"
-msgstr ""
+msgstr "Definições guardadas com sucesso!"
 
 #: includes/wp_admin_config_mail.php
 msgid "Settings saved."
-msgstr ""
+msgstr "Definições guardadas."
 
 #: includes/wp_admin_menu.php
 msgid "Settings updated successfully!"
-msgstr ""
+msgstr "Definições atualizadas com sucesso!"
 
 #: includes/wp_admin_menu.php
 msgid "Show logs and errors on frontend"
-msgstr ""
+msgstr "Mostrar registos e erros no frontend"
 
 #: languages/english-base.php
 msgid "Styles and Logo"
-msgstr ""
+msgstr "Estilos e Logótipo"
 
+# ============================================
+# Admin - Styles Settings Page
+# ============================================
 #: includes/admin/views/styles-settings-page.php
 msgid "Styles and Logo Customization"
-msgstr ""
+msgstr "Personalização de Estilos e Logótipo"
 
 #: languages/english-base.php
 msgid "Styles updated successfully!"
-msgstr ""
+msgstr "Estilos atualizados com sucesso!"
 
 #: languages/english-base.php
 msgid "Subtitle"
-msgstr ""
+msgstr "Subtítulo"
 
 #: languages/english-base.php
 msgid "Text before link"
-msgstr ""
+msgstr "Texto antes da ligação"
 
 #: languages/english-base.php
 msgid "Texts of the Form"
-msgstr ""
+msgstr "Textos do Formulário"
 
 #: languages/english-base.php
 msgid "Texts updated successfully!"
-msgstr ""
+msgstr "Textos atualizados com sucesso!"
 
 #: includes/wp_admin_menu.php
 msgid "Thank You Page Link"
-msgstr ""
+msgstr "Link da Página de Agradecimento"
 
 #: includes/wp_admin_menu.php
 msgid "Thank You Page Link Settings"
-msgstr ""
+msgstr "Configuração do Link da Página de Agradecimento"
 
 #: includes/wp_admin_menu.php
 msgid "Thank You Page URL"
-msgstr ""
-
-#: languages/english-base.php
-msgid "The service \"%s\" has no phase options available."
-msgstr ""
-
-#: languages/english-base.php
-msgid "Theme Color"
-msgstr ""
-
-#: languages/english-base.php
-msgid "There was an error creating the entry."
-msgstr ""
-
-#: includes/acf/alert_acf_active.php
-msgid "This plugin requires"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Tip:"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Titles"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Uploaded to this Service"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Use this image"
-msgstr ""
-
-#: includes/wp_admin_menu.php
-msgid "User Data"
-msgstr ""
-
-#: includes/wp_admin_menu.php
-msgid "User Details"
-msgstr ""
-
-#: languages/english-base.php
-msgid "User Info"
-msgstr ""
-
-#: languages/english-base.php
-msgid "User Information"
-msgstr ""
-
-#: includes/wp_admin_menu.php
-msgid "View"
-msgstr ""
-
-#: languages/english-base.php
-msgid "View Service"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Warm Orange"
-msgstr ""
-
-#: languages/english-base.php
-msgid "WhatsApp Field"
-msgstr ""
-
-#: languages/english-base.php
-msgid "You must accept the privacy policy"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Your First and Last Name"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Your WhatsApp"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Your WhatsApp *"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Your WhatsApp is required"
-msgstr ""
-
-#: languages/english-base.php
-msgid "Your best email"
-msgstr ""
-
-#: includes/acf/alert_acf_active.php
-msgid "and"
-msgstr ""
+msgstr "URL da Página de Agradecimento"
 
 #: languages/english-base.php
 msgid "the Privacy Policy"
-msgstr ""
+msgstr "a Política de Privacidade"
+
+#: languages/english-base.php
+msgid "The service \"%s\" has no phase options available."
+msgstr "O serviço \"%s\" não tem opções de fase disponíveis."
+
+#: languages/english-base.php
+msgid "Theme Color"
+msgstr "Cor do Tema"
+
+#: languages/english-base.php
+msgid "There was an error creating the entry."
+msgstr "Ocorreu um erro ao criar a entrada."
 
 #: includes/acf/alert_acf_active.php
-msgid "to be installed and active to function properly, including repeater fields functionality."
+msgid "This plugin requires"
+msgstr "Este plugin requer"
+
+# ============================================
+# Miscellaneous
+# ============================================
+#: languages/english-base.php
+msgid "Tip:"
+msgstr "Dica:"
+
+#: languages/english-base.php
+msgid "Titles"
+msgstr "Títulos"
+
+#: includes/acf/alert_acf_active.php
+msgid ""
+"to be installed and active to function properly, including repeater fields "
+"functionality."
 msgstr ""
+"que estejam instalados e ativos para funcionar corretamente, incluindo a "
+"funcionalidade de campos repetidores."
+
+#: languages/english-base.php
+msgid "Uploaded to this Service"
+msgstr "Carregado para este Serviço"
+
+#: languages/english-base.php
+msgid "Use this image"
+msgstr "Usar esta imagem"
+
+#: includes/wp_admin_menu.php
+msgid "User Data"
+msgstr "Dados do Utilizador"
+
+#: includes/wp_admin_menu.php
+msgid "User Details"
+msgstr "Detalhes do Utilizador"
+
+#: languages/english-base.php
+msgid "User Info"
+msgstr "Info do Utilizador"
+
+#: languages/english-base.php
+msgid "User Information"
+msgstr "Informação do Utilizador"
+
+#: includes/wp_admin_menu.php
+msgid "View"
+msgstr "Ver"
+
+#: languages/english-base.php
+msgid "View Service"
+msgstr "Ver Serviço"
+
+#: languages/english-base.php
+msgid "Warm Orange"
+msgstr "Laranja Quente"
+
+#: languages/english-base.php
+msgid "WhatsApp Field"
+msgstr "Campo WhatsApp"
+
+#: languages/english-base.php
+msgid "You must accept the privacy policy"
+msgstr "Deve aceitar a política de privacidade"
+
+#: languages/english-base.php
+msgid "Your best email"
+msgstr "O seu melhor e-mail"
+
+#: languages/english-base.php
+msgid "Your First and Last Name"
+msgstr "O seu nome e apelido"
+
+#: languages/english-base.php
+msgid "Your WhatsApp"
+msgstr "O seu WhatsApp"
+
+#: languages/english-base.php
+msgid "Your WhatsApp *"
+msgstr "O seu WhatsApp *"
+
+#: languages/english-base.php
+msgid "Your WhatsApp is required"
+msgstr "O seu WhatsApp é obrigatório"
 
 #: languages/english-base.php
 msgid "¿Restore default colors?"
-msgstr ""
+msgstr "Restaurar cores predefinidas?"
 
 #: languages/english-base.php
 msgid "¿Restore default texts?"
-msgstr ""
+msgstr "Restaurar textos predefinidos?"
 
 #: languages/english-base.php
 msgid "☀️ Light"
-msgstr ""
+msgstr "☀️ Claro"
 
 #: languages/english-base.php
 msgid "⚙️ Advanced Customization"
-msgstr ""
+msgstr "⚙️ Personalização Avançada"
 
+# ============================================
+# Color Templates
+# ============================================
 #: languages/english-base.php
 msgid "🌙 Dark (Default)"
-msgstr ""
+msgstr "🌙 Escuro (Predefinição)"
 
 #: languages/english-base.php
 msgid "🎨 Color Templates"
-msgstr ""
+msgstr "🎨 Modelos de Cores"
 
 #: languages/english-base.php
 msgid "🔵 Corporate Blue"
-msgstr ""
+msgstr "🔵 Azul Corporativo"
 
 #: includes/wp_page_templates.php
 msgid "🚀 Full Screen Form"
-msgstr ""
+msgstr "🚀 Formulário em Ecrã Inteiro"
 
 #: includes/wp_page_templates.php
 msgid "🚀 Full Screen Form (Plugin)"
-msgstr ""
+msgstr "🚀 Formulário em Ecrã Inteiro (Plugin)"
 
 #: languages/english-base.php
 msgid "🟠 Warm Orange"
-msgstr ""
+msgstr "🟠 Laranja Quente"
 
 #: languages/english-base.php
 msgid "🟢 Natural Green"
-msgstr ""
+msgstr "🟢 Verde Natural"
 
 #: languages/english-base.php
 msgid "🟣 Elegant Purple"
-msgstr ""
+msgstr "🟣 Roxo Elegante"
