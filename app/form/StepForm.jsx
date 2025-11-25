@@ -1,71 +1,126 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Box, Button, Typography, Stepper, Step, StepLabel, Paper, CssBaseline } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import useStore from '../store/store.js';
-import AlertSnackbar from '../components/AlertSnackbar';
-import { handleSelectionFactory } from '../utils/handleSelection'; // Importar la lógica de selección
+import React, { useCallback, useEffect, useState, useRef } from "react";
+import { Box, Typography, CssBaseline } from "@mui/material";
+import { useForm, FormProvider } from "react-hook-form";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import useStore from "../store/store.js";
+import AlertSnackbar from "../components/AlertSnackbar";
+import { handleSelectionFactory } from "../utils/handleSelection";
+import AddMoreServicesPopup from "../components/AddMoreServicesPopup";
+import SummaryForm from "./SummaryForm";  // Asegúrate de mantener esta importación
+import PhaseStepper from "../components/stepform/PhaseStepper";
+import PhaseContent from "../components/stepform/PhaseContent";
+import FormNavigation from "../components/stepform/FormNavigation";
+import '../../assets/scss/styles.scss'; 
+import Logo from "../components/Logo"; // Importa el componente Logo
 
 const theme = createTheme({
   components: {
     MuiStepLabel: {
       styleOverrides: {
         label: {
-          display: 'none',
+          display: "none",
         },
       },
     },
   },
 });
-
-const StepForm = React.memo(({ onComplete }) => {
-  const { register, handleSubmit, setValue, getValues, watch } = useForm();
-  const { currentService, currentPhase, setCurrentPhase, addSelection, selections } = useStore();
+const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
+  const methods = useForm();
+  const { handleSubmit, setValue, watch, getValues } = methods;
+  const {
+    currentService,
+    currentPhase,
+    setCurrentPhase,
+    addSelection,
+    selections,
+    resetService,
+    setCurrentService,
+  } = useStore();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [snackbarSeverity, setSnackbarSeverity] = useState('info');
-
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("info");
+  const [addMoreServicesPopupOpen, setAddMoreServicesPopupOpen] =
+    useState(false);
+  const [showSummary, setShowSummary] = useState(false);
   const handleSelection = useCallback(
     handleSelectionFactory(
       currentPhase,
       selections,
-      addSelection,
+      (phase, selection) =>
+        addSelection(currentService.uniqueId, phase, selection),
       currentService,
       setCurrentPhase,
       setSnackbarMessage,
       setSnackbarSeverity,
-      setSnackbarOpen
+      setSnackbarOpen,
+      // onAutoAdvance callback: marca que se avanzó automáticamente y aplica avance
+      (nextPhase) => {
+        setCurrentPhase(nextPhase);
+      }
     ),
-    [currentPhase, selections, addSelection, currentService, setCurrentPhase, setSnackbarMessage, setSnackbarSeverity, setSnackbarOpen]
+    [
+      currentPhase,
+      selections,
+      currentService,
+      setCurrentPhase,
+      setSnackbarMessage,
+      setSnackbarSeverity,
+      setSnackbarOpen,
+      addSelection,
+    ]
   );
 
-  // Recuperar selecciones cuando se carga el componente
   useEffect(() => {
-    const currentSelections = selections[currentPhase];
+    const currentSelections =
+      selections[currentService?.uniqueId]?.[currentPhase];
     if (currentSelections) {
       Object.keys(currentSelections).forEach((option) => {
         setValue(option, currentSelections[option]);
       });
     }
-  }, [currentPhase, selections, setValue]);
+  }, [currentPhase, selections, setValue, currentService]);
+  // Eliminada bandera recentlyAdvanced: la lógica de avance automático ya no produce doble avance.
 
-  const onSubmit = (data) => {
-    // Validación para asegurarse de que al menos una opción esté seleccionada
-    const currentSelections = selections[currentPhase] || {};
-    const isSelected = Object.values(currentSelections).some((value) => value === true);
+  const onSubmit = () => {
+    const currentSelections =
+      selections[currentService?.uniqueId]?.[currentPhase] || {};
+    const isSelected = Object.values(currentSelections).some(
+      (value) => value === true
+    );
 
     if (!isSelected) {
-      setSnackbarMessage('Debes seleccionar al menos una opción para continuar.');
-      setSnackbarSeverity('error');
+      setSnackbarMessage(
+        "É necessário selecionar pelo menos uma opção para continuar."
+      );
+      setSnackbarSeverity("error");
       setSnackbarOpen(true);
       return;
     }
 
-    if (currentPhase < currentService.fases_do_servico.length - 1) {
+    const isLastPhase = currentPhase === currentService.fases_do_servico.length - 1;
+    const isLastPhaseUnique = isLastPhase && currentService.fases_do_servico[currentPhase]?.tipo_selecao === 'unica';
+
+    if (isLastPhaseUnique) {
+      // Si el último paso es de tipo 'unica', concluye el formulario sin avanzar
+      setShowSummary(true);
+      // ...existing code...
+    } else if (currentPhase < currentService.fases_do_servico.length - 1) {
       setCurrentPhase(currentPhase + 1);
+      // ...existing code...
     } else {
-      onComplete();
+      setShowSummary(true);
+      // ...existing code...
     }
+  };
+  const handleConfirmAddMoreServices = () => {
+    onServiceComplete(currentService);
+    resetService();
+    setAddMoreServicesPopupOpen(false);
+  };
+
+  const handleCloseAddMoreServicesPopup = () => {
+    setAddMoreServicesPopupOpen(false);
+    setShowSummary(true);
   };
 
   const handleStepClick = (step) => {
@@ -78,63 +133,69 @@ const StepForm = React.memo(({ onComplete }) => {
     setSnackbarOpen(false);
   };
 
+  const handleAddMoreServices = () => {
+    setShowSummary(false);
+    setAddMoreServicesPopupOpen(true);
+  };
+
+  const handleEditSelections = () => {
+    setShowSummary(false);
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box>
-        <Typography variant="h4" gutterBottom sx={{ color: '#0f4c80', textAlign: 'center', fontWeight: 'bold' }}>{currentService.titulo}</Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stepper activeStep={currentPhase} sx={{ mb: 3, display: 'flex', justifyContent: 'center' }} alternativeLabel>
-            {currentService.fases_do_servico.map((fase, index) => (
-              <Step key={fase.id_fase || index} onClick={() => handleStepClick(index)}>
-                <StepLabel></StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <Typography sx={{ textAlign: 'center', mb: 2 }}>
-            Paso {currentPhase + 1} de {currentService.fases_do_servico.length}
-          </Typography>
-          <Paper sx={{ padding: 3, backgroundColor: '#f4f4f4', borderRadius: 2, mb: 2, boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
-            <Typography variant="h6" sx={{ color: '#0f4c80', fontWeight: 'bold' }}>{currentService.fases_do_servico[currentPhase]?.titulo || 'Sin título'}</Typography>
-            <Typography variant="body1" gutterBottom sx={{ color: '#555', mb: 2 }}>{currentService.fases_do_servico[currentPhase]?.descricao || 'Sin descripción'}</Typography>
-            {currentService.fases_do_servico[currentPhase]?.escrever_as_opcoes && (
-              <Box display="flex" flexWrap="wrap" gap={2}>
-                {currentService.fases_do_servico[currentPhase].escrever_as_opcoes.map((opcao) => (
-                  <Button
-                    key={opcao.id_opcion || opcao.titulo}
-                    variant={watch(opcao.titulo) ? 'contained' : 'outlined'}
-                    onClick={() => handleSelection(opcao.titulo, !getValues(opcao.titulo))}
-                    sx={{
-                      flex: '1 1 calc(50% - 16px)',
-                      minWidth: '120px',
-                      textTransform: 'none',
-                      '@media (max-width: 600px)': {
-                        flex: '1 1 100%',
-                      },
-                    }}
-                  >
-                    {opcao.titulo}
-                  </Button>
-                ))}
-              </Box>
-            )}
-          </Paper>
-          <Box mt={4} display="flex" justifyContent="space-between">
-            {currentPhase > 0 && (
-              <Button variant="contained" color="primary" onClick={() => setCurrentPhase(currentPhase - 1)}>Anterior</Button>
-            )}
-            <Button variant="contained" color="primary" type="submit">
-              {currentPhase < currentService.fases_do_servico.length - 1 ? 'Siguiente' : 'Completar'}
-            </Button>
-          </Box>
-        </form>
-        <AlertSnackbar
-          open={snackbarOpen}
-          message={snackbarMessage}
-          severity={snackbarSeverity}
-          onClose={handleCloseSnackbar}
+      {showSummary ? (
+        <SummaryForm 
+          onEditSelections={handleEditSelections}
+          onAddMoreServices={handleAddMoreServices}
+          userData={userData}
         />
-      </Box>
+      ) : (
+        <FormProvider {...methods}>
+          <Box>
+<Logo/> {/* Usando el componente Logo aquí */}
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{ fontWeight: 'bold', fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', textAlign: 'center',padding: '0 0 15px 0', mb: 0  }}
+            >
+              {currentService.titulo}
+            </Typography>
+            <PhaseStepper
+              currentPhase={currentPhase}
+              fases={Array.isArray(currentService.fases_do_servico) ? currentService.fases_do_servico : []}
+              onStepClick={handleStepClick}
+            />
+            <Typography sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', textAlign: "center", mb: 2, mt: 2 }}>
+               {currentPhase + 1} de {" "}
+              {currentService.fases_do_servico.length}
+            </Typography>
+            <PhaseContent
+              fase={currentService.fases_do_servico[currentPhase]}
+              handleSelection={handleSelection}
+              watch={watch}
+              getValues={getValues}
+            />
+            <FormNavigation
+              currentPhase={currentPhase}
+              totalPhases={currentService.fases_do_servico.length}
+              onPrevious={() => setCurrentPhase(currentPhase - 1)}
+              onNext={handleSubmit(onSubmit)}
+            />
+         {/*   <AlertSnackbar
+              open={snackbarOpen}
+              message={snackbarMessage}
+              severity={snackbarSeverity}
+              onClose={handleCloseSnackbar}
+            />*/}
+            <AddMoreServicesPopup
+              open={addMoreServicesPopupOpen}
+              onClose={handleCloseAddMoreServicesPopup}
+              onConfirm={handleConfirmAddMoreServices}
+            />
+          </Box>
+        </FormProvider>
+      )}
     </ThemeProvider>
   );
 });

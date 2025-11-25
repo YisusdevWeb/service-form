@@ -16,5 +16,5 @@ dist/
 # Ignorar archivos de caché
 .cache/
 
-# Ignorar archivos de archivos de caché
-.DS_Store       
+# Ignorar archivos zip
+*.zip

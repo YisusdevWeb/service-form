@@ -24,9 +24,11 @@ add_action('acf/include_fields', function() {
                     ),
                     array(
                         'key' => 'field_672e8745e99a5',
-                        'label' => __('Descrição', 'Funnel-services-form'),
+                        'label' => __('Descripción', 'Funnel-services-form'),
                         'name' => 'descricao',
-                        'type' => 'text',
+                        'type' => 'wysiwyg',  // Cambié 'text' por 'wysiwyg'
+                        'toolbar' => 'full',  // Puedes definir una barra de herramientas personalizada si lo deseas
+                        'media_upload' => 0, // Permite subir imágenes
                     ),
                     array(
                         'key' => 'field_672e8758e99a6',

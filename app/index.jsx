@@ -1,21 +1,31 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import '../assets/scss/styles.scss'; // Importa estilos globales
-import App from '/app/App'; // Asegúrate de que la ruta es correcta
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { BrowserRouter } from 'react-router-dom'; // Importa BrowserRouter
+import App from './App';
+import theme from './utils/theme'; // Importa el tema centralizado
+import '../assets/scss/styles.scss'; // Importa tus estilos globales
 
-const theme = createTheme({
-  // Aquí puedes personalizar tu tema si es necesario
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('FSF_frontend-seccion');
+  if (container) {
+    const root = createRoot(container);
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter> {/* Envuelve tu aplicación con BrowserRouter */}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+
+    // Desplazar la vista al formulario después de montar la aplicación con un pequeño retardo
+    setTimeout(() => {
+      container.scrollIntoView({ behavior: 'smooth' });
+    }, 110); // 100 ms para permitir la carga completa
+  } else {
+    console.log("O contentor de destino não existe nesta página.");
+  }
 });
-
-// Renderizar la aplicación de React
-const root = createRoot(document.getElementById('FSF_frontend-seccion'));
-
-root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App /> {/* Aquí cargará el formulario dinámico */}
-    </ThemeProvider>
-  </React.StrictMode>
-);

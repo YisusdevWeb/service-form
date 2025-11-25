@@ -9,11 +9,10 @@ const Preloader = () => {
       alignItems="center"
       justifyContent="center"
       height="100vh"
-      bgcolor="#f9f9f9"
     >
-      <CircularProgress />
-      <Typography variant="h6" sx={{ marginTop: 2, color: '#0f4c80' }}>
-        Cargando...
+      <CircularProgress sx={{ color: '#ffffff' }} />
+      <Typography variant="h6" sx={{ marginTop: 2, color: '#ffffff' }}>
+      Carregando...
       </Typography>
     </Box>
   );

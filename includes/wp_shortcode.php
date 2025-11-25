@@ -1,5 +1,4 @@
 <?php
-
 add_shortcode('Funnel-services-form', 'FSF_frontend');
 function FSF_frontend() {
   ob_start(); ?>
@@ -7,6 +6,7 @@ function FSF_frontend() {
   <?php
   return ob_get_clean();
 }
+
 
  // [Funnel-services-form]
  
