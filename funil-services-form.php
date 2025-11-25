@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EWEB - Funnel Services Form
  * Description: Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos.
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author: Yisus Develop
  * Author URI: https://github.com/Yisus-Develop
  * Plugin URI: https://enlaweb.co/
@@ -29,7 +29,7 @@ if ( ! defined( 'FSF_PLUGIN_PATH' ) ) {
 }
 
 if ( ! defined( 'FSF_PLUGIN_VERSION' ) ) {
-    define( 'FSF_PLUGIN_VERSION', '1.4.2' );
+    define( 'FSF_PLUGIN_VERSION', '1.4.3' );
 }
 
 if ( ! defined( 'FSF_TEXT_DOMAIN' ) ) {
