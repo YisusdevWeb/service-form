@@ -52,6 +52,9 @@ include FSF_PLUGIN_PATH . 'includes/wp_admin_config_mail.php';
 // Estilos admin (refactorizado)
 include FSF_PLUGIN_PATH . 'includes/admin/styles-admin.php';
 
+// Textos del formulario admin
+include FSF_PLUGIN_PATH . 'includes/admin/form-texts-admin.php';
+
 // ACF integration
 include FSF_PLUGIN_PATH . 'includes/acf/acf_fields.php';
 include FSF_PLUGIN_PATH . 'includes/acf/alert_acf_active.php';

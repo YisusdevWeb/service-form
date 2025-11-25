@@ -70,6 +70,15 @@ O plugin está **100% preparado para traduções**:
 - Upload de logo personalizado
 - Glassmorphism design
 - Cores totalmente customizáveis
+- **Dashboard admin moderno** com design profissional
+
+### Textos Personalizáveis (Novo! v1.4.2)
+- Editar todos os textos do formulário inicial desde o admin
+- Títulos e subtítulos personalizáveis
+- Labels e placeholders dos campos (Nome, Email, WhatsApp)
+- Mensagens de erro customizáveis
+- Texto do botão de envio
+- Textos de política de privacidade
 
 ### Template Full Screen
 - Página dedicada para o formulário
@@ -96,10 +105,17 @@ services-form/
 ├── includes/                  # Lógica PHP
 │   ├── acf/                   # Campos ACF
 │   ├── admin/                 # Panel de administração
+│   │   ├── js/                # Scripts JS separados
+│   │   │   ├── styles-admin.js
+│   │   │   └── form-texts-admin.js
+│   │   ├── views/             # Vistas HTML
+│   │   │   ├── styles-settings-page.php
+│   │   │   └── form-texts-page.php
 │   │   ├── color-templates.php
 │   │   ├── frontend-styles.php
 │   │   ├── styles-admin.php
-│   │   └── views/
+│   │   └── form-texts-admin.php
+│   ├── compat/                # Compatibilidad con temas
 │   ├── templates/             # Templates de página
 │   └── *.php                  # Módulos
 └── languages/                 # Traduções
@@ -120,6 +136,18 @@ npm run watch
 
 ## 📝 Changelog
 
+### v1.4.2 (Nov 2025)
+- **Novo:** Panel de edição de textos do formulário (`Textos do Formulário`)
+- **Novo:** Textos 100% personalizáveis (títulos, labels, placeholders, erros, botões)
+- **Melhoria:** Dashboard admin com design moderno e profissional
+- **Melhoria:** Scripts JS separados em arquivos externos (`/includes/admin/js/`)
+- **Melhoria:** Código mais limpo sem scripts inline
+- **Melhoria:** Mensagem de sucesso com estilo próprio (não mais texto em branco)
+- **Melhoria:** Estilos sem inline styles (melhor compatibilidade CSP)
+- **Fix:** Sistema de compatibilidad con temas (`/includes/compat/`)
+- **Fix:** Archivo `custom-theme-override.css` para reglas de override
+- **Fix:** Constante `FSF_PLUGIN_VERSION` corrigida
+
 ### v1.4.0 (Nov 2025)
 - **Refactor:** Código admin separado en módulos (`/includes/admin/`)
 - **Otimização:** CSS reducido ~24% (9.77 KiB → 7.39 KiB)
@@ -127,19 +155,6 @@ npm run watch
 - **Melhoria:** Isolamento de Elementor sem quebrar estilos MUI
 - **Melhoria:** Variables CSS centralizadas
 - **Fix:** Conflitos de padding/margin com page builders
-
-### v1.4.2 (Nov 2025)
-- **Fix:** Añadido sistema de compatibilidad con temas (`/includes/compat/`)
-- **Fix:** Archivo `custom-theme-override.css` para que usuarios peguen reglas de override
-- **Fix:** Mejora en encolado de estilos para evitar conflictos con temas como Mestc
-
-### v1.4.0 (Nov 2025)
- - **Refactor:** Código admin separado en módulos (`/includes/admin/`)
- - **Otimización:** CSS reducido ~24% (9.77 KiB → 7.39 KiB)
- - **Otimización:** SCSS reducido ~56% (~435 → ~190 líneas)
- - **Melhoria:** Isolamento de Elementor sem quebrar estilos MUI
- - **Melhoria:** Variables CSS centralizadas
- - **Fix:** Conflitos de padding/margin com page builders
 ### v1.3.1 (Nov 2025)
 - Selector de mídia WordPress para logo
 - Botão de reset de estilos
@@ -184,6 +199,9 @@ npm run watch
 - [ ] Webhooks para automatizaciones
 - [ ] Dashboard de analytics (leads, conversiones)
 - [ ] A/B testing de templates
+- [ ] Integración con sistemas de email marketing
+- [x] ~~Poder editar textos de botão (próximo, anterior, enviar)~~ ✅ v1.4.2
+- [x] ~~Poder editar los campos del formulario inicial (nombre, email, teléfono)~~ ✅ v1.4.2
 
 #### UX/UI
 - [ ] Animaciones de transición entre fases
@@ -191,6 +209,7 @@ npm run watch
 - [ ] Preview en tiempo real en el admin
 - [ ] Más templates de colores
 - [ ] Tipografías personalizables
+- [ ] Aplicar diseño moderno a todas las páginas de admin (mismo estilo de Estilos y Textos)
 
 #### Integraciones
 - [ ] WooCommerce (productos como servicios)

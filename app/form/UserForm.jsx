@@ -9,7 +9,31 @@ const UserForm = ({ onUserSubmit }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const apiBaseUrl = FSF_data.api_base_url.user_info;
-  const termsUrl = FSF_data.terms_url; // Obtener la URL de los términos y condiciones
+  const termsUrl = FSF_data.terms_url;
+  
+  // Obtener textos personalizados o usar valores por defecto
+  const texts = FSF_data.form_texts || {};
+  const t = {
+    formTitle: texts.form_title || 'PEDIDO DE PROPOSTA',
+    formSubtitle: texts.form_subtitle || 'Preenche os campos abaixo para pedires a tua proposta!',
+    nameLabel: texts.name_label || 'Nome e Apelido *',
+    namePlaceholder: texts.name_placeholder || 'O teu Primeiro e último nome',
+    nameErrorRequired: texts.name_error_required || 'Nome é obrigatório',
+    nameErrorMin: texts.name_error_min || 'Deve ter pelo menos 3 caracteres',
+    emailLabel: texts.email_label || 'E-mail *',
+    emailPlaceholder: texts.email_placeholder || 'O teu melhor e-mail',
+    emailErrorRequired: texts.email_error_required || 'Email é obrigatório',
+    emailErrorInvalid: texts.email_error_invalid || 'Insere um email válido',
+    whatsappLabel: texts.whatsapp_label || 'O teu WhatsApp *',
+    whatsappPlaceholder: texts.whatsapp_placeholder || 'O teu WhatsApp',
+    whatsappErrorRequired: texts.whatsapp_error_required || 'Teu WhatsApp é obrigatório',
+    whatsappErrorInvalid: texts.whatsapp_error_invalid || 'Insere teu WhatsApp válido',
+    privacyText: texts.privacy_text || 'Li e aceito',
+    privacyLinkText: texts.privacy_link_text || 'a Política de Privacidade',
+    privacyError: texts.privacy_error || 'É necessário aceitar as políticas de privacidade',
+    submitButton: texts.submit_button || 'SOLICITAR PROPOSTA',
+    errorMessage: texts.error_message || 'Houve um erro ao criar a entrada.',
+  };
 
   useEffect(() => {
     // Seleccionar el div con el ID 'FSF_frontend-seccion'
@@ -46,7 +70,7 @@ const UserForm = ({ onUserSubmit }) => {
     })
     .catch((error) => {
       console.error('Erro:', error);
-      alert('Houve um erro ao criar a entrada.');
+      alert(t.errorMessage);
     });
   };
 
@@ -54,10 +78,10 @@ const UserForm = ({ onUserSubmit }) => {
     <Box sx={{ maxWidth: 600, mx: 'auto', p: 1, borderRadius: 2 }}>
       <Logo /> {/* Usando el componente Logo aquí */}
       <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center', fontSize: '2rem' }}>
-        PEDIDO DE PROPOSTA
+        {t.formTitle}
       </Typography>
       <Typography variant="body1" align="center" sx={{ marginBottom: 3, fontWeight: 'bold', fontSize: '1rem', color: 'var(--font-color)' }}>
-        Preenche os campos abaixo para pedires a tua proposta!
+        {t.formSubtitle}
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Paper sx={{ 
@@ -76,28 +100,28 @@ const UserForm = ({ onUserSubmit }) => {
         }}>
           <FormControl fullWidth margin="dense" error={!!errors.nombre}>
             <InputLabel shrink htmlFor="nombre" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
-              Nome e Apelido *
+              {t.nameLabel}
             </InputLabel>
             <BootstrapInput
               id="nombre"
-              placeholder="O teu Primeiro e último nome"
-              {...register('nombre', { required: 'Nome é obrigatório', minLength: { value: 3, message: 'Deve ter pelo menos 3 caracteres' } })}
+              placeholder={t.namePlaceholder}
+              {...register('nombre', { required: t.nameErrorRequired, minLength: { value: 3, message: t.nameErrorMin } })}
             />
             <FormHelperText>{errors.nombre ? errors.nombre.message : ''}</FormHelperText>
           </FormControl>
 
           <FormControl fullWidth margin="dense" error={!!errors.email}>
             <InputLabel shrink htmlFor="email" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
-              E-mail *
+              {t.emailLabel}
             </InputLabel>
             <BootstrapInput
               id="email"
-              placeholder="O teu melhor e-mail"
+              placeholder={t.emailPlaceholder}
               {...register('email', {
-                required: 'Email é obrigatório',
+                required: t.emailErrorRequired,
                 pattern: {
                   value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                  message: 'Insere um email válido',
+                  message: t.emailErrorInvalid,
                 }
               })}
             />
@@ -106,16 +130,16 @@ const UserForm = ({ onUserSubmit }) => {
 
           <FormControl fullWidth margin="dense" error={!!errors.whatsapp}>
             <InputLabel shrink htmlFor="whatsapp" sx={{ fontSize: '1.25rem', position: 'relative', marginBottom: '-9px', marginLeft: '-14px', color: '#ffffff !important' }}>
-            O teu WhatsApp*
+            {t.whatsappLabel}
             </InputLabel>
             <BootstrapInput
               id="whatsapp"
-              placeholder="O teu WhatsApp"
+              placeholder={t.whatsappPlaceholder}
               {...register('whatsapp', {
-                required: 'teu WhatsApp é obrigatório',
+                required: t.whatsappErrorRequired,
                 pattern: {
                   value: /^\+?[0-9\s-]+$/,
-                  message: 'Insere teu WhatsApp válido',
+                  message: t.whatsappErrorInvalid,
                 }
               })}
             />
@@ -137,13 +161,13 @@ const UserForm = ({ onUserSubmit }) => {
           <FormControlLabel
             control={
               <Checkbox
-                {...register('privacyPolicy', { required: 'É necessário aceitar as políticas de privacidade' })}
+                {...register('privacyPolicy', { required: t.privacyError })}
                 color="primary"
               />
             }
             label={
               <Typography sx={{ fontSize: '1rem' }} variant="body2" color={errors.privacyPolicy ? 'error' : 'textPrimary'}>
-                Li e aceito <a href={termsUrl} target="_blank" rel="noopener noreferrer">a Política de Privacidade</a>
+                {t.privacyText} <a href={termsUrl} target="_blank" rel="noopener noreferrer">{t.privacyLinkText}</a>
               </Typography>
             }
           />
@@ -153,8 +177,8 @@ const UserForm = ({ onUserSubmit }) => {
             {/* Botón personalizado */}
             <button className="custom-button" type="submit">
               <span className="icon-btn"></span>
-              <span className="title-btn" data-animate-text="SOLICITAR PROPOSTA">
-                SOLICITAR PROPOSTA
+              <span className="title-btn" data-animate-text={t.submitButton}>
+                {t.submitButton}
               </span>
             </button>
           </Box>

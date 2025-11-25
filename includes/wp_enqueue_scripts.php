@@ -41,6 +41,10 @@ function FSF_enqueue_scripts_and_styles()
         $logo_url = get_option('fsf_logo_url', '');
         $logo_max_width = get_option('fsf_logo_max_width', 200);
         $logo_max_height = get_option('fsf_logo_max_height', 80);
+        
+        // Obtener textos personalizados del formulario
+        $form_texts = function_exists('fsf_get_current_form_texts') ? fsf_get_current_form_texts() : array();
+        
         $js_data_passed = array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'servicios' => $post_data,
@@ -55,6 +59,7 @@ function FSF_enqueue_scripts_and_styles()
             'logo_url' => $logo_url,
             'logo_max_width' => $logo_max_width,
             'logo_max_height' => $logo_max_height,
+            'form_texts' => $form_texts,
         );
       // 
     wp_enqueue_script( 'FSF-frontend', FSF_PLUGIN_URL . '/dist/app.js', array('jquery'), '1.3.7', true );

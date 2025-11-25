@@ -42,68 +42,24 @@ function fsf_enqueue_admin_scripts($hook_suffix) {
     wp_enqueue_script('wp-color-picker');
     wp_enqueue_media();
     
-    // Inline script
-    wp_add_inline_script('wp-color-picker', fsf_get_admin_inline_script());
-}
-
-/**
- * Script inline para el admin
- */
-function fsf_get_admin_inline_script() {
-    $defaults = fsf_get_default_colors();
-    return "
-    jQuery(document).ready(function($) {
-        var defaultColors = " . json_encode($defaults) . ";
-        
-        $('.fsf-color-picker').wpColorPicker();
-        
-        // Reset defaults
-        $('#fsf_reset_defaults').on('click', function(e) {
-            e.preventDefault();
-            if (confirm('¿Restaurar colores por defecto?')) {
-                $.each(defaultColors, function(key, value) {
-                    var field = $('#' + key);
-                    if (field.hasClass('fsf-color-picker')) {
-                        field.wpColorPicker('color', value);
-                    } else {
-                        field.val(value);
-                    }
-                });
-            }
-        });
-        
-        // Media uploader
-        var mediaUploader;
-        $('#fsf_upload_logo_button').on('click', function(e) {
-            e.preventDefault();
-            if (mediaUploader) { mediaUploader.open(); return; }
-            
-            mediaUploader = wp.media({
-                title: 'Selecionar Logo',
-                button: { text: 'Usar esta imagem' },
-                multiple: false,
-                library: { type: 'image' }
-            });
-            
-            mediaUploader.on('select', function() {
-                var attachment = mediaUploader.state().get('selection').first().toJSON();
-                $('#fsf_logo_url').val(attachment.url);
-                $('#fsf-logo-preview').attr('src', attachment.url).show();
-                $('#fsf-no-logo').hide();
-            });
-            
-            mediaUploader.open();
-        });
-        
-        // Remove logo
-        $(document).on('click', '#fsf_remove_logo_button', function(e) {
-            e.preventDefault();
-            $('#fsf_logo_url').val('');
-            $('#fsf-logo-preview').hide();
-            $('#fsf-no-logo').show();
-        });
-    });
-    ";
+    // Registrar y cargar script externo
+    wp_enqueue_script(
+        'fsf-styles-admin',
+        plugins_url('js/styles-admin.js', __FILE__),
+        array('jquery', 'wp-color-picker', 'media-upload'),
+        FSF_PLUGIN_VERSION,
+        true
+    );
+    
+    // Pasar datos al script
+    wp_localize_script('fsf-styles-admin', 'fsfAdminData', array(
+        'defaultColors' => fsf_get_default_colors(),
+        'i18n' => array(
+            'confirmReset' => __('¿Restaurar colores por defecto?', 'funnel-services-form'),
+            'selectLogo' => __('Selecionar Logo', 'funnel-services-form'),
+            'useImage' => __('Usar esta imagem', 'funnel-services-form'),
+        )
+    ));
 }
 
 /**
@@ -116,12 +72,15 @@ function fsf_display_styles_settings_page() {
     // Procesar guardado
     if (isset($_POST['fsf_styles_nonce']) && wp_verify_nonce($_POST['fsf_styles_nonce'], 'fsf_styles_settings')) {
         fsf_save_style_settings($defaults);
-        echo '<div class="notice notice-success is-dismissible"><p>' . __('Estilos atualizados com sucesso!', 'funnel-services-form') . '</p></div>';
+        $saved_message = true;
+    } else {
+        $saved_message = false;
     }
     
     $logo_url = get_option('fsf_logo_url', '');
     $colors = fsf_get_current_colors();
     $active_template = get_option('fsf_active_template', 'custom');
+    $show_success = $saved_message;
     
     // Incluir template HTML
     include __DIR__ . '/views/styles-settings-page.php';
