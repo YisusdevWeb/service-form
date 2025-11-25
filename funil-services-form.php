@@ -97,18 +97,27 @@ function fsf_debug_translations() {
         return;
     }
 
+    global $l10n;
+    
     $current_locale = get_locale();
     $textdomain_loaded = is_textdomain_loaded( 'funnel-services-form' ) ? 'Yes' : 'No';
-
+    
+    // Check MO file path
+    $mofile = WP_LANG_DIR . '/plugins/funnel-services-form-' . $current_locale . '.mo';
+    $mofile_plugin = FSF_PLUGIN_PATH . 'languages/funnel-services-form-' . $current_locale . '.mo';
+    
     $test_strings = [
         'Privacy Policy Link Settings',
         'Thank You Page Link',
         'Debug / Logs'
     ];
 
-    echo '<div class="notice notice-info"><p><strong>FSF Translation Debug:</strong></p>';
+    echo '<div class="notice notice-warning"><p><strong>FSF Translation Debug:</strong></p>';
     echo '<p>Current Locale: ' . esc_html( $current_locale ) . '</p>';
     echo '<p>Textdomain Loaded: ' . esc_html( $textdomain_loaded ) . '</p>';
+    echo '<p>MO Global: ' . (file_exists($mofile) ? 'EXISTS ('.filesize($mofile).' bytes)' : 'NOT FOUND') . '</p>';
+    echo '<p>MO Plugin: ' . (file_exists($mofile_plugin) ? 'EXISTS ('.filesize($mofile_plugin).' bytes)' : 'NOT FOUND') . '</p>';
+    echo '<p>Translation Object: ' . (isset($l10n['funnel-services-form']) ? 'LOADED' : 'NOT LOADED') . '</p>';
     echo '<ul>';
     foreach ( $test_strings as $string ) {
         $translated = __( $string, 'funnel-services-form' );
