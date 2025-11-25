@@ -12,75 +12,398 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-11-25T00:00:00+00:00\n"
+"POT-Creation-Date: 2025-01-25T00:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: AI Assistant\n"
+"X-Generator: Custom PHP Extractor\n"
 "X-Domain: funnel-services-form\n"
 
-#. Plugin Name of the plugin
-msgid "EWEB - Funnel Services Form"
+
+#: includes/acf/alert_acf_active.php
+msgid "ACF Pro"
 msgstr ""
 
-#. Description of the plugin
-msgid "Plugin for service forms with steps for quotes. Allows creating multi-phase forms with color and style customization."
-msgstr ""
-
-# ============================================
-# Admin - Styles Settings Page
-# ============================================
-
-#: includes/admin/styles-admin.php
-#: includes/admin/views/styles-settings-page.php
-msgid "Styles and Logo Customization"
-msgstr ""
-
-#: includes/admin/styles-admin.php
-msgid "Styles and Logo"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-msgid "Customize the appearance of the service form"
+#: includes/wp_admin_menu.php
+msgid "Actions"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Active Template"
 msgstr ""
 
+#: languages/english-base.php
+msgid "Active Theme:"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Add New Service"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Administrator Email"
+msgstr ""
+
+#: includes/acf/alert_acf_active.php
+msgid "Advanced Custom Fields (ACF)"
+msgstr ""
+
+#: languages/english-base.php
+msgid "All Services"
+msgstr ""
+
+#: includes/wp_postype.php
+msgid "All User Information"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Are you sure you want to delete the selected users?"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Are you sure you want to delete this user?"
+msgstr ""
+
+#: includes/acf/alert_acf_active.php
+msgid "Attention!"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Back"
+msgstr ""
+
 #: includes/admin/views/styles-settings-page.php
-msgid "Styles updated successfully!"
+msgid "Blur (px)"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Button"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Button Hover"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Button Text"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Click on a template to automatically apply all colors."
+msgstr ""
+
+#: languages/english-base.php
+msgid "Close"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Color Templates"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
+#: languages/english-base.php
+msgid "Colors"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Configure your logo and form colors. Use hexadecimal codes for colors."
+msgstr ""
+
+#: languages/english-base.php
+msgid "Corporate Blue"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Custom"
+msgstr ""
+
 #: includes/admin/views/form-texts-page.php
-msgid "Restore Default"
+msgid "Customize all texts of the initial form"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+msgid "Customize the appearance of the service form"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Dark (Default)"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Debug / Logs"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Delete"
+msgstr ""
+
+#: languages/english-base.php
+msgid "EWEB - Funnel Services Form"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Edit Service"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Elegant Purple"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Email"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email *"
+msgstr ""
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Body"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email Configuration"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email Field"
+msgstr ""
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Recipient"
+msgstr ""
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Sender"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email Subject"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email is required"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Email sent successfully!"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Enable debug/logs mode"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Enter a valid WhatsApp"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Enter a valid email"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error Message"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error: Invalid WhatsApp"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error: Invalid email"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error: Minimum characters"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error: Not accepted"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Error: Required field"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Export Selected"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Fill in the fields below to request your quote!"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Filter Service list"
+msgstr ""
+
+#: includes/wp_postype.php
+msgid "Filter Services List"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Form Texts"
+msgstr ""
+
+#: includes/wp_page_templates.php
+msgid "Full page template for services form"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+msgid "Glassmorphism"
+msgstr ""
+
+#: languages/english-base.php
+msgid "I have read and accept"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Input Border"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Input Text"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Insert into Service"
+msgstr ""
+
+#: includes/acf/alert_acf_active.php
+msgid "Install them to take advantage of all plugin features!"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Insufficient permissions to perform this action."
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Invalid post ID"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Invalid post."
+msgstr ""
+
+#: languages/english-base.php
+msgid "Label"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Labels"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Light"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Link text"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Loading..."
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Logo"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "No logo"
+#: languages/english-base.php
+msgid "Main Background"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Select"
+#: languages/english-base.php
+msgid "Main Text"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Remove"
+#: languages/english-base.php
+msgid "Main Title"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Maximum Size"
 msgstr ""
 
+#: languages/english-base.php
+msgid "Must be at least 3 characters"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Name"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Name Field"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Name and Last Name *"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Name is required"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Natural Green"
+msgstr ""
+
+#: languages/english-base.php
+msgid "New Service"
+msgstr ""
+
 #: includes/admin/views/styles-settings-page.php
-msgid "Glassmorphism"
+msgid "No logo"
+msgstr ""
+
+#: languages/english-base.php
+msgid "No services found in trash."
+msgstr ""
+
+#: languages/english-base.php
+msgid "No services found."
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "No services selected."
+msgstr ""
+
+#: languages/english-base.php
+msgid "Notice"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+msgid "Opacity"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Or customize each color individually below:"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Parent Service:"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Personalization of Styles and Logo"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Personalize all texts of the initial form"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Phone"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Placeholder"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Plugin for service forms with steps for quotes. Allows creating multi-phase forms with color and style customization."
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Post not found"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
@@ -88,369 +411,337 @@ msgid "Preview"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
-msgid "Opacity"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-msgid "Blur (px)"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-msgid "Colors"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
 msgid "Primary Background"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-msgid "Secondary Background"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-#: includes/admin/views/form-texts-page.php
-msgid "Titles"
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
 msgid "Primary Text"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Secondary Text"
+#: languages/english-base.php
+msgid "Privacy Policy"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Privacy Policy Link Settings"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Privacy Policy URL"
+msgstr ""
+
+#: languages/english-base.php
+msgid "QUOTE REQUEST"
+msgstr ""
+
+#: languages/english-base.php
+msgid "REQUEST QUOTE"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Redirecting..."
 msgstr ""
 
 #: includes/admin/views/styles-settings-page.php
-msgid "Labels"
+msgid "Remove"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Theme Color"
+#: includes/wp_admin_menu.php
+msgid "Remove Selected"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Input Text"
+#: languages/english-base.php
+msgid "Restore Default"
 msgstr ""
 
-#: includes/admin/views/styles-settings-page.php
-msgid "Input Border"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-#: includes/admin/views/form-texts-page.php
-msgid "Button"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-#: includes/admin/views/form-texts-page.php
-msgid "Button Text"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-msgid "Button Hover"
-msgstr ""
-
-#: includes/admin/views/styles-settings-page.php
-#: includes/admin/views/form-texts-page.php
-msgid "Save Changes"
+#: languages/english-base.php
+msgid "Restore Default Colors"
 msgstr ""
 
 #: includes/admin/styles-admin.php
 msgid "Restore default colors?"
 msgstr ""
 
-#: includes/admin/styles-admin.php
-msgid "Select Logo"
-msgstr ""
-
-#: includes/admin/styles-admin.php
-msgid "Use this image"
-msgstr ""
-
-# ============================================
-# Admin - Form Texts Page
-# ============================================
-
-#: includes/admin/form-texts-admin.php
-#: includes/admin/views/form-texts-page.php
-msgid "Form Texts"
-msgstr ""
-
-#: includes/admin/views/form-texts-page.php
-msgid "Customize all texts of the initial form"
-msgstr ""
-
-#: includes/admin/views/form-texts-page.php
-msgid "Texts updated successfully!"
-msgstr ""
-
 #: includes/admin/form-texts-admin.php
 msgid "Restore default texts?"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Main Title"
+#: languages/english-base.php
+msgid "Save Changes"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Subtitle"
+#: includes/wp_admin_config_mail.php
+msgid "Save Settings"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error Message"
+#: languages/english-base.php
+msgid "Search Services"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Name Field"
+#: languages/english-base.php
+msgid "Secondary Background"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Label"
+#: languages/english-base.php
+msgid "Secondary Text"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Placeholder"
+#: includes/admin/views/styles-settings-page.php
+msgid "Select"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error: Required field"
+#: languages/english-base.php
+msgid "Select Logo"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error: Minimum characters"
+#: languages/english-base.php
+msgid "Select a service"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Email Field"
+#: languages/english-base.php
+msgid "Select a template or customize colors manually below."
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error: Invalid email"
+#: includes/wp_admin_menu.php
+msgid "Selected Services"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "WhatsApp Field"
+#: languages/english-base.php
+msgid "Service"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error: Invalid WhatsApp"
+#: languages/english-base.php
+msgid "Service Archives"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Privacy Policy"
+#: languages/english-base.php
+msgid "Service Attributes"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Text before link"
+#: languages/english-base.php
+msgid "Service Form"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Link text"
+#: languages/english-base.php
+msgid "Service Form (Full Screen)"
 msgstr ""
 
-#: includes/admin/views/form-texts-page.php
-msgid "Error: Not accepted"
+#: languages/english-base.php
+msgid "Service Information"
 msgstr ""
 
-# ============================================
-# Color Templates
-# ============================================
-
-#: includes/admin/color-templates.php
-msgid "🌙 Dark (Default)"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "☀️ Light"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "🔵 Corporate Blue"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "🟢 Natural Green"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "🟣 Elegant Purple"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "🟠 Warm Orange"
-msgstr ""
-
-#: includes/admin/color-templates.php
-msgid "Custom"
-msgstr ""
-
-# ============================================
-# Post Type - Services
-# ============================================
-
-#: includes/wp_postype.php
+#: languages/english-base.php
 msgid "Services"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "All Services"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Edit Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "View Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Add New Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "New Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Parent Service:"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Search Services"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "No services found."
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "No services found in trash."
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Service Archives"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Service Attributes"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Insert into Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Uploaded to this Service"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Filter Service list"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "Service Information"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "User Information"
-msgstr ""
-
-#: includes/wp_postype.php
-msgid "User Info"
-msgstr ""
-
-# ============================================
-# Email Configuration
-# ============================================
-
-#: includes/wp_admin_config_mail.php
-msgid "Email Configuration"
+msgid "Services Information"
 msgstr ""
 
 #: includes/wp_admin_config_mail.php
-msgid "Administrator Email"
+msgid "Services Quote"
 msgstr ""
 
-#: includes/wp_admin_config_mail.php
-msgid "Email Subject"
-msgstr ""
-
-#: includes/wp_admin_config_mail.php
+#: languages/english-base.php
 msgid "Settings saved successfully!"
 msgstr ""
 
-# ============================================
-# Frontend - React Components
-# ============================================
-
-#: app/app.jsx
-msgid "Select a service"
+#: includes/wp_admin_config_mail.php
+msgid "Settings saved."
 msgstr ""
 
-#: app/components/Preloader.jsx
-msgid "Loading..."
+#: includes/wp_admin_menu.php
+msgid "Settings updated successfully!"
 msgstr ""
 
-#: app/components/SuccessMessage.jsx
-msgid "Email sent successfully!"
+#: includes/wp_admin_menu.php
+msgid "Show logs and errors on frontend"
 msgstr ""
 
-#: app/components/SuccessMessage.jsx
-msgid "Redirecting..."
+#: languages/english-base.php
+msgid "Styles and Logo"
 msgstr ""
 
-#: app/components/NoPhasePopup.jsx
-msgid "Notice"
+#: includes/admin/views/styles-settings-page.php
+msgid "Styles and Logo Customization"
 msgstr ""
 
-#: app/components/NoPhasePopup.jsx
+#: languages/english-base.php
+msgid "Styles updated successfully!"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Subtitle"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Text before link"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Texts of the Form"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Texts updated successfully!"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Thank You Page Link"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Thank You Page Link Settings"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "Thank You Page URL"
+msgstr ""
+
+#: languages/english-base.php
 msgid "The service \"%s\" has no phase options available."
 msgstr ""
 
-#: app/components/NoPhasePopup.jsx
-msgid "Close"
+#: languages/english-base.php
+msgid "Theme Color"
 msgstr ""
 
-# ============================================
-# Page Templates
-# ============================================
-
-#: includes/wp_page_templates.php
-msgid "Service Form (Full Screen)"
+#: languages/english-base.php
+msgid "There was an error creating the entry."
 msgstr ""
 
-# ============================================
-# Miscellaneous
-# ============================================
+#: includes/acf/alert_acf_active.php
+msgid "This plugin requires"
+msgstr ""
 
+#: languages/english-base.php
 msgid "Tip:"
 msgstr ""
 
-msgid "Select a template or customize colors manually below."
+#: languages/english-base.php
+msgid "Titles"
 msgstr ""
 
-msgid "🎨 Color Templates"
+#: languages/english-base.php
+msgid "Uploaded to this Service"
 msgstr ""
 
-msgid "Click on a template to automatically apply all colors."
+#: languages/english-base.php
+msgid "Use this image"
 msgstr ""
 
+#: includes/wp_admin_menu.php
+msgid "User Data"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "User Details"
+msgstr ""
+
+#: languages/english-base.php
+msgid "User Info"
+msgstr ""
+
+#: languages/english-base.php
+msgid "User Information"
+msgstr ""
+
+#: includes/wp_admin_menu.php
+msgid "View"
+msgstr ""
+
+#: languages/english-base.php
+msgid "View Service"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Warm Orange"
+msgstr ""
+
+#: languages/english-base.php
+msgid "WhatsApp Field"
+msgstr ""
+
+#: languages/english-base.php
+msgid "You must accept the privacy policy"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Your First and Last Name"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Your WhatsApp"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Your WhatsApp *"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Your WhatsApp is required"
+msgstr ""
+
+#: languages/english-base.php
+msgid "Your best email"
+msgstr ""
+
+#: includes/acf/alert_acf_active.php
+msgid "and"
+msgstr ""
+
+#: languages/english-base.php
+msgid "the Privacy Policy"
+msgstr ""
+
+#: includes/acf/alert_acf_active.php
+msgid "to be installed and active to function properly, including repeater fields functionality."
+msgstr ""
+
+#: languages/english-base.php
+msgid "¿Restore default colors?"
+msgstr ""
+
+#: languages/english-base.php
+msgid "¿Restore default texts?"
+msgstr ""
+
+#: languages/english-base.php
+msgid "☀️ Light"
+msgstr ""
+
+#: languages/english-base.php
 msgid "⚙️ Advanced Customization"
 msgstr ""
 
-msgid "Or customize each color individually below:"
+#: languages/english-base.php
+msgid "🌙 Dark (Default)"
 msgstr ""
 
-msgid "Restore Default Colors"
+#: languages/english-base.php
+msgid "🎨 Color Templates"
 msgstr ""
 
-msgid "Active Theme:"
+#: languages/english-base.php
+msgid "🔵 Corporate Blue"
 msgstr ""
 
-msgid "Configure your logo and form colors. Use hexadecimal codes for colors."
+#: includes/wp_page_templates.php
+msgid "🚀 Full Screen Form"
+msgstr ""
+
+#: includes/wp_page_templates.php
+msgid "🚀 Full Screen Form (Plugin)"
+msgstr ""
+
+#: languages/english-base.php
+msgid "🟠 Warm Orange"
+msgstr ""
+
+#: languages/english-base.php
+msgid "🟢 Natural Green"
+msgstr ""
+
+#: languages/english-base.php
+msgid "🟣 Elegant Purple"
 msgstr ""
