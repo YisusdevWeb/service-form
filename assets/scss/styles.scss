@@ -1,442 +1,217 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 
+// Variables CSS fallback (los valores reales vienen de wp_admin_styles.php)
 :root {
-  --bg-color: #0a1929;
-  --bg-gradient: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
-  --assistant-color: rgba(255, 255, 255, 0.08);
+  --bg-gradient: linear-gradient(135deg, #090a15 0%, #01579b 100%);
   --heading-color: #ffffff;
-  --font-color: rgba(255, 255, 255, 0.9);
-  --font-color-secondary: rgba(255, 255, 255, 0.7);
-  --theme-color: #2d6db5;
-  --theme-color-darken: #1e4a7a;
-  --theme-color-light: #4a90e2;
-  --border-color: rgba(255, 255, 255, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --input-bg: #ffffff;
-  --input-text: #1f2937;
-  --input-border: rgba(74, 144, 226, 0.4);
-  --input-placeholder: rgba(31, 41, 55, 0.5);
+  --font-color: #ffffff;
+  --font-color-secondary: #e5e7eb;
   --label-color: #ffffff;
+  --theme-color: #122d42;
+  --theme-color-darken: #3974ad;
+  --theme-color-light: #7ba8cc;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-blur: 10px;
+  --input-text: #ffffff;
+  --input-border: #ffffff;
+  --button-text: #ffffff;
+  --logo-max-width: 200px;
+  --logo-max-height: 80px;
 }
 
- .funil-services-form-root {
-   font-family: "Poppins", sans-serif;
-   background: var(--bg-gradient);
-   background-attachment: fixed;
-   color: var(--font-color);
+// Animaciones
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-body {
+// CONTENEDOR PRINCIPAL
+.funil-services-form-root {
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding: 2rem 0.5rem;
+  position: relative;
+  isolation: isolate;
+  border-radius: 10px;
+  overflow: hidden;
   background: var(--bg-gradient);
   background-attachment: fixed;
   color: var(--font-color);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-
-.summary-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.heading {
-  color: var(--heading-color);
-  font-weight: bold;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilos globales para títulos y textos - Mayor especificidad */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--heading-color) !important;
-  font-family: "Poppins", sans-serif;
-}
-
-/* Asegurar que todos los Typography de MUI usen los colores correctos */
-.MuiTypography-root {
-  &.MuiTypography-h1,
-  &.MuiTypography-h2,
-  &.MuiTypography-h3,
-  &.MuiTypography-h4,
-  &.MuiTypography-h5,
-  &.MuiTypography-h6 {
-    color: var(--heading-color) !important;
-  }
-
-  &.MuiTypography-body1,
-  &.MuiTypography-body2 {
-    color: var(--font-color) !important;
-  }
-}
-
-.form-paper {
-  padding: 2rem;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 1.5rem;
-  border: 1px solid var(--glass-border);
-  margin-bottom: 2rem;
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 8px 32px 0 var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px 0 var(--shadow-color);
-  }
-}
-
-.tab-panel {
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-family: "Poppins", sans-serif;
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-  border-radius: 1rem;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 16px 0 var(--shadow-color);
-
-  .phase-title {
-    color: var(--heading-color);
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
-      color: #ffffff !important;
-    }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-
-    li {
-      color: var(--font-color);
-      margin-bottom: 8px;
-      padding: 4px 0;
-    }
-  }
-}
- }
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  font-family: "Poppins", sans-serif;
-
-  .edit-button,
-  .add-button,
-  .save-button {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: var(--heading-color);
-    border: 1px solid var(--theme-color-light);
-    border-radius: 31px;
-    padding: 8px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(15, 76, 128, 0.2);
-
-    &:hover {
-      background: var(--theme-color);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(15, 76, 128, 0.4);
-      border-color: var(--theme-color);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
   }
   
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-}
+  > * { position: relative; z-index: 1; }
+  * { box-sizing: border-box; }
 
-button.custom-button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 20px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--button-text);
-  border: 1px solid var(--theme-color-light);
-  border-radius: 31px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(15, 76, 128, 0.2);
+  // Tipografia
+  p, span, label, div { color: var(--font-color); font-family: inherit; }
+  h1, h2, h3, h4, h5, h6 { color: var(--heading-color); font-family: inherit; }
+  a { color: var(--theme-color-light); &:hover { color: var(--theme-color-darken); } }
 
-  &:hover {
-    color: white;
-    background: var(--theme-color);
-    box-shadow: 0 6px 20px rgba(15, 76, 128, 0.4);
-    border-color: var(--theme-color);
+  // Layout
+  .summary-form {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    animation: fadeIn 0.6s ease-out;
   }
 
-  span.icon-btn {
-    padding: 7px 17px;
-    border-radius: 26px;
+  .heading, .MuiTypography-root.heading {
+    color: var(--heading-color) !important;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    margin: 0 0 1.5rem 0;
+  }
+
+  // Glassmorphism
+  .form-paper {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    backdrop-filter: blur(var(--glass-blur)) saturate(81%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(81%);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12) inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scaleIn 0.5s ease-out;
+    &:hover { transform: translateY(-2px); box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.2); }
+  }
+
+  .tab-panel {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+
+    .phase-title {
+      color: var(--heading-color) !important;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+    }
+
+    ul { list-style: none; padding: 0; margin: 0; }
+    li {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      &::before { content: "•"; color: var(--theme-color-light); font-weight: bold; margin-right: 10px; }
+    }
+  }
+
+  // Service items
+  .service-item {
+    cursor: pointer;
+    margin-bottom: 12px;
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--theme-color), var(--theme-color-light));
-    margin-right: 9px;
-    box-shadow: 0 2px 8px rgba(15, 76, 128, 0.3);
-  }
-  
-  .title-btn {
-    position: relative;
-    z-index: 2;
-    display: inline-block;
-    transition: all 0.5s ease;
-
-    &[data-animate-text] {
-      overflow: hidden;
-
-      > span,
-      &:before {
-        display: inline-block;
-        transition: 0.8s cubic-bezier(0.65, 0, 0.076, 1);
-        transform-origin: 0 center;
-      }
-
-      &:before {
-        position: absolute;
-        content: attr(data-animate-text);
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        color: white;
-        transform: rotateZ(7deg);
-        opacity: 0;
-      }
-    }
-
-    &:hover {
-      & > span {
-        transform: rotateZ(-7deg);
-        opacity: 0;
-      }
-
-      &:before {
-        transform: none;
-        opacity: 1;
-      }
-    }
-  }
-}
-
-
-.custom-tabs {
-  .MuiTab-root {
-    font-family: "Poppins", sans-serif;
-    text-transform: none;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-
-    &:hover {
-      color: var(--heading-color);
-      background: rgba(255, 255, 255, 0.05);
-    }
+    animation: fadeIn 0.5s ease-out backwards;
+    
+    h6 { color: var(--font-color) !important; font-weight: 500; text-transform: uppercase; margin: 0; font-size: 0.85rem; }
+    &:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
   }
 
-  .Mui-selected {
-    color: var(--heading-color);
-    font-weight: 700;
-    background: var(--glass-bg);
-    border-bottom: 2px solid var(--theme-color-light);
-  }
-
-  .MuiTabs-indicator {
-    background: linear-gradient(90deg, var(--theme-color), var(--theme-color-light));
-    height: 3px;
-    border-radius: 3px 3px 0 0;
-  }
-}
-
-.custom-tab {
-  padding: 12px 16px;
-  margin: 0 8px;
-}
-
-
-/* Media Queries para pantallas más pequeñas */
-@media (max-width: 768px) {
-  .summary-form {
-    padding: 0.5rem;
-  }
-
-  .form-paper {
-    padding: 1.5rem;
-  }
+  // Buttons
+  .buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
 
   button.custom-button {
-    font-size: 13px;
-    padding: 6px 16px;
-  }
-
-  .heading {
-    font-size: 20px;
-  }
-
-  .buttons {
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    padding: 12px 30px;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    color: var(--button-text) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+    span.icon-btn { display: none; }
   }
-}
 
-.css-jhczcq-MuiTabs-root .MuiTabs-scrollButtons {
-  display: none;
-}
+  // Tabs
+  .custom-tabs {
+    .MuiTab-root { text-transform: none; font-weight: 600; color: rgba(255, 255, 255, 0.7) !important; transition: all 0.3s ease; }
+    .MuiTab-root:hover { color: #fff !important; background: rgba(255, 255, 255, 0.05); }
+    .Mui-selected { color: #fff !important; font-weight: 700; background: rgba(255, 255, 255, 0.1); }
+    .MuiTabs-indicator { background: linear-gradient(90deg, var(--theme-color), var(--theme-color-light)); height: 3px; border-radius: 3px 3px 0 0; }
+  }
 
-.css-19kzrtu {
-  padding: 10px !important;
+  // Form inputs
+  .MuiTextField-root {
+    .MuiInputLabel-root, .MuiFormLabel-root { color: var(--label-color) !important; font-weight: 500 !important; }
+    .MuiInputBase-root { background: transparent !important; }
+    input, textarea { color: var(--input-text) !important; border-bottom: 1px solid var(--input-border) !important; }
+    input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.5) !important; }
+    .MuiOutlinedInput-notchedOutline { border: none !important; }
+  }
 
-  @media (max-width: 600px) {
-    padding: 10px !important;
-  }
-}
-
-.css-mlh15c-MuiStep-root {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-  margin: auto;
-}
-
-/* Glassmorphism effect para section background */
-.FSF_frontend-section-background {
-  background: var(--bg-gradient);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(58, 123, 200, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(15, 76, 128, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-  }
-}
-
-/* Estilos mejorados para inputs (MUI) */
-/* Labels de MUI - Mayor especificidad */
-.MuiTextField-root {
-  .MuiInputLabel-root,
-  .MuiFormLabel-root,
-  label {
-    color: var(--label-color) !important;
-    font-weight: 500 !important;
-  }
-  
-  .MuiInputBase-root {
-    background-color: var(--input-bg) !important;
-    border-radius: 8px;
-    
-    input,
-    textarea {
-      color: var(--input-text) !important;
-      font-family: "Poppins", sans-serif;
-      
-      &::placeholder {
-        color: var(--input-placeholder) !important;
-        opacity: 1;
-      }
-    }
-  }
-  
-  .MuiOutlinedInput-notchedOutline {
-    border-color: var(--input-border) !important;
-    border-width: 1px;
-  }
-  
-  .Mui-focused {
-    .MuiOutlinedInput-notchedOutline {
-      border-color: var(--theme-color-light) !important;
-      border-width: 2px;
-    }
-    
-    .MuiInputLabel-root,
-    .MuiFormLabel-root {
-      color: var(--label-color) !important;
-    }
-  }
-  
-  &:hover {
-    .MuiOutlinedInput-notchedOutline {
-      border-color: var(--theme-color-light) !important;
-    }
-  }
-}
-
-/* Labels independientes y específicos */
-.MuiInputLabel-root,
-.MuiFormLabel-root {
-  color: var(--label-color) !important;
-  font-weight: 500 !important;
-}
-
-/* Checkbox y FormControlLabel */
-.MuiFormControlLabel-root {
-  color: var(--font-color) !important;
-  
-  .MuiCheckbox-root {
-    color: var(--theme-color-light) !important;
-    
-    &.Mui-checked {
-      color: var(--theme-color-light) !important;
-    }
-  }
-  
-  .MuiTypography-root {
+  // Checkbox
+  .MuiFormControlLabel-root {
     color: var(--font-color) !important;
+    .MuiCheckbox-root { color: rgba(255, 255, 255, 0.7) !important; }
+    .MuiCheckbox-root.Mui-checked { color: var(--theme-color-light) !important; }
+    p { margin: 0; padding: 0; }
+    a { color: var(--font-color) !important; text-decoration: underline !important; font-weight: 500; }
+    a:hover { color: var(--theme-color-light) !important; text-decoration: none !important; }
   }
-  
-  a {
-    color: #ffffff !important;
-    text-decoration: underline !important;
-    transition: color 0.3s ease;
-    font-weight: 500;
-    
-    &:hover {
-      color: var(--theme-color-light) !important;
-      text-decoration: none !important;
-    }
+
+  // Logo
+  .logo-image {
+    max-width: var(--logo-max-width) !important;
+    max-height: var(--logo-max-height) !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+    .summary-form { padding: 28px 5px; }
+    .form-paper { padding: 0 !important; border-radius: 10px; }
+    .tab-panel { padding: 0.4rem !important; }
+    button.custom-button { font-size: 13px; padding: 10px 20px; }
+    .heading { font-size: 1.5rem; }
   }
 }
 
-/* Links globales en el formulario */
-a {
-  color: #ffffff !important;
-  
-  &:hover {
-    color: var(--theme-color-light) !important;
-  }
-}
+// MUI overrides
+.css-jhczcq-MuiTabs-root .MuiTabs-scrollButtons { display: none; }
+.css-19kzrtu { padding: 10px !important; }
+.css-mlh15c-MuiStep-root { padding: 30px; margin: auto; }
+

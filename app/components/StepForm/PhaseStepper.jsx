@@ -13,12 +13,12 @@ const PhaseStepper = ({ currentPhase, fases, onStepClick }) => {
             slotProps={{
               stepIcon: {
                 sx: {
-                  color: currentPhase >= index ? 'var(--theme-color)' : 'var(--assistant-color)', // Cambia el color de los círculos
+                  color: currentPhase >= index ? '#ffffff' : 'rgba(255, 255, 255, 0.4)', // Círculos blancos
                   '&.Mui-active': {
-                    color: 'var(--theme-color-darken)', // Color cuando el paso está activo
+                    color: '#ffffff', // Color blanco cuando el paso está activo
                   },
                   '&.Mui-completed': {
-                    color: 'var(--theme-color)', // Color cuando el paso está completado
+                    color: '#ffffff', // Color blanco cuando el paso está completado
                   },
                 },
               },

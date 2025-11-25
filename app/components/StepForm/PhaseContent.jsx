@@ -10,7 +10,7 @@ const PhaseContent = ({ fase, handleSelection, watch, getValues }) => {
 
   return (
     <Paper sx={{ 
-      padding: 3,
+      padding: { xs: 2, md: '50px' }, // Padding similar a lista de servicios
       fontFamily: 'Poppins, sans-serif', 
       background: 'rgba(255, 255, 255, 0.05)', 
       backdropFilter: 'blur(15px) saturate(180%)',

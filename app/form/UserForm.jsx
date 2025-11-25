@@ -62,9 +62,9 @@ const UserForm = ({ onUserSubmit }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Paper sx={{ 
           p: 3, 
-          background: 'rgba(30, 90, 142, 0.25)', 
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          background: 'rgb(30 90 142 / 0%)', 
+          backdropFilter: 'blur(6px) saturate(81%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(81%)',
           border: '1px solid rgba(255, 255, 255, 0.15)',
           borderRadius: 2, 
           mb: 2, 

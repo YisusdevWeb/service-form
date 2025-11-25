@@ -8,14 +8,16 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     position: 'relative', // Asegura que el label tenga posición relativa
   },
   '& .MuiInputBase-input': {
-    borderRadius: 4,
+    borderRadius: 0,
     position: 'relative',
-    backgroundColor: '#fff',
-    border: '1px solid #E0E3E7',
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: '1px solid #ffffff',
     margin: 0,
     fontSize: 16,
     width: '100%',
-    padding: '10px 12px',
+    padding: '10px 0', // Reduced horizontal padding for standard look
+    color: 'var(--input-text, #ffffff)',
     transition: theme.transitions.create([
       'border-color',
       'background-color',
@@ -23,8 +25,9 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     ]),
     fontFamily: 'Poppins, sans-serif', // Asegura la fuente correcta,
     '&:focus': {
-      boxShadow: `${alpha(theme.palette.primary.main, 0.2)} 0 0 0 0.1rem`,
+      boxShadow: 'none',
       borderColor: theme.palette.primary.main,
+      borderBottom: `2px solid ${theme.palette.primary.main}`,
     },
   },
 }));

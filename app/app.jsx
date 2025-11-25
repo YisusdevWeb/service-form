@@ -74,8 +74,8 @@ const App = () => {
   };
   if (loading) {
     return <Suspense fallback={<div>Loading...</div>}>
-             <Preloader />
-           </Suspense>;
+      <Preloader />
+    </Suspense>;
   }
 
   return (
@@ -84,7 +84,7 @@ const App = () => {
         sx={{
           maxWidth: "600px",
           mx: "auto",
-          p: { xs: 0, sm: 3, md: 5 } // Diferente padding según el tamaño de la pantalla
+          p: !currentService ? { xs: 3, md: '50px' } : 0 // Padding 50px en la selección de servicios
         }}
       >
         {showUserForm ? (
@@ -94,7 +94,7 @@ const App = () => {
         ) : !currentService ? (
           <Box>
             <Logo /> {/* Usando el componente Logo aquí */}
-            <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center',fontSize: '2rem', mb:3.75  }}>
+            <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center', fontSize: '1.5rem', mb: 3 }}>
               Selecionar um serviço
             </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -108,18 +108,9 @@ const App = () => {
                   <li
                     key={servico.id}
                     onClick={() => handleServiceClick(servico)}
-                    style={{
-                      cursor: "pointer",
-                      marginBottom: "10px",
-                      padding: "10px",
-                      backgroundColor: "rgba(255, 255, 255, 0.9)",
-                      borderRadius: "8px",
-                      transition: "background-color 0.3s, transform 0.3s",
-                      boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)",
-                    }}
+                    className="service-item"
                   >
-                    <Typography variant="h6" sx={{ color: 'var(--input-text)', fontWeight: '600' }}>
+                    <Typography variant="h6" sx={{ color: 'var(--input-text)', fontWeight: '500', fontSize: '0.9rem' }}>
                       {servico.titulo}
                     </Typography>
                   </li>

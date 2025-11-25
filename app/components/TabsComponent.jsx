@@ -8,7 +8,6 @@ const TabPanel = ({ children, value, index }) => {
       hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
-      className="tab-panel"
     >
       {value === index && <Box p={3}>{children}</Box>}
     </div>
@@ -39,12 +38,13 @@ const TabsComponent = ({ tabs, value, handleChange, onEditSelections, onAddMoreS
                   padding: "8px 16px",
                   '&.Mui-selected': {
                     color: "#ffffff !important",
-                    backgroundColor: "var(--theme-color)",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)", // Glass effect instead of blue
                     fontSize: "1.1rem",
+                    backdropFilter: "blur(5px)",
                   },
                   '&:hover': {
                     color: "#ffffff !important",
-                    backgroundColor: "var(--theme-color-darken)",
+                    backgroundColor: "rgba(255, 255, 255, 0.15)", // Glass effect on hover
                   },
                 }}
               />

@@ -1,7 +1,7 @@
 {
   "name": "services-form",
-  "version": "1.3.2",
-  "description": "",
+  "version": "1.4.0",
+  "description": "Plugin de formulário de serviços com etapas para cotações",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --mode production",

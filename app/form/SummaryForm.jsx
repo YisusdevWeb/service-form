@@ -118,11 +118,10 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   }
 
   return (
-    <Paper className="form-paper">
-      <Box className="summary-form" ref={formRef}>
-        {showSuccess ? (
-          <SuccessMessage onClose={handleCloseSuccessMessage} />
-        ) : (
+    <>
+      {showSuccess && <SuccessMessage onClose={handleCloseSuccessMessage} />}
+      <Paper className="form-paper">
+        <Box className="summary-form" ref={formRef}>
           <>
             <Logo /> {/* Usando el componente Logo aquí */}
             <Typography variant="h5" gutterBottom className="heading" sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "bold" }}>
@@ -144,9 +143,9 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
               </Box>
             </form>
           </>
-        )}
-      </Box>
-    </Paper>
+        </Box>
+      </Paper>
+    </>
   );
 };
 
