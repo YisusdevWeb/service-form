@@ -68,6 +68,9 @@ include FSF_PLUGIN_PATH . 'includes/wp_shortcode.php';
 // Include page templates
 include FSF_PLUGIN_PATH . 'includes/wp_page_templates.php';
 
+// Include internationalization for frontend
+include FSF_PLUGIN_PATH . 'includes/wp_i18n_frontend.php';
+
 /**
  * Load plugin textdomain for translations.
  *

@@ -1,0 +1,51 @@
+{
+  "translation_strings": [
+    {
+      "string": "Selecionar um serviço",
+      "file": "app/app.jsx",
+      "context": "Título en la selección de servicios en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "Carregando...",
+      "file": "app/components/Preloader.jsx",
+      "context": "Texto de carga en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "Email enviado com sucesso!",
+      "file": "app/components/SuccessMessage.jsx",
+      "context": "Mensaje de éxito en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "Redirecionando...",
+      "file": "app/components/SuccessMessage.jsx",
+      "context": "Texto de redirección en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "Aviso",
+      "file": "app/components/NoPhasePopup.jsx",
+      "context": "Título del popup en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "O serviço \"%s\" não tem opções de fase disponíveis.",
+      "file": "app/components/NoPhasePopup.jsx",
+      "context": "Mensaje del popup en frontend",
+      "status": "missing_from_pot"
+    },
+    {
+      "string": "Fechar",
+      "file": "app/components/NoPhasePopup.jsx",
+      "context": "Botón de cierre del popup en frontend",
+      "status": "missing_from_pot"
+    }
+  ],
+  "notes": [
+    "Estas cadenas están presentes en los archivos React/JSX pero faltan en el archivo POT actual",
+    "El sistema de textos personalizables ya implementado en includes/admin/form-texts-admin.php permite personalizar muchos textos desde el panel de admin",
+    "Se recomienda actualizar el archivo POT con estas cadenas y generar nuevos archivos PO/MO para otros idiomas"
+  ]
+}

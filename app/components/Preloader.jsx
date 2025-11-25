@@ -12,7 +12,7 @@ const Preloader = () => {
     >
       <CircularProgress sx={{ color: '#ffffff' }} />
       <Typography variant="h6" sx={{ marginTop: 2, color: '#ffffff' }}>
-      Carregando...
+        {FSF_data?.form_texts?.loading || 'Loading...'}
       </Typography>
     </Box>
   );

@@ -1,0 +1,358 @@
+# Copyright (C) 2024 Yisus Develop
+# This file is distributed under the GNU General Public License v3.0.
+# Spanish (Spain) translation for Funnel Services Form
+
+msgid ""
+msgstr ""
+"Project-Id-Version: EWEB - Funnel Services Form 1.4.2\n"
+"Report-Msgid-Bugs-To: https://github.com/Yisus-Develop\n"
+"Last-Translator: Yisus Develop\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-25T00:00:00+00:00\n"
+"PO-Revision-Date: 2025-11-25T00:00:00+00:00\n"
+"X-Generator: AI Assistant\n"
+"X-Domain: funnel-services-form\n"
+
+#. Plugin Name of the plugin
+msgid "EWEB - Funnel Services Form"
+msgstr "EWEB - Formulario de Servicios Embudo"
+
+#. Description of the plugin
+msgid "Plugin for service forms with steps for quotes. Allows creating multi-phase forms with color and style customization."
+msgstr "Plugin para formularios de servicios con pasos para cotizaciones. Permite crear formularios multietapa con personalización de colores y estilos."
+
+# ============================================
+# Admin - Styles Settings Page
+# ============================================
+
+msgid "Styles and Logo Customization"
+msgstr "Personalización de Estilos y Logo"
+
+msgid "Styles and Logo"
+msgstr "Estilos y Logo"
+
+msgid "Customize the appearance of the service form"
+msgstr "Personaliza la apariencia del formulario de servicios"
+
+msgid "Active Template"
+msgstr "Plantilla Activa"
+
+msgid "Styles updated successfully!"
+msgstr "¡Estilos actualizados correctamente!"
+
+msgid "Color Templates"
+msgstr "Plantillas de Colores"
+
+msgid "Restore Default"
+msgstr "Restaurar Predeterminado"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "No logo"
+msgstr "Sin logo"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Maximum Size"
+msgstr "Tamaño Máximo"
+
+msgid "Glassmorphism"
+msgstr "Glassmorfismo"
+
+msgid "Preview"
+msgstr "Vista Previa"
+
+msgid "Opacity"
+msgstr "Opacidad"
+
+msgid "Blur (px)"
+msgstr "Desenfoque (px)"
+
+msgid "Colors"
+msgstr "Colores"
+
+msgid "Primary Background"
+msgstr "Fondo Principal"
+
+msgid "Secondary Background"
+msgstr "Fondo Secundario"
+
+msgid "Titles"
+msgstr "Títulos"
+
+msgid "Primary Text"
+msgstr "Texto Principal"
+
+msgid "Secondary Text"
+msgstr "Texto Secundario"
+
+msgid "Labels"
+msgstr "Etiquetas"
+
+msgid "Theme Color"
+msgstr "Color del Tema"
+
+msgid "Input Text"
+msgstr "Texto de Campos"
+
+msgid "Input Border"
+msgstr "Borde de Campos"
+
+msgid "Button"
+msgstr "Botón"
+
+msgid "Button Text"
+msgstr "Texto del Botón"
+
+msgid "Button Hover"
+msgstr "Botón al Pasar"
+
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+msgid "Restore default colors?"
+msgstr "¿Restaurar colores predeterminados?"
+
+msgid "Select Logo"
+msgstr "Seleccionar Logo"
+
+msgid "Use this image"
+msgstr "Usar esta imagen"
+
+# ============================================
+# Admin - Form Texts Page
+# ============================================
+
+msgid "Form Texts"
+msgstr "Textos del Formulario"
+
+msgid "Customize all texts of the initial form"
+msgstr "Personaliza todos los textos del formulario inicial"
+
+msgid "Texts updated successfully!"
+msgstr "¡Textos actualizados correctamente!"
+
+msgid "Restore default texts?"
+msgstr "¿Restaurar textos predeterminados?"
+
+msgid "Main Title"
+msgstr "Título Principal"
+
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+msgid "Error Message"
+msgstr "Mensaje de Error"
+
+msgid "Name Field"
+msgstr "Campo Nombre"
+
+msgid "Label"
+msgstr "Etiqueta"
+
+msgid "Placeholder"
+msgstr "Texto de Ejemplo"
+
+msgid "Error: Required field"
+msgstr "Error: Campo obligatorio"
+
+msgid "Error: Minimum characters"
+msgstr "Error: Mínimo de caracteres"
+
+msgid "Email Field"
+msgstr "Campo Email"
+
+msgid "Error: Invalid email"
+msgstr "Error: Email inválido"
+
+msgid "WhatsApp Field"
+msgstr "Campo WhatsApp"
+
+msgid "Error: Invalid WhatsApp"
+msgstr "Error: WhatsApp inválido"
+
+msgid "Privacy Policy"
+msgstr "Política de Privacidad"
+
+msgid "Text before link"
+msgstr "Texto antes del enlace"
+
+msgid "Link text"
+msgstr "Texto del enlace"
+
+msgid "Error: Not accepted"
+msgstr "Error: No aceptado"
+
+# ============================================
+# Color Templates
+# ============================================
+
+msgid "🌙 Dark (Default)"
+msgstr "🌙 Oscuro (Predeterminado)"
+
+msgid "☀️ Light"
+msgstr "☀️ Claro"
+
+msgid "🔵 Corporate Blue"
+msgstr "🔵 Azul Corporativo"
+
+msgid "🟢 Natural Green"
+msgstr "🟢 Verde Natural"
+
+msgid "🟣 Elegant Purple"
+msgstr "🟣 Púrpura Elegante"
+
+msgid "🟠 Warm Orange"
+msgstr "🟠 Naranja Cálido"
+
+msgid "Custom"
+msgstr "Personalizado"
+
+# ============================================
+# Post Type - Services
+# ============================================
+
+msgid "Services"
+msgstr "Servicios"
+
+msgid "Service"
+msgstr "Servicio"
+
+msgid "All Services"
+msgstr "Todos los Servicios"
+
+msgid "Edit Service"
+msgstr "Editar Servicio"
+
+msgid "View Service"
+msgstr "Ver Servicio"
+
+msgid "Add New Service"
+msgstr "Añadir Nuevo Servicio"
+
+msgid "New Service"
+msgstr "Nuevo Servicio"
+
+msgid "Parent Service:"
+msgstr "Servicio Padre:"
+
+msgid "Search Services"
+msgstr "Buscar Servicios"
+
+msgid "No services found."
+msgstr "No se encontraron servicios."
+
+msgid "No services found in trash."
+msgstr "No se encontraron servicios en la papelera."
+
+msgid "Service Archives"
+msgstr "Archivo de Servicios"
+
+msgid "Service Attributes"
+msgstr "Atributos del Servicio"
+
+msgid "Insert into Service"
+msgstr "Insertar en Servicio"
+
+msgid "Uploaded to this Service"
+msgstr "Subido a este Servicio"
+
+msgid "Filter Service list"
+msgstr "Filtrar lista de Servicios"
+
+msgid "Service Information"
+msgstr "Información del Servicio"
+
+msgid "User Information"
+msgstr "Información del Usuario"
+
+msgid "User Info"
+msgstr "Info del Usuario"
+
+# ============================================
+# Email Configuration
+# ============================================
+
+msgid "Email Configuration"
+msgstr "Configuración de Email"
+
+msgid "Administrator Email"
+msgstr "Email del Administrador"
+
+msgid "Email Subject"
+msgstr "Asunto del Email"
+
+msgid "Settings saved successfully!"
+msgstr "¡Configuración guardada correctamente!"
+
+# ============================================
+# Frontend - React Components
+# ============================================
+
+msgid "Select a service"
+msgstr "Selecciona un servicio"
+
+msgid "Loading..."
+msgstr "Cargando..."
+
+msgid "Email sent successfully!"
+msgstr "¡Email enviado correctamente!"
+
+msgid "Redirecting..."
+msgstr "Redirigiendo..."
+
+msgid "Notice"
+msgstr "Aviso"
+
+msgid "The service \"%s\" has no phase options available."
+msgstr "El servicio \"%s\" no tiene opciones de fase disponibles."
+
+msgid "Close"
+msgstr "Cerrar"
+
+# ============================================
+# Page Templates
+# ============================================
+
+msgid "Service Form (Full Screen)"
+msgstr "Formulario de Servicio (Pantalla Completa)"
+
+# ============================================
+# Miscellaneous
+# ============================================
+
+msgid "Tip:"
+msgstr "Consejo:"
+
+msgid "Select a template or customize colors manually below."
+msgstr "Selecciona una plantilla o personaliza los colores manualmente abajo."
+
+msgid "🎨 Color Templates"
+msgstr "🎨 Plantillas de Colores"
+
+msgid "Click on a template to automatically apply all colors."
+msgstr "Haz clic en una plantilla para aplicar automáticamente todos los colores."
+
+msgid "⚙️ Advanced Customization"
+msgstr "⚙️ Personalización Avanzada"
+
+msgid "Or customize each color individually below:"
+msgstr "O personaliza cada color individualmente abajo:"
+
+msgid "Restore Default Colors"
+msgstr "Restaurar Colores Predeterminados"
+
+msgid "Active Theme:"
+msgstr "Tema Activo:"
+
+msgid "Configure your logo and form colors. Use hexadecimal codes for colors."
+msgstr "Configura tu logo y colores del formulario. Usa códigos hexadecimales para los colores."

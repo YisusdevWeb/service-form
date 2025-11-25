@@ -95,7 +95,7 @@ const App = () => {
           <Box>
             <Logo /> {/* Usando el componente Logo aquí */}
             <Typography variant="h5" gutterBottom sx={{ color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center', fontSize: '1.5rem', mb: 3 }}>
-              Selecionar um serviço
+              {FSF_data?.form_texts?.service_selection || 'Select a service'}
             </Typography>
             <ul style={{ listStyleType: "none", padding: 0 }}>
               {[...availableServices]

@@ -54,17 +54,17 @@ const SuccessMessage = () => {
             textAlign: 'center',
           }}
         >
-          Email enviado com sucesso!
+          {FSF_data?.form_texts?.email_sent_success || 'Email sent successfully!'}
         </Typography>
-        <Typography 
-          variant="body2" 
-          sx={{ 
-            color: 'rgba(255, 255, 255, 0.7)', 
+        <Typography
+          variant="body2"
+          sx={{
+            color: 'rgba(255, 255, 255, 0.7)',
             mt: 1,
             fontFamily: 'Poppins, sans-serif',
           }}
         >
-          Redirecionando...
+          {FSF_data?.form_texts?.redirecting || 'Redirecting...'}
         </Typography>
       </Box>
     </>

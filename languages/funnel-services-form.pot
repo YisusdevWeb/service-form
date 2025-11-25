@@ -1,17 +1,20 @@
 # Copyright (C) 2024 Yisus Develop
 # This file is distributed under the GNU General Public License v3.0.
+# POT Template for Funnel Services Form
+
 msgid ""
 msgstr ""
-"Project-Id-Version: EWEB - Funnel Services Form 1.3.7\n"
+"Project-Id-Version: EWEB - Funnel Services Form 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/Yisus-Develop\n"
-"Last-Translator: Yisus Develop\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-25T00:00:00+00:00\n"
+"POT-Creation-Date: 2025-11-25T00:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI\n"
+"X-Generator: AI Assistant\n"
 "X-Domain: funnel-services-form\n"
 
 #. Plugin Name of the plugin
@@ -19,209 +22,435 @@ msgid "EWEB - Funnel Services Form"
 msgstr ""
 
 #. Description of the plugin
-msgid "Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos."
+msgid "Plugin for service forms with steps for quotes. Allows creating multi-phase forms with color and style customization."
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Personalização de Estilos e Logo"
+# ============================================
+# Admin - Styles Settings Page
+# ============================================
+
+#: includes/admin/styles-admin.php
+#: includes/admin/views/styles-settings-page.php
+msgid "Styles and Logo Customization"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Estilos e Logo"
+#: includes/admin/styles-admin.php
+msgid "Styles and Logo"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🌙 Escuro (Padrão)"
+#: includes/admin/views/styles-settings-page.php
+msgid "Customize the appearance of the service form"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "☀️ Claro"
+#: includes/admin/views/styles-settings-page.php
+msgid "Active Template"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🔵 Azul Corporativo"
+#: includes/admin/views/styles-settings-page.php
+msgid "Styles updated successfully!"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🟢 Verde Natural"
+#: includes/admin/views/styles-settings-page.php
+msgid "Color Templates"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🟣 Púrpura Elegante"
+#: includes/admin/views/styles-settings-page.php
+#: includes/admin/views/form-texts-page.php
+msgid "Restore Default"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🟠 Laranja Quente"
+#: includes/admin/views/styles-settings-page.php
+msgid "Logo"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Estilos atualizados com sucesso!"
+#: includes/admin/views/styles-settings-page.php
+msgid "No logo"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Configure o logo e as cores do seu formulário. Use códigos hexadecimais para as cores."
+#: includes/admin/views/styles-settings-page.php
+msgid "Select"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Dica:"
+#: includes/admin/views/styles-settings-page.php
+msgid "Remove"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Selecione um template ou personalize as cores manualmente abaixo."
+#: includes/admin/views/styles-settings-page.php
+msgid "Maximum Size"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "🎨 Templates de Cores"
+#: includes/admin/views/styles-settings-page.php
+msgid "Glassmorphism"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Clique num template para aplicar automaticamente todas as cores."
+#: includes/admin/views/styles-settings-page.php
+msgid "Preview"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "⚙️ Personalização Avançada"
+#: includes/admin/views/styles-settings-page.php
+msgid "Opacity"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Ou personalize cada cor individualmente abaixo:"
+#: includes/admin/views/styles-settings-page.php
+msgid "Blur (px)"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Restaurar Cores Padrão"
+#: includes/admin/views/styles-settings-page.php
+msgid "Colors"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Tema Ativo:"
+#: includes/admin/views/styles-settings-page.php
+msgid "Primary Background"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Personalizado"
+#: includes/admin/views/styles-settings-page.php
+msgid "Secondary Background"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Escuro (Padrão)"
+#: includes/admin/views/styles-settings-page.php
+#: includes/admin/views/form-texts-page.php
+msgid "Titles"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Claro"
+#: includes/admin/views/styles-settings-page.php
+msgid "Primary Text"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Azul Corporativo"
+#: includes/admin/views/styles-settings-page.php
+msgid "Secondary Text"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Verde Natural"
+#: includes/admin/views/styles-settings-page.php
+msgid "Labels"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Púrpura Elegante"
+#: includes/admin/views/styles-settings-page.php
+msgid "Theme Color"
 msgstr ""
 
-#: includes/wp_admin_styles.php
-msgid "Laranja Quente"
+#: includes/admin/views/styles-settings-page.php
+msgid "Input Text"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+msgid "Input Border"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+#: includes/admin/views/form-texts-page.php
+msgid "Button"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+#: includes/admin/views/form-texts-page.php
+msgid "Button Text"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+msgid "Button Hover"
+msgstr ""
+
+#: includes/admin/views/styles-settings-page.php
+#: includes/admin/views/form-texts-page.php
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/styles-admin.php
+msgid "Restore default colors?"
+msgstr ""
+
+#: includes/admin/styles-admin.php
+msgid "Select Logo"
+msgstr ""
+
+#: includes/admin/styles-admin.php
+msgid "Use this image"
+msgstr ""
+
+# ============================================
+# Admin - Form Texts Page
+# ============================================
+
+#: includes/admin/form-texts-admin.php
+#: includes/admin/views/form-texts-page.php
+msgid "Form Texts"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Customize all texts of the initial form"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Texts updated successfully!"
+msgstr ""
+
+#: includes/admin/form-texts-admin.php
+msgid "Restore default texts?"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Main Title"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Subtitle"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error Message"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Name Field"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Label"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Placeholder"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error: Required field"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error: Minimum characters"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Email Field"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error: Invalid email"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "WhatsApp Field"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error: Invalid WhatsApp"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Privacy Policy"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Text before link"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Link text"
+msgstr ""
+
+#: includes/admin/views/form-texts-page.php
+msgid "Error: Not accepted"
+msgstr ""
+
+# ============================================
+# Color Templates
+# ============================================
+
+#: includes/admin/color-templates.php
+msgid "🌙 Dark (Default)"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "☀️ Light"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "🔵 Corporate Blue"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "🟢 Natural Green"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "🟣 Elegant Purple"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "🟠 Warm Orange"
+msgstr ""
+
+#: includes/admin/color-templates.php
+msgid "Custom"
+msgstr ""
+
+# ============================================
+# Post Type - Services
+# ============================================
+
+#: includes/wp_postype.php
+msgid "Services"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Serviços"
+msgid "Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Serviço"
+msgid "All Services"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Todos os Serviços"
+msgid "Edit Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Editar Serviço"
+msgid "View Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Ver Serviço"
+msgid "Add New Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Adicionar Novo Serviço"
+msgid "New Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Novo Serviço"
+msgid "Parent Service:"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Serviço Pai:"
+msgid "Search Services"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Procurar Serviços"
+msgid "No services found."
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Nenhum serviço encontrado."
+msgid "No services found in trash."
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Nenhum serviço encontrado na lixeira."
+msgid "Service Archives"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Arquivos de Serviços"
+msgid "Service Attributes"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Atributos do Serviço"
+msgid "Insert into Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Inserir no Serviço"
+msgid "Uploaded to this Service"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Enviado para este Serviço"
+msgid "Filter Service list"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Filtrar lista de Serviços"
+msgid "Service Information"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Informações de Serviços"
+msgid "User Information"
 msgstr ""
 
 #: includes/wp_postype.php
-msgid "Informações de Usuário"
+msgid "User Info"
 msgstr ""
 
-#: includes/wp_postype.php
-msgid "Informação de Usuário"
+# ============================================
+# Email Configuration
+# ============================================
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Configuration"
 msgstr ""
 
-#: includes/wp_postype.php
-msgid "Info Usuário"
+#: includes/wp_admin_config_mail.php
+msgid "Administrator Email"
 msgstr ""
+
+#: includes/wp_admin_config_mail.php
+msgid "Email Subject"
+msgstr ""
+
+#: includes/wp_admin_config_mail.php
+msgid "Settings saved successfully!"
+msgstr ""
+
+# ============================================
+# Frontend - React Components
+# ============================================
+
+#: app/app.jsx
+msgid "Select a service"
+msgstr ""
+
+#: app/components/Preloader.jsx
+msgid "Loading..."
+msgstr ""
+
+#: app/components/SuccessMessage.jsx
+msgid "Email sent successfully!"
+msgstr ""
+
+#: app/components/SuccessMessage.jsx
+msgid "Redirecting..."
+msgstr ""
+
+#: app/components/NoPhasePopup.jsx
+msgid "Notice"
+msgstr ""
+
+#: app/components/NoPhasePopup.jsx
+msgid "The service \"%s\" has no phase options available."
+msgstr ""
+
+#: app/components/NoPhasePopup.jsx
+msgid "Close"
+msgstr ""
+
+# ============================================
+# Page Templates
+# ============================================
 
 #: includes/wp_page_templates.php
-msgid "Formulário de Serviços (Full Screen)"
+msgid "Service Form (Full Screen)"
 msgstr ""
 
-#: includes/wp_admin_config_mail.php
-msgid "Configuração de E-mail"
+# ============================================
+# Miscellaneous
+# ============================================
+
+msgid "Tip:"
 msgstr ""
 
-#: includes/wp_admin_config_mail.php
-msgid "E-mail do Administrador"
+msgid "Select a template or customize colors manually below."
 msgstr ""
 
-#: includes/wp_admin_config_mail.php
-msgid "Assunto do E-mail"
+msgid "🎨 Color Templates"
 msgstr ""
 
-#: includes/wp_admin_config_mail.php
-msgid "Configurações salvas com sucesso!"
+msgid "Click on a template to automatically apply all colors."
 msgstr ""
 
-#: templates/page-fullscreen-form.php
-msgid "Formulário de Serviços"
+msgid "⚙️ Advanced Customization"
+msgstr ""
+
+msgid "Or customize each color individually below:"
+msgstr ""
+
+msgid "Restore Default Colors"
+msgstr ""
+
+msgid "Active Theme:"
+msgstr ""
+
+msgid "Configure your logo and form colors. Use hexadecimal codes for colors."
 msgstr ""
