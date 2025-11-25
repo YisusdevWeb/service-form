@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: EWEB - Funnel Services Form
- * Description: Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos.
+ * Description: Multi-step services form plugin for quotations. Allows creating multi-phase forms with color and style customization.
  * Version: 1.4.3
  * Author: Yisus Develop
  * Author URI: https://github.com/Yisus-Develop
