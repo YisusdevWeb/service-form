@@ -1,0 +1,57 @@
+/**
+ * ========================================
+ * ARCHIVO DE SOBRESCRITURA PERSONALIZADA
+ * ========================================
+ * 
+ * Si los estilos del formulario no se muestran correctamente debido a
+ * conflictos con tu tema de WordPress, puedes agregar reglas CSS personalizadas
+ * aquí para forzar la apariencia correcta.
+ * 
+ * INSTRUCCIONES:
+ * --------------
+ * 1. Identifica el elemento afectado usando DevTools (F12 en el navegador)
+ * 2. Copia la regla CSS problemática del tema
+ * 3. Pega aquí tu versión corregida usando el patrón de doble selector
+ * 4. Siempre usa !important para garantizar prioridad
+ * 
+ * PATRÓN RECOMENDADO:
+ * -------------------
+ * .funil-services-form-root.funil-services-form-root [selector] {
+ *     propiedad: valor !important;
+ * }
+ * 
+ * EJEMPLO DE USO:
+ * ---------------
+ * Si el texto no es blanco, agregar:
+ * 
+ * .funil-services-form-root.funil-services-form-root p,
+ * .funil-services-form-root.funil-services-form-root span,
+ * .funil-services-form-root.funil-services-form-root label {
+ *     color: #ffffff !important;
+ *     font-family: "Inter", Arial, sans-serif !important;
+ * }
+ * 
+ * Si los inputs no tienen el fondo correcto:
+ * 
+ * .funil-services-form-root.funil-services-form-root input,
+ * .funil-services-form-root.funil-services-form-root textarea {
+ *     background: rgba(255, 255, 255, 0.05) !important;
+ *     border: 1px solid rgba(255, 255, 255, 0.2) !important;
+ *     color: #ffffff !important;
+ * }
+ * 
+ * Si los botones no se ven correctos:
+ * 
+ * .funil-services-form-root.funil-services-form-root button,
+ * .funil-services-form-root.funil-services-form-root .MuiButton-root {
+ *     background: transparent !important;
+ *     border: 2px solid rgba(255, 255, 255, 0.18) !important;
+ *     color: #ffffff !important;
+ * }
+ * 
+ * ========================================
+ * AGREGA TUS REGLAS PERSONALIZADAS ABAJO
+ * ========================================
+ */
+
+/* Tus reglas CSS personalizadas aquí */

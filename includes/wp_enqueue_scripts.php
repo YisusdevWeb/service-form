@@ -69,3 +69,21 @@ function FSF_enqueue_admin_scripts_and_styles()
 {
     wp_enqueue_style('FSF-settings-style', FSF_PLUGIN_URL . '/assets/css/style.css', array(), '1.0.1');
 }
+
+/**
+ * Encolar CSS de compatibilidad personalizada para temas conflictivos
+ * Los usuarios pueden agregar sus propias reglas CSS en custom-theme-override.css
+ */
+add_action('wp_enqueue_scripts', 'FSF_enqueue_theme_compat', 999);
+function FSF_enqueue_theme_compat()
+{
+    // SIEMPRE cargar el archivo de sobrescritura personalizada
+    // Este archivo permite a los usuarios agregar sus propias reglas CSS
+    // para solucionar conflictos específicos con su tema
+    wp_enqueue_style(
+        'fsf-custom-theme-override',
+        FSF_PLUGIN_URL . 'includes/compat/custom-theme-override.css',
+        array(),
+        '1.0.0'
+    );
+}

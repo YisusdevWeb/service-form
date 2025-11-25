@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-purple.svg)](https://php.net/)
 [![License](https://img.shields.io/badge/License-GPLv3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Version](https://img.shields.io/badge/Version-1.4.0-orange.svg)](https://github.com/Yisus-Develop)
+[![Version](https://img.shields.io/badge/Version-1.4.2-orange.svg)](https://github.com/Yisus-Develop)
 
 Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos.
 
@@ -128,13 +128,18 @@ npm run watch
 - **Melhoria:** Variables CSS centralizadas
 - **Fix:** Conflitos de padding/margin com page builders
 
-### v1.3.7 (Nov 2025)
-- **Novo:** Template de página full screen
-- **Novo:** Sistema de templates de cores
-- **Novo:** Indicador de tema ativo
-- **Melhoria:** Mensagem de sucesso como modal centralizado
-- **Melhoria:** Cabeçalho do plugin padronizado
+### v1.4.2 (Nov 2025)
+- **Fix:** Añadido sistema de compatibilidad con temas (`/includes/compat/`)
+- **Fix:** Archivo `custom-theme-override.css` para que usuarios peguen reglas de override
+- **Fix:** Mejora en encolado de estilos para evitar conflictos con temas como Mestc
 
+### v1.4.0 (Nov 2025)
+ - **Refactor:** Código admin separado en módulos (`/includes/admin/`)
+ - **Otimización:** CSS reducido ~24% (9.77 KiB → 7.39 KiB)
+ - **Otimización:** SCSS reducido ~56% (~435 → ~190 líneas)
+ - **Melhoria:** Isolamento de Elementor sem quebrar estilos MUI
+ - **Melhoria:** Variables CSS centralizadas
+ - **Fix:** Conflitos de padding/margin com page builders
 ### v1.3.1 (Nov 2025)
 - Selector de mídia WordPress para logo
 - Botão de reset de estilos
