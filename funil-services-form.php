@@ -86,3 +86,29 @@ function fsf_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'fsf_load_textdomain' );
 
+/**
+ * Debug translation function to check if strings are translating correctly.
+ *
+ * @since 1.4.3
+ * @return void
+ */
+function fsf_debug_translations() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    $test_strings = [
+        'Privacy Policy Link Settings',
+        'Thank You Page Link',
+        'Debug / Logs'
+    ];
+
+    echo '<div class="notice notice-info"><p><strong>FSF Translation Debug:</strong></p><ul>';
+    foreach ( $test_strings as $string ) {
+        $translated = __( $string, 'funnel-services-form' );
+        echo '<li>' . esc_html( $string ) . ' → ' . esc_html( $translated ) . '</li>';
+    }
+    echo '</ul></div>';
+}
+add_action( 'admin_notices', 'fsf_debug_translations' );
+
