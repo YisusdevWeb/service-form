@@ -101,7 +101,7 @@ const StepForm = React.memo(({ onComplete, onServiceComplete, userData }) => {
     const isLastPhaseUnique = isLastPhase && currentService.fases_do_servico[currentPhase]?.tipo_selecao === 'unica';
 
     if (isLastPhaseUnique) {
-      // Si el último paso es de tipo 'unica', concluye el formulario sin avanzar
+      // If last step is 'unica' type, finish form without advancing
       setShowSummary(true);
       // ...existing code...
     } else if (currentPhase < currentService.fases_do_servico.length - 1) {

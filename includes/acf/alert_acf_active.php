@@ -1,6 +1,6 @@
 <?php
 
-// Verificar si ACF y ACF Pro están instalados y activos
+// Check if ACF and ACF Pro are installed and active
 add_action( 'admin_notices', function() {
     if ( ! class_exists( 'ACF' ) || ! class_exists( 'ACF_Pro' ) ) {
         echo '<div class=“notice notice-error is-dismissible” style="background-color: #ffcc00; border-left: 5px solid #e63946; color: #333; padding: 15px;">

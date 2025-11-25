@@ -88,7 +88,7 @@ class FSF_Page_Templates {
         // Registrar el template como un block template
         $template_content = '<!-- wp:shortcode -->[funil_services_form]<!-- /wp:shortcode -->';
 
-        // Verificar si ya existe
+        // Check if it already exists
         $existing = get_block_templates( array( 'slug__in' => array( self::TEMPLATE_SLUG ) ), 'wp_template' );
         
         if ( empty( $existing ) ) {
@@ -157,7 +157,7 @@ class FSF_Page_Templates {
 
         $page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-        // Verificar si es nuestro template (con o sin extensión)
+        // Check if it's our template (with or without extension)
         $is_our_template = ( 
             $page_template === self::TEMPLATE_SLUG || 
             $page_template === self::TEMPLATE_SLUG . '.php' ||

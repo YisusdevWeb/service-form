@@ -5,23 +5,23 @@ function FSF_enqueue_scripts_and_styles()
 {
     global $post;
 
-    // Verificar si el contenido del post tiene el shortcode 'Funnel-services-form'
+    // Check if post content has 'Funnel-services-form' shortcode
     $has_shortcode = isset($post->post_content) && has_shortcode($post->post_content, 'Funnel-services-form');
 
     if (isset($post) && $has_shortcode) {
-        // Obtener los posts del tipo 'form-servico'
+        // Get posts of type 'form-servico'
         $posts = get_posts(array(
             'post_type' => 'form-servico',
-            'numberposts' => -1 // Obtener todos los posts
+            'numberposts' => -1 // Get all posts
         ));
 
         // Crear un array para almacenar los datos de los posts y sus campos ACF
         $post_data = array();
 
         foreach ($posts as $post) {
-            // Obtener los campos ACF de cada post
+            // Get ACF fields for each post
             $acf_fields = get_fields($post->ID);
-            // Agregar los datos del post y sus campos ACF al array
+            // Add post data and ACF fields to array
             $post_data[] = array(
                 'ID' => $post->ID,
                 'title' => $post->post_title,
@@ -33,7 +33,7 @@ function FSF_enqueue_scripts_and_styles()
         // Obtener la URL de los términos y condiciones desde las opciones de WordPress
          $terms_url = get_option('fsf_terms_url', '');
 
-         // Obtener la URL de los términos y condiciones desde las opciones de WordPress
+         // Get terms and conditions URL from WordPress options
          $thanks_url = get_option('fsf_thanks_url', '');
 
         // Datos a pasar a JavaScript
@@ -42,7 +42,7 @@ function FSF_enqueue_scripts_and_styles()
         $logo_max_width = get_option('fsf_logo_max_width', 200);
         $logo_max_height = get_option('fsf_logo_max_height', 80);
         
-        // Obtener textos personalizados del formulario
+        // Get custom form texts
         $form_texts = function_exists('fsf_get_current_form_texts') ? fsf_get_current_form_texts() : array();
         
         $js_data_passed = array(

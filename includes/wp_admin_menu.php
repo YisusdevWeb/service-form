@@ -309,7 +309,7 @@ function fsf_export_user_info() {
                     $whatsapp = get_post_meta($post->ID, 'Telefone', true);
                     $services = maybe_unserialize(get_post_meta($post->ID, 'services', true));
 
-                    // Convertir la selección de servicios a un formato legible (por ejemplo, separado por comas)
+                    // Convert service selection to readable format (e.g., comma-separated)
                     $services_list = '';
                     if (is_array($services)) {
                         $services_array = array();

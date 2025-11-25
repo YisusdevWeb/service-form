@@ -23,11 +23,11 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
       }}
     >
       <DialogTitle id="add-more-services-popup-title" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--heading-color)', fontWeight: 'bold', textAlign: 'center' }}>
-      Adicionar mais serviços
+      Add More Services
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="add-more-services-popup-description" sx={{ fontFamily: 'Poppins, sans-serif', color: 'var(--font-color)', textAlign: 'center' }}>
-        Gostaria de acrescentar mais serviços?
+        Would you like to add more services?
         </DialogContentText>
       </DialogContent>
       <DialogActions
@@ -55,7 +55,7 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
             },
           }}
         >
-         Não
+         No
          
         </Button>
         <Button
@@ -76,7 +76,7 @@ const AddMoreServicesPopup = ({ open, onClose, onConfirm }) => {
             },
           }}
         >
-          Sim
+          Yes
         </Button>
       </DialogActions>
     </Dialog>

@@ -10,7 +10,7 @@
  * Cargar cadenas de traducción para el frontend
  */
 function fsf_load_frontend_translations() {
-    // Obtener textos por defecto (ahora en inglés)
+    // Get default texts (now in English)
     $default_texts = array(
         // Textos del formulario (ya gestionados por fsf_get_current_form_texts)
         // Textos del frontend React
@@ -39,23 +39,23 @@ function fsf_enqueue_scripts_and_styles_with_translations() {
     // Código existente de fsf_enqueue_scripts_and_styles
     global $post;
 
-    // Verificar si el contenido del post tiene el shortcode 'Funnel-services-form'
+    // Check if post content has 'Funnel-services-form' shortcode
     $has_shortcode = isset($post->post_content) && has_shortcode($post->post_content, 'Funnel-services-form');
 
     if (isset($post) && $has_shortcode) {
-        // Obtener los posts del tipo 'form-servico'
+        // Get posts of type 'form-servico'
         $posts = get_posts(array(
             'post_type' => 'form-servico',
-            'numberposts' => -1 // Obtener todos los posts
+            'numberposts' => -1 // Get all posts
         ));
 
         // Crear un array para almacenar los datos de los posts y sus campos ACF
         $post_data = array();
 
         foreach ($posts as $post) {
-            // Obtener los campos ACF de cada post
+            // Get ACF fields for each post
             $acf_fields = get_fields($post->ID);
-            // Agregar los datos del post y sus campos ACF al array
+            // Add post data and ACF fields to array
             $post_data[] = array(
                 'ID' => $post->ID,
                 'title' => $post->post_title,
@@ -66,7 +66,7 @@ function fsf_enqueue_scripts_and_styles_with_translations() {
         // Obtener la URL de los términos y condiciones desde las opciones de WordPress
          $terms_url = get_option('fsf_terms_url', '');
 
-         // Obtener la URL de los términos y condiciones desde las opciones de WordPress
+         // Get terms and conditions URL from WordPress options
          $thanks_url = get_option('fsf_thanks_url', '');
 
         // Datos a pasar a JavaScript
@@ -75,7 +75,7 @@ function fsf_enqueue_scripts_and_styles_with_translations() {
         $logo_max_width = get_option('fsf_logo_max_width', 200);
         $logo_max_height = get_option('fsf_logo_max_height', 80);
 
-        // Obtener textos traducidos para el frontend
+        // Get translated texts for frontend
         $frontend_texts = fsf_load_frontend_translations();
 
         $js_data_passed = array(
@@ -101,6 +101,6 @@ function fsf_enqueue_scripts_and_styles_with_translations() {
     }
 }
 
-// Reemplazar la función original con la versión mejorada
+// Replace original function with improved version
 remove_action('wp_enqueue_scripts', 'FSF_enqueue_scripts_and_styles');
 add_action('wp_enqueue_scripts', 'fsf_enqueue_scripts_and_styles_with_translations', 100);

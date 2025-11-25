@@ -29,15 +29,15 @@ function fsf_send_email_to_user($data, $subject) {
     $email_from = get_option('fsf_email_from', 'web@dappin.pt');
     $email_subject = get_option('fsf_email_subject', $subject);
     $subject = 'Your Quote - ' . $email_subject;
-       /* $subject = 'Sua Cotação - ' . get_option('fsf_email_subject', $subject);*/
+
 
 
     $created_quotation_date = date_i18n(get_option('date_format') . ' ' . get_option('time_format') . ' T');
 
-    // Obtener la plantilla del cuerpo del correo desde las opciones
+    // Get email body template from options
     $email_body_template = get_option('fsf_email_body', '');
 
-    // Reemplazar los placeholders con los datos reales
+    // Replace placeholders with actual data
     $email_body = str_replace(
         ['{nome}', '{email}', '{whatsapp}', '{data_criacao}'],
         [

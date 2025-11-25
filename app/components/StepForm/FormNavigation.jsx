@@ -7,7 +7,7 @@ const FormNavigation = ({ currentPhase, totalPhases, onPrevious, onNext }) => {
     if (currentPhase < totalPhases - 1) {
       onNext();
     } else {
-      // Si el último paso es de tipo 'unica', concluimos el formulario
+      // If last step is 'unica' type, we finish the form
       onNext();
     }
   };
@@ -27,7 +27,7 @@ const FormNavigation = ({ currentPhase, totalPhases, onPrevious, onNext }) => {
           }}
           onClick={onPrevious}
         >
-          Anterior
+          Previous
         </Button>
       )}
       <Button
@@ -42,7 +42,7 @@ const FormNavigation = ({ currentPhase, totalPhases, onPrevious, onNext }) => {
         }}
         onClick={handleNext}
       >
-        {currentPhase < totalPhases - 1 ? 'CONTINUAR' : 'Concluir'}
+        {currentPhase < totalPhases - 1 ? 'CONTINUE' : 'Finish'}
       </Button>
     </Box>
   );

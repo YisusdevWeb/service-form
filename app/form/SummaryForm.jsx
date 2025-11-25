@@ -15,7 +15,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const apiBaseUrl = FSF_data.api_base_url.user_info;
   const formRef = useRef(null);
-  const navigate = useNavigate(); // Obtén la función de navegación
+  const navigate = useNavigate(); // Get navigation function
 
   const handleChange = (event, newValue) => setValue(newValue);
   const handleAddMoreServicesAndScroll = () => {
@@ -62,7 +62,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
       console.log("Success:", data);
       setShowSuccess(true);
   
-      // Verificar y usar la URL de "Gracias" desde FSF_data
+      // Check and use "Thank You" URL from FSF_data
       console.log("FSF_data:", FSF_data);
       const thankYouUrl = FSF_data?.thanks_url && FSF_data.thanks_url.startsWith("https")
         ? FSF_data.thanks_url
@@ -71,7 +71,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   
       setTimeout(() => {
         try {
-          // Redirigir usando window.location.href
+          // Redirect using window.location.href
           window.location.href = thankYouUrl;
         } catch (navError) {
           console.error("Navigation error:", navError);
@@ -79,7 +79,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
       }, 1000);
     } catch (error) {
       console.error("Error:", error);
-      //alert("Houve um erro ao enviar a cotação.");
+      //alert("There was an error submitting the quote.");
     }
   };
     
@@ -112,7 +112,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
   if (!userData) {
     return (
       <Typography variant="h5" gutterBottom className="heading">
-        Informação do usuário não disponível. Por favor, volte a inserir os dados.
+        User information not available. Please re-enter the data.
       </Typography>
     );
   }
@@ -125,7 +125,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
           <>
             <Logo /> {/* Usando el componente Logo aquí */}
             <Typography variant="h5" gutterBottom className="heading" sx={{ fontFamily: "Poppins, sans-serif", fontWeight: "bold" }}>
-              Resumo das Seleções
+              Selections Summary
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
               <TabsComponent
@@ -138,7 +138,7 @@ const SummaryForm = ({ onEditSelections, onAddMoreServices, userData }) => {
               <Box display="flex" justifyContent="center" sx={{ mt: 1.25, mb: -1.25 }}>
                 <Button className="custom-button" type="submit">
                   <span className="icon-btn"></span>
-                  <span className="title-btn" data-animate-text="ENVIAR PROPOSTA">ENVIAR PROPOSTA</span>
+                  <span className="title-btn" data-animate-text="SUBMIT PROPOSAL">SUBMIT PROPOSAL</span>
                 </Button>
               </Box>
             </form>

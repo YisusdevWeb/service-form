@@ -36,7 +36,7 @@ const UserForm = ({ onUserSubmit }) => {
   };
 
   useEffect(() => {
-    // Seleccionar el div con el ID 'FSF_frontend-seccion'
+    // Select div with ID 'FSF_frontend-seccion'
     const sectionElement = document.getElementById('FSF_frontend-seccion');
 
     if (sectionElement) {

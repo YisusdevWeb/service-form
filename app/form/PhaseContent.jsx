@@ -5,7 +5,7 @@ const PhaseContent = () => {
   const { currentService } = useStore();
 
   if (!currentService) {
-    return <div className="phase-content">Seleccione un servicio para ver los detalles.</div>;
+    return <div className="phase-content">Select a service to view details.</div>;
   }
 
   return (

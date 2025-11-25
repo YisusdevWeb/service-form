@@ -61,11 +61,11 @@ function fsf_create_user_post(WP_REST_Request $request) {
     if (is_wp_error($post_id)) {
         return new WP_Error('error', 'Failed to create post.', array('status' => 500));
     }
-    // Enviar e-mail al administrador como lead cuando se crea el primer formulario
+    // Send email to admin as lead when first form is created
     if (!empty($data) && is_email($data['email'])) {
         $subject = get_option('fsf_email_subject', 'New Lead Received');
         fsf_send_email_to_admin($data, $subject);
-        // Enviar e-mail al usuario registrado
+        // Send email to registered user
         fsf_send_email_to_user($data, $subject);
     }
     
@@ -82,7 +82,7 @@ function fsf_update_user_post(WP_REST_Request $request) {
             'nombre' => sanitize_text_field($data['nombre']),
             'email' => sanitize_email($data['email']),
             'Telefone' => sanitize_text_field($data['whatsapp']),
-            'services' => maybe_serialize($data['selections']), // Atualizar os serviços selecionados
+            'services' => maybe_serialize($data['selections']), // Update selected services
         ),
     );
 
@@ -92,13 +92,13 @@ function fsf_update_user_post(WP_REST_Request $request) {
         return new WP_Error('error', 'Failed to update post.', array('status' => 500));
     }
 
-    // Personalize o assunto do e-mail aqui
+    // Customize email subject here
     $subject = get_option('fsf_email_subject', 'New Quote');
 
-    // Enviar e-mail para o administrador
+    // Send email to admin
     fsf_send_email_to_admin($data, $subject);
 
-    // Enviar e-mail para o usuário
+    // Send email to user
     fsf_send_email_to_user($data, $subject);
 
     return array('post_id' => $updated_post_id);
