@@ -51,7 +51,7 @@ function fsf_display_settings_page()
                     <td><?php wp_editor($email_body, 'fsf_email_body', array('textarea_name' => 'fsf_email_body', 'media_buttons' => true, 'textarea_rows' => 10, 'teeny' => false, 'tinymce' => array('plugins' => 'wordpress, wplink, textcolor, wptextpattern, wpautoresize', 'toolbar1' => 'formatselect bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link', 'toolbar2' => 'forecolor backcolor | removeformat'))); ?></td>
                 </tr>
             </table>
-            <p class="submit"><button type="submit" name="fsf_save_settings" class="button button-primary"><?php _e('Guardar a configuração', 'funnel-services-form'); ?></button></p>
+            <p class="submit"><button type="submit" name="fsf_save_settings" class="button button-primary"><?php _e('Save Settings', 'funnel-services-form'); ?></button></p>
         </form>
     </div>
 <?php

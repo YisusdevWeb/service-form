@@ -43,7 +43,7 @@ class FSF_Page_Templates {
      */
     private function __construct() {
         $this->templates = array(
-            self::TEMPLATE_SLUG => __( '🚀 Formulário Full Screen (Plugin)', 'funnel-services-form' ),
+            self::TEMPLATE_SLUG => __( '🚀 Full Screen Form (Plugin)', 'funnel-services-form' ),
         );
 
         // Filtros para temas clásicos y Gutenberg
@@ -113,8 +113,8 @@ class FSF_Page_Templates {
         $template->slug           = self::TEMPLATE_SLUG;
         $template->source         = 'plugin';
         $template->type           = 'wp_template';
-        $template->title          = __( '🚀 Formulário Full Screen', 'funnel-services-form' );
-        $template->description    = __( 'Template de página completa para el formulario de servicios', 'funnel-services-form' );
+        $template->title          = __( '🚀 Full Screen Form', 'funnel-services-form' );
+        $template->description    = __( 'Full page template for services form', 'funnel-services-form' );
         $template->status         = 'publish';
         $template->has_theme_file = true;
         $template->is_custom      = true;
