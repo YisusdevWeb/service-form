@@ -73,6 +73,13 @@ if (!defined('ABSPATH')) exit;
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
+                    <div class="fsf-form-group fsf-full-width">
+                        <label class="fsf-toggle-label">
+                            <input type="checkbox" name="name_required" value="1" <?php checked($texts['name_required'], '1'); ?> />
+                            <span class="fsf-toggle-switch"></span>
+                            <?php _e('Campo obrigatório', 'funnel-services-form'); ?>
+                        </label>
+                    </div>
                     <div class="fsf-form-group">
                         <label for="name_label"><?php _e('Label', 'funnel-services-form'); ?></label>
                         <input type="text" name="name_label" id="name_label" value="<?php echo esc_attr($texts['name_label']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['name_label']); ?>" />
@@ -100,6 +107,13 @@ if (!defined('ABSPATH')) exit;
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
+                    <div class="fsf-form-group fsf-full-width">
+                        <label class="fsf-toggle-label">
+                            <input type="checkbox" name="email_required" value="1" <?php checked($texts['email_required'], '1'); ?> />
+                            <span class="fsf-toggle-switch"></span>
+                            <?php _e('Campo obrigatório', 'funnel-services-form'); ?>
+                        </label>
+                    </div>
                     <div class="fsf-form-group">
                         <label for="email_label"><?php _e('Label', 'funnel-services-form'); ?></label>
                         <input type="text" name="email_label" id="email_label" value="<?php echo esc_attr($texts['email_label']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['email_label']); ?>" />
@@ -127,6 +141,13 @@ if (!defined('ABSPATH')) exit;
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
+                    <div class="fsf-form-group fsf-full-width">
+                        <label class="fsf-toggle-label">
+                            <input type="checkbox" name="whatsapp_required" value="1" <?php checked($texts['whatsapp_required'], '1'); ?> />
+                            <span class="fsf-toggle-switch"></span>
+                            <?php _e('Campo obrigatório', 'funnel-services-form'); ?>
+                        </label>
+                    </div>
                     <div class="fsf-form-group">
                         <label for="whatsapp_label"><?php _e('Label', 'funnel-services-form'); ?></label>
                         <input type="text" name="whatsapp_label" id="whatsapp_label" value="<?php echo esc_attr($texts['whatsapp_label']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['whatsapp_label']); ?>" />
@@ -154,6 +175,13 @@ if (!defined('ABSPATH')) exit;
             </div>
             <div class="fsf-card-body">
                 <div class="fsf-form-grid">
+                    <div class="fsf-form-group fsf-full-width">
+                        <label class="fsf-toggle-label">
+                            <input type="checkbox" name="privacy_required" value="1" <?php checked($texts['privacy_required'], '1'); ?> />
+                            <span class="fsf-toggle-switch"></span>
+                            <?php _e('Campo obrigatório', 'funnel-services-form'); ?>
+                        </label>
+                    </div>
                     <div class="fsf-form-group">
                         <label for="privacy_text"><?php _e('Texto antes do link', 'funnel-services-form'); ?></label>
                         <input type="text" name="privacy_text" id="privacy_text" value="<?php echo esc_attr($texts['privacy_text']); ?>" class="fsf-input" data-default="<?php echo esc_attr($defaults['privacy_text']); ?>" />
@@ -322,5 +350,46 @@ if (!defined('ABSPATH')) exit;
     .fsf-admin-header { flex-direction: column; gap: 15px; text-align: center; }
     .fsf-admin-grid { grid-template-columns: 1fr; }
     .fsf-form-grid { grid-template-columns: 1fr; }
+}
+
+/* Toggle Switch */
+.fsf-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+    padding: 10px 0;
+}
+.fsf-toggle-label input[type="checkbox"] {
+    display: none;
+}
+.fsf-toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background: #d1d5db;
+    border-radius: 13px;
+    transition: all 0.3s ease;
+}
+.fsf-toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.fsf-toggle-label input[type="checkbox"]:checked + .fsf-toggle-switch {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+.fsf-toggle-label input[type="checkbox"]:checked + .fsf-toggle-switch::after {
+    left: 27px;
 }
 </style>

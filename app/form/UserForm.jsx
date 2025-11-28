@@ -13,18 +13,27 @@ const UserForm = ({ onUserSubmit }) => {
   
   // Obtener textos personalizados o usar valores por defecto
   const texts = FSF_data.form_texts || {};
+  
+  // Opciones de campos obligatorios (por defecto: nombre y email obligatorios, whatsapp no)
+  const required = {
+    name: texts.name_required === '1' || texts.name_required === undefined,
+    email: texts.email_required === '1' || texts.email_required === undefined,
+    whatsapp: texts.whatsapp_required === '1',
+    privacy: texts.privacy_required === '1' || texts.privacy_required === undefined,
+  };
+  
   const t = {
     formTitle: texts.form_title || 'PEDIDO DE PROPOSTA',
     formSubtitle: texts.form_subtitle || 'Preenche os campos abaixo para pedires a tua proposta!',
-    nameLabel: texts.name_label || 'Nome e Apelido *',
+    nameLabel: (texts.name_label || 'Nome e Apelido') + (required.name ? ' *' : ''),
     namePlaceholder: texts.name_placeholder || 'O teu Primeiro e último nome',
     nameErrorRequired: texts.name_error_required || 'Nome é obrigatório',
     nameErrorMin: texts.name_error_min || 'Deve ter pelo menos 3 caracteres',
-    emailLabel: texts.email_label || 'E-mail *',
+    emailLabel: (texts.email_label || 'E-mail') + (required.email ? ' *' : ''),
     emailPlaceholder: texts.email_placeholder || 'O teu melhor e-mail',
     emailErrorRequired: texts.email_error_required || 'Email é obrigatório',
     emailErrorInvalid: texts.email_error_invalid || 'Insere um email válido',
-    whatsappLabel: texts.whatsapp_label || 'O teu WhatsApp *',
+    whatsappLabel: (texts.whatsapp_label || 'O teu WhatsApp') + (required.whatsapp ? ' *' : ''),
     whatsappPlaceholder: texts.whatsapp_placeholder || 'O teu WhatsApp',
     whatsappErrorRequired: texts.whatsapp_error_required || 'Teu WhatsApp é obrigatório',
     whatsappErrorInvalid: texts.whatsapp_error_invalid || 'Insere teu WhatsApp válido',
@@ -105,7 +114,10 @@ const UserForm = ({ onUserSubmit }) => {
             <BootstrapInput
               id="nombre"
               placeholder={t.namePlaceholder}
-              {...register('nombre', { required: t.nameErrorRequired, minLength: { value: 3, message: t.nameErrorMin } })}
+              {...register('nombre', { 
+                required: required.name ? t.nameErrorRequired : false, 
+                minLength: { value: 3, message: t.nameErrorMin } 
+              })}
             />
             <FormHelperText>{errors.nombre ? errors.nombre.message : ''}</FormHelperText>
           </FormControl>
@@ -118,7 +130,7 @@ const UserForm = ({ onUserSubmit }) => {
               id="email"
               placeholder={t.emailPlaceholder}
               {...register('email', {
-                required: t.emailErrorRequired,
+                required: required.email ? t.emailErrorRequired : false,
                 pattern: {
                   value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                   message: t.emailErrorInvalid,
@@ -136,7 +148,7 @@ const UserForm = ({ onUserSubmit }) => {
               id="whatsapp"
               placeholder={t.whatsappPlaceholder}
               {...register('whatsapp', {
-                required: t.whatsappErrorRequired,
+                required: required.whatsapp ? t.whatsappErrorRequired : false,
                 pattern: {
                   value: /^\+?[0-9\s-]+$/,
                   message: t.whatsappErrorInvalid,
@@ -161,7 +173,7 @@ const UserForm = ({ onUserSubmit }) => {
           <FormControlLabel
             control={
               <Checkbox
-                {...register('privacyPolicy', { required: t.privacyError })}
+                {...register('privacyPolicy', { required: required.privacy ? t.privacyError : false })}
                 color="primary"
               />
             }

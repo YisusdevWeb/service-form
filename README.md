@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-8.1%2B-purple.svg)](https://php.net/)
 [![License](https://img.shields.io/badge/License-GPLv3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Version](https://img.shields.io/badge/Version-1.4.2-orange.svg)](https://github.com/Yisus-Develop)
+[![Version](https://img.shields.io/badge/Version-1.4.4-orange.svg)](https://github.com/Yisus-Develop)
 
 Plugin de formulário de serviços com etapas (steps) para cotações. Permite criar formulários de múltiplas fases com personalização de cores e estilos.
 
@@ -72,13 +72,19 @@ O plugin está **100% preparado para traduções**:
 - Cores totalmente customizáveis
 - **Dashboard admin moderno** com design profissional
 
-### Textos Personalizáveis (Novo! v1.4.2)
+### Textos Personalizáveis
 - Editar todos os textos do formulário inicial desde o admin
 - Títulos e subtítulos personalizáveis
 - Labels e placeholders dos campos (Nome, Email, WhatsApp)
 - Mensagens de erro customizáveis
 - Texto do botão de envio
 - Textos de política de privacidade
+
+### Campos Obrigatórios Configuráveis (Novo! v1.4.4)
+- Toggle para ativar/desativar campos obrigatórios individualmente
+- Configuração separada para: Nome, Email, WhatsApp e Política de Privacidade
+- Por padrão: Nome e Email obrigatórios, WhatsApp opcional
+- Interface visual com switch toggle no admin
 
 ### Template Full Screen
 - Página dedicada para o formulário

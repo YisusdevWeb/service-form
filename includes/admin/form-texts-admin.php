@@ -61,27 +61,31 @@ function fsf_get_default_form_texts() {
         'form_subtitle' => 'Preenche os campos abaixo para pedires a tua proposta!',
         
         // Campo Nombre
-        'name_label' => 'Nome e Apelido *',
+        'name_label' => 'Nome e Apelido',
         'name_placeholder' => 'O teu Primeiro e último nome',
         'name_error_required' => 'Nome é obrigatório',
         'name_error_min' => 'Deve ter pelo menos 3 caracteres',
+        'name_required' => '1', // Obligatorio por defecto
         
         // Campo Email
-        'email_label' => 'E-mail *',
+        'email_label' => 'E-mail',
         'email_placeholder' => 'O teu melhor e-mail',
         'email_error_required' => 'Email é obrigatório',
         'email_error_invalid' => 'Insere um email válido',
+        'email_required' => '1', // Obligatorio por defecto
         
         // Campo WhatsApp
-        'whatsapp_label' => 'O teu WhatsApp *',
+        'whatsapp_label' => 'O teu WhatsApp',
         'whatsapp_placeholder' => 'O teu WhatsApp',
         'whatsapp_error_required' => 'Teu WhatsApp é obrigatório',
         'whatsapp_error_invalid' => 'Insere teu WhatsApp válido',
+        'whatsapp_required' => '0', // NO obligatorio por defecto
         
         // Privacidad
         'privacy_text' => 'Li e aceito',
         'privacy_link_text' => 'a Política de Privacidade',
         'privacy_error' => 'É necessário aceitar as políticas de privacidade',
+        'privacy_required' => '1', // Obligatorio por defecto
         
         // Botón
         'submit_button' => 'SOLICITAR PROPOSTA',
@@ -127,7 +131,10 @@ function fsf_save_form_texts($defaults) {
     $texts = array();
     
     foreach ($defaults as $key => $default_value) {
-        if (isset($_POST[$key])) {
+        // Manejar checkboxes de campos obligatorios
+        if (strpos($key, '_required') !== false && $key !== 'name_error_required' && $key !== 'email_error_required' && $key !== 'whatsapp_error_required') {
+            $texts[$key] = isset($_POST[$key]) ? '1' : '0';
+        } elseif (isset($_POST[$key])) {
             $texts[$key] = sanitize_text_field($_POST[$key]);
         } else {
             $texts[$key] = $default_value;
